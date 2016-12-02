@@ -1,0 +1,674 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jquery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一直有想去看jquery源码的想法，但一直被网上的关于jquery源码很难的言论吓着了，迟迟没有行动。最近在公司写插件的时候发现自己在代码的架构上知识季度匮乏，一直想找一些代码学习与实践，遂决定看下jquery的源码，能看懂多少算多少，看懂了就是赚到了。本章先记录一些jquery源码的静态属性与方法及一些好的代码书写规范。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery源码的静态属性与方法">
+<meta property="og:url" content="http://yoursite.com/2016/10/24/jquery-static/index.html">
+<meta property="og:site_name" content="Hehe">
+<meta property="og:description" content="一直有想去看jquery源码的想法，但一直被网上的关于jquery源码很难的言论吓着了，迟迟没有行动。最近在公司写插件的时候发现自己在代码的架构上知识季度匮乏，一直想找一些代码学习与实践，遂决定看下jquery的源码，能看懂多少算多少，看懂了就是赚到了。本章先记录一些jquery源码的静态属性与方法及一些好的代码书写规范。">
+<meta property="og:updated_time" content="2016-10-23T14:58:07.561Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery源码的静态属性与方法">
+<meta name="twitter:description" content="一直有想去看jquery源码的想法，但一直被网上的关于jquery源码很难的言论吓着了，迟迟没有行动。最近在公司写插件的时候发现自己在代码的架构上知识季度匮乏，一直想找一些代码学习与实践，遂决定看下jquery的源码，能看懂多少算多少，看懂了就是赚到了。本章先记录一些jquery源码的静态属性与方法及一些好的代码书写规范。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> jquery源码的静态属性与方法 | Hehe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7530ab3bbd855fcafec1d2d2120b52d3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hehe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">个人博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jquery源码的静态属性与方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-23T22:27:30Z" content="2016-10-23">
+              2016-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/24/jquery-static/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/jquery-static/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一直有想去看jquery源码的想法，但一直被网上的关于jquery源码很难的言论吓着了，迟迟没有行动。最近在公司写插件的时候发现自己在代码的架构上知识季度匮乏，一直想找一些代码学习与实践，遂决定看下jquery的源码，能看懂多少算多少，看懂了就是赚到了。本章先记录一些jquery源码的静态属性与方法及一些好的代码书写规范。<br><a id="more"></a></p>
+<h3 id="释放全局变量的控制权"><a href="#释放全局变量的控制权" class="headerlink" title="释放全局变量的控制权"></a>释放全局变量的控制权</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> $ = <span class="built_in">window</span>.$;</div><div class="line">	<span class="built_in">window</span>.$ = <span class="number">3</span>;</div><div class="line">	<span class="built_in">window</span>.$ = $;</div><div class="line">&#125;)(<span class="built_in">window</span>);</div><div class="line"><span class="built_in">console</span>.log($);<span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p>将全局的$指向局部的_$,在全局中$显示undefined</p>
+<h3 id="判断javascript数据类型"><a href="#判断javascript数据类型" class="headerlink" title="判断javascript数据类型"></a>判断javascript数据类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> class2Type = &#123;</div><div class="line">	<span class="string">'[object Object]'</span>: <span class="string">'object'</span>,</div><div class="line">	<span class="string">'[object Array]'</span>: <span class="string">'array'</span>,</div><div class="line">	<span class="string">'[object Boolean]'</span>: <span class="string">'boolean'</span>,</div><div class="line">	<span class="string">'[object Number]'</span>: <span class="string">'number'</span>,</div><div class="line">	<span class="string">'[object Function]'</span>: <span class="string">'function'</span>,</div><div class="line">	<span class="string">'[object RegExp]'</span>: <span class="string">'regexp'</span>,</div><div class="line">	<span class="string">'[object Date]'</span>: <span class="string">'date'</span>,</div><div class="line">	<span class="string">'[object Error]'</span>: <span class="string">'error'</span>,</div><div class="line">	<span class="string">'[object String]'</span>: <span class="string">'string'</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">JStype</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> obj == <span class="literal">null</span> ? <span class="built_in">String</span>(obj) : class2Type[ toString.call(obj) ] || <span class="string">'object'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(JStype(&#123;&#125;));<span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log(JStype([<span class="number">1</span>,<span class="number">2</span>]));<span class="comment">//array</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="literal">true</span>));<span class="comment">//boolean</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="number">123</span>));<span class="comment">//number</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="string">"123"</span>));<span class="comment">//string</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;));<span class="comment">//function</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="keyword">new</span> <span class="built_in">Date</span>()));<span class="comment">//date</span></div><div class="line"><span class="built_in">console</span>.log(JStype());<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="literal">null</span>));<span class="comment">//null</span></div><div class="line"><span class="built_in">console</span>.log(JStype(<span class="literal">undefined</span>));<span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p>1.根据[object, class]对javascript的数据类型作出判断，前者的object表示对象的通用类，默认值；后者表示内部的对象类。<br>2.object为null与undefined可以直接作出判断，通过String转化为字符型。<br>3.toString不支持将null、undefined转化为字符型。<br>4.还可以通过obj + “”转化为字符型。</p>
+<h3 id="判断参数是否是数字"><a href="#判断参数是否是数字" class="headerlink" title="判断参数是否是数字"></a>判断参数是否是数字</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">isNumber: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> !<span class="built_in">isNaN</span>(parsentFloat(obj)) &amp;&amp; <span class="built_in">isFinite</span>(obj);</div><div class="line">	<span class="comment">//通过parsentFloat将obj转化为数字，isNaN判断是不是非数字</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="判断是不是空对象"><a href="#判断是不是空对象" class="headerlink" title="判断是不是空对象"></a>判断是不是空对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">isEmptyObject: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> obj) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="字符串转化为JSON对象"><a href="#字符串转化为JSON对象" class="headerlink" title="字符串转化为JSON对象"></a>字符串转化为JSON对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aaa = <span class="string">'&#123;"a": 123&#125;'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(aaa));<span class="comment">//&#123;"a": 123&#125;</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">eval</span>(<span class="string">"("</span>+aaa+<span class="string">")"</span>));<span class="comment">//&#123;"a": 123&#125;</span></div><div class="line"><span class="built_in">console</span>.log((<span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"return "</span> + aaa))());<span class="comment">//&#123;"a": 123&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="去除俩边空格"><a href="#去除俩边空格" class="headerlink" title="去除俩边空格"></a>去除俩边空格</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> rtrim = <span class="regexp">/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params"> text </span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> text == <span class="literal">null</span> ?</div><div class="line">		<span class="string">""</span> :</div><div class="line">		( text + <span class="string">""</span> ).replace( rtrim, <span class="string">""</span> );</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">"   aaaaaa"</span>;</div><div class="line"><span class="built_in">console</span>.log(aaa);<span class="comment">//"   aaaaaa"</span></div><div class="line"><span class="built_in">console</span>.log(trim(aaa));<span class="comment">//"aaaaaa"</span></div></pre></td></tr></table></figure>
+<p>支持去除中文空格</p>
+<h3 id="类数组对象转化成真正的数组"><a href="#类数组对象转化成真正的数组" class="headerlink" title="类数组对象转化成真正的数组"></a>类数组对象转化成真正的数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> abc = [<span class="number">5</span>,<span class="number">6</span>];</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">arguments</span>);</div><div class="line">	<span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>);<span class="comment">//转化为数组</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.cancat(abc));<span class="comment">//error</span></div><div class="line">	<span class="built_in">console</span>.log(args.concat(abc));<span class="comment">//[1,2,3,4,5,6];</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">abc(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div></pre></td></tr></table></figure>
+<h3 id="查找指定元素并返回下标"><a href="#查找指定元素并返回下标" class="headerlink" title="查找指定元素并返回下标"></a>查找指定元素并返回下标</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">elem, array</span>) </span>&#123;</div><div class="line">	<span class="comment">//局部变量的定义全部放开头</span></div><div class="line">	<span class="keyword">var</span> len, i = <span class="number">0</span>, </div><div class="line">	indexOf = <span class="built_in">Array</span>.prototype.indexOf;</div><div class="line">	<span class="keyword">if</span>(array) &#123;</div><div class="line">		<span class="keyword">if</span>(indexOf) &#123;</div><div class="line">			<span class="keyword">return</span> indexOf.call(array, elem, i);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		len = array.length;</div><div class="line">		<span class="keyword">for</span>( ; i &lt; len; i++) &#123;</div><div class="line">			<span class="keyword">if</span>(i <span class="keyword">in</span> array &amp;&amp; array[i] == elem) &#123;</div><div class="line">				<span class="keyword">return</span> i;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(isArray(<span class="number">4</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]));<span class="comment">//3</span></div></pre></td></tr></table></figure>
+<h3 id="合并俩个数组-包括伪数组"><a href="#合并俩个数组-包括伪数组" class="headerlink" title="合并俩个数组(包括伪数组)"></a>合并俩个数组(包括伪数组)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">first, second</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> len = second.length,</div><div class="line">		j = <span class="number">0</span>,</div><div class="line">		i = first.length;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> ( ; j &lt; len; j++ ) &#123;</div><div class="line">		first[ i++ ] = second[ j ];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	first.length = i;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> first;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(merge([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]));<span class="comment">//[1,2,3,4,5,6]</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag">#jquery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/16/cross-domain/" rel="next" title="跨域">
+                <i class="fa fa-chevron-left"></i> 跨域
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/29/object-oop/" rel="prev" title="对象精讲">
+                对象精讲 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/24/jquery-static/"
+           data-title="jquery源码的静态属性与方法" data-url="http://yoursite.com/2016/10/24/jquery-static/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="彭长冬" />
+          <p class="site-author-name" itemprop="name">彭长冬</p>
+          <p class="site-description motion-element" itemprop="description">博主是一名前端web的学习者，博客的内容会涉及生活/ CSS / JavaScript / PHP / Node.js / AngularJS / jQuery / HTML。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/PLDaly" target="_blank">
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/pcd12321" target="_blank">
+                  
+                  cnblogs
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#释放全局变量的控制权"><span class="nav-number">1.</span> <span class="nav-text">释放全局变量的控制权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断javascript数据类型"><span class="nav-number">2.</span> <span class="nav-text">判断javascript数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断参数是否是数字"><span class="nav-number">3.</span> <span class="nav-text">判断参数是否是数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是不是空对象"><span class="nav-number">4.</span> <span class="nav-text">判断是不是空对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串转化为JSON对象"><span class="nav-number">5.</span> <span class="nav-text">字符串转化为JSON对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#去除俩边空格"><span class="nav-number">6.</span> <span class="nav-text">去除俩边空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类数组对象转化成真正的数组"><span class="nav-number">7.</span> <span class="nav-text">类数组对象转化成真正的数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找指定元素并返回下标"><span class="nav-number">8.</span> <span class="nav-text">查找指定元素并返回下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并俩个数组-包括伪数组"><span class="nav-number">9.</span> <span class="nav-text">合并俩个数组(包括伪数组)</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭长冬</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"PLDaly"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
