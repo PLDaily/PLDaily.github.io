@@ -81,12 +81,14 @@
 
 
 <meta name="description" content="一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。">
+<meta name="keywords" content="hexo,NexT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过 hexo + NexT 搭建博客">
 <meta property="og:url" content="http://yoursite.com/2016/04/12/hexo/index.html">
 <meta property="og:site_name" content="PLDaily">
 <meta property="og:description" content="一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。">
-<meta property="og:updated_time" content="2016-08-24T14:06:36.831Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-08-24T14:06:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过 hexo + NexT 搭建博客">
 <meta name="twitter:description" content="一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。">
@@ -321,7 +323,7 @@
 <h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>主题配置可以通过查看官网配置：<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT官网</a></p>
 <h3 id="如何删除一篇文章"><a href="#如何删除一篇文章" class="headerlink" title="如何删除一篇文章"></a>如何删除一篇文章</h3><p>在source目录下先删除该文章，再讲主目录下的db.json删除,使用命令hexo clean清除所有，在用hexo g构建，亲测有效。<br>注：public文件中的图片等一些在之前文章用到的需要先备份。</p>
 <h3 id="如何在文章中添加图片"><a href="#如何在文章中添加图片" class="headerlink" title="如何在文章中添加图片"></a>如何在文章中添加图片</h3><p>1._config.yml 中有 post_asset_folder:true<br>2.执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</div></pre></td></tr></table></figure></p>
-<p>3.在文章的目录下新建一个文件夹images放入需要的文件<br>4.在文章中使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![logo](images/<span class="built_in">bg</span>1.jpg)</div></pre></td></tr></table></figure></p>
+<p>3.在文章的目录下新建一个文件夹images放入需要的文件<br>4.在文章中使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![logo](images/bg1.jpg)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -537,7 +539,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
