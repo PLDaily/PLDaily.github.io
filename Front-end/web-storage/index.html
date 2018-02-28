@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="PLDaily">
+    <title>WEB客户端存储 - PLDaily</title>
+    <meta name="author" content="PLDaily">
+    
+    
+        <link rel="icon" href="http://yoursite.com/assets/images/avatar.ico">
+    
+    
+    <meta name="description" content="web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="WEB客户端存储">
+<meta property="og:url" content="http://yoursite.com/Front-end/web-storage/index.html">
+<meta property="og:site_name" content="PLDaily">
+<meta property="og:description" content="web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-28T09:31:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WEB客户端存储">
+<meta name="twitter:description" content="web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/avatar.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">PLDaily</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">PLDaily</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>yesterday you said tomorrow</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="Archives"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/pldaily" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            WEB客户端存储
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-10-13T16:56:04+08:00">
+	
+		    Oct 13, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Front-end/">Front-end</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。<br><a id="more"></a></p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h3 id="cookie的保存"><a href="#cookie的保存" class="headerlink" title="cookie的保存"></a>cookie的保存</h3><p>cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码</p>
+<h3 id="cookie设置的参数"><a href="#cookie设置的参数" class="headerlink" title="cookie设置的参数"></a>cookie设置的参数</h3><p>key：名<br>value：值<br>path：路径<br>expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)</p>
+<h3 id="存储cookie"><a href="#存储cookie" class="headerlink" title="存储cookie"></a>存储cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name, value, expires, path</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.cookie =name + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value) + <span class="string">';expires = '</span> + expires + <span class="string">';path = '</span> + path;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setCookie(<span class="string">"name"</span>, <span class="string">"pcd"</span>, <span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>, <span class="string">'/'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="获取cookie"><a href="#获取cookie" class="headerlink" title="获取cookie"></a>获取cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> all = <span class="built_in">document</span>.cookie;</span><br><span class="line">    <span class="keyword">var</span> list = all.split(<span class="string">';'</span>);</span><br><span class="line">    <span class="keyword">if</span>(all === <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> cookie;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> cookie = list[i].trim();<span class="comment">//去除空白字符</span></span><br><span class="line">        <span class="keyword">var</span> p = cookie.indexOf(<span class="string">'='</span>);</span><br><span class="line">        <span class="keyword">var</span> name = cookie.substring(<span class="number">0</span>, p);</span><br><span class="line">        <span class="keyword">if</span>(name == key) &#123;</span><br><span class="line">            <span class="keyword">var</span> value = cookie.substring(p + <span class="number">1</span>);</span><br><span class="line">            value = <span class="built_in">decodeURIComponent</span>(value);</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getCookie(<span class="string">'name'</span>));<span class="comment">//pcd</span></span><br></pre></td></tr></table></figure>
+<h3 id="cookie的局限性："><a href="#cookie的局限性：" class="headerlink" title="cookie的局限性："></a>cookie的局限性：</h3><p>因为每一次HTTP请求会把这些数据传输到服务器，所以浏览器对每个cookie的保存数据不能超过4k。</p>
+<h2 id="localStorage与sessionStorage"><a href="#localStorage与sessionStorage" class="headerlink" title="localStorage与sessionStorage"></a>localStorage与sessionStorage</h2><h3 id="兼容性：支持IE8及IE8"><a href="#兼容性：支持IE8及IE8" class="headerlink" title="兼容性：支持IE8及IE8+"></a>兼容性：支持IE8及IE8+</h3><h3 id="容量：5-10M"><a href="#容量：5-10M" class="headerlink" title="容量：5-10M"></a>容量：5-10M</h3><h3 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h3><ol>
+<li>localStorage存储的数据是永久的，除非刻意删除</li>
+<li>sessionStorage存储的数据是暂时的，到浏览器关闭前</li>
+<li>sessionStorage作用域是限制在顶层窗口，同源共享限于同一标签页面，例：两个标签页运行同一同源页面，其中一个页面对sessionStorage进行修改操作时，另一页面无法获取该操作后的属性。<br>4.localStorage与sessionStorage不同，例：两个标签页运行同一同源页面，其中一个页面对localStorage进行修改操作时，另一页面就会接收到一个存储事件，即可以获取该操作后的属性。</li>
+</ol>
+<h3 id="为存储事件注册处理程序"><a href="#为存储事件注册处理程序" class="headerlink" title="为存储事件注册处理程序"></a>为存储事件注册处理程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'storage'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.key + <span class="string">"--"</span> + e.newValue + <span class="string">"--"</span> + e.oldValue + <span class="string">"--"</span> + e.storageArea + <span class="string">"--"</span> + e.url);</span><br><span class="line">&#125;, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="localStorage使用广播机制。"><a href="#localStorage使用广播机制。" class="headerlink" title="localStorage使用广播机制。"></a>localStorage使用广播机制。</h3><p>使用示例：一个基于WEB的图片编辑应用，通常允许其他窗口展示工具条。当用户选择一个工具时，应用使用localStorage存储当前状态，便可通知其他窗口用户选择了新工具(其他窗口通过存储事件监听)。</p>
+<h3 id="注意事项：浏览器只支持存储字符串类型数据"><a href="#注意事项：浏览器只支持存储字符串类型数据" class="headerlink" title="注意事项：浏览器只支持存储字符串类型数据"></a>注意事项：浏览器只支持存储字符串类型数据</h3>
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/JavaScript/">JavaScript</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/object-oop/" data-tooltip="对象精讲" aria-label="PREVIOUS: 对象精讲">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/cross-domain/" data-tooltip="跨域" aria-label="NEXT: 跨域">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 PLDaily. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/object-oop/" data-tooltip="对象精讲" aria-label="PREVIOUS: 对象精讲">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/cross-domain/" data-tooltip="跨域" aria-label="NEXT: 跨域">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">PLDaily</h4>
+        
+            <div id="about-card-bio"><p>yesterday you said tomorrow</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>

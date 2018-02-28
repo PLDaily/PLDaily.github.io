@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="PLDaily">
+    <title>8 个技巧让你在 2018 年构建更好的 Node.js 应用程序 - PLDaily</title>
+    <meta name="author" content="PLDaily">
+    
+    
+        <link rel="icon" href="http://yoursite.com/assets/images/avatar.ico">
+    
+    
+    <meta name="description" content="在过去的两年里，我们介绍了编写和操作 Node.js 应用程序的最佳实践 (请阅读 2016 版和 2017 版)。又一年过去了，是时候重温一下如何成为一个更好的开发者这个话题了！">
+<meta name="keywords" content="Node">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="8 个技巧让你在 2018 年构建更好的 Node.js 应用程序">
+<meta property="og:url" content="http://yoursite.com/Back-end/better-node/index.html">
+<meta property="og:site_name" content="PLDaily">
+<meta property="og:description" content="在过去的两年里，我们介绍了编写和操作 Node.js 应用程序的最佳实践 (请阅读 2016 版和 2017 版)。又一年过去了，是时候重温一下如何成为一个更好的开发者这个话题了！">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-28T09:30:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8 个技巧让你在 2018 年构建更好的 Node.js 应用程序">
+<meta name="twitter:description" content="在过去的两年里，我们介绍了编写和操作 Node.js 应用程序的最佳实践 (请阅读 2016 版和 2017 版)。又一年过去了，是时候重温一下如何成为一个更好的开发者这个话题了！">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/avatar.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">PLDaily</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">PLDaily</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>yesterday you said tomorrow</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="Archives"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/pldaily" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            8 个技巧让你在 2018 年构建更好的 Node.js 应用程序
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-01-17T17:02:55+08:00">
+	
+		    Jan 17, 2018
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Back-end/">Back-end</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>在过去的两年里，我们介绍了编写和操作 Node.js 应用程序的最佳实践 (请阅读 <a href="https://blog.risingstack.com/how-to-become-a-better-node-js-developer-in-2016/" target="_blank" rel="noopener">2016 版</a>和 <a href="https://blog.risingstack.com/node-js-best-practices-2017/" target="_blank" rel="noopener">2017 版</a>)。又一年过去了，是时候重温一下如何成为一个更好的开发者这个话题了！<br><a id="more"></a></p>
+<p>在本文中，我们收集了一些我们认为 Node.js 开发者在 2018 年需要知道的技巧。随便挑选几个作为新年的开发礼物吧！</p>
+<h2 id="技巧-1-使用-async-await"><a href="#技巧-1-使用-async-await" class="headerlink" title="技巧 #1: 使用 async - await"></a>技巧 #1: 使用 <code>async</code> - <code>await</code></h2><p><code>Async</code> - <code>await</code> 在 Node.js 8 中繁荣发展。它改变了我们处理异步事件的方式，并简化了以前那些令人难以阅读的代码库。如果你到现在还没有使用过 <code>async</code> - <code>await</code> ，请阅读我们的<a href="https://blog.risingstack.com/mastering-async-await-in-nodejs/" target="_blank" rel="noopener">介绍博客文章</a>。</p>
+<p>重温<a href="https://blog.risingstack.com/node-hero-async-programming-in-node-js/" target="_blank" rel="noopener">异步编程和 Promises </a>对你认识 <code>async</code> - <code>await</code> 可能也会有所帮助。</p>
+<h2 id="技巧-2-了解-import-和-import"><a href="#技巧-2-了解-import-和-import" class="headerlink" title="技巧 #2: 了解 import 和 import()"></a>技巧 #2: 了解 <code>import</code> 和 <code>import()</code></h2><p>ES 模块已经广泛用于转换器与 <a href="https://github.com/standard-things/esm" target="_blank" rel="noopener">@std/esm </a> 库。它在 Node.js 8.5 后加上 –experimental-modules 标志开始被支持，但是要在生产环境中使用还要走很长的路。(译者注：ES 模块在 Node.js 中属于 <a href="https://nodejs.org/dist/latest-v8.x/docs/api/documentation.html#documentation_stability_index" target="_blank" rel="noopener">Stability: 1 </a> - 试验阶段)</p>
+<p>我们建议你现在了解 ES 模块的基础知识，并关注 2018 年的最新进展。你可以在<a href="http://2ality.com/2017/09/native-esm-node.html" target="_blank" rel="noopener">这里</a>找到一个简单的 Node.js 的 ES 模块教程。</p>
+<h2 id="技巧-3-熟悉-HTTP-2"><a href="#技巧-3-熟悉-HTTP-2" class="headerlink" title="技巧 #3: 熟悉 HTTP/2"></a>技巧 #3: 熟悉 HTTP/2</h2><p>HTTP/2 在 Node.js 8.8 后不需要加标志便可被使用。它具有 server push (服务器推送) 和 multiplexing (多路复用) 功能，为浏览器中高效的加载本地模块铺平了道路。一些框架，如 Koa 和 Hapi，部分支持它。 其他的 - 如 Express 和 Meteor - 正在致力于支持。</p>
+<p>HTTP/2 在 Node.js 中虽然是试验性的，但是我们预计 2018 年会有很多新的库广泛采用它。 你可以在我们的<a href="https://blog.risingstack.com/node-js-http-2-push/" target="_blank" rel="noopener"> HTTP/2 博客文章</a>中了解更多关于该主题的内容。</p>
+<h2 id="技巧-4-摆脱代码风格争议"><a href="#技巧-4-摆脱代码风格争议" class="headerlink" title="技巧 #4: 摆脱代码风格争议"></a>技巧 #4: 摆脱代码风格争议</h2><p><a href="https://github.com/prettier/prettier" target="_blank" rel="noopener">Prettier</a> 在 2017 年大受欢迎。这是一个有自己独立代码风格的代码格式化程序，它会将你的代码格式化成它的代码风格，而不是简单的代码风格报错。但仍然存在代码质量报错 - 比如<a href="http://eslint.org/docs/rules/no-unused-vars" target="_blank" rel="noopener">no-unused-vars</a> 和 <a href="http://eslint.org/docs/rules/no-implicit-globals" target="_blank" rel="noopener">no-implicit-globals</a> - 这些错误不能自动重新格式化。</p>
+<h2 id="技巧-5-保护你的Node-js应用程序"><a href="#技巧-5-保护你的Node-js应用程序" class="headerlink" title="技巧 #5: 保护你的Node.js应用程序"></a>技巧 #5: 保护你的Node.js应用程序</h2><p>每年都有很大的<a href="https://en.wikipedia.org/wiki/List_of_data_breaches" target="_blank" rel="noopener">安全漏洞</a>和新发现的漏洞，2017 年也不例外。 安全是一个迅速变化的话题，不容忽视。 想要了解 Node.js 安全性，请从阅读我们的 <a href="https://blog.risingstack.com/node-js-security-checklist/" target="_blank" rel="noopener">Node.js 安全清单</a>开始。</p>
+<p>如果你认为你的应用程序已经是安全的，那么你可以使用 <a href="https://snyk.io/" target="_blank" rel="noopener">Snyk</a> 和 <a href="https://nodesecurity.io/" target="_blank" rel="noopener">Node Security Platform </a> 来发现一些隐蔽的漏洞。</p>
+<h2 id="技巧-6-拥抱微服务"><a href="#技巧-6-拥抱微服务" class="headerlink" title="技巧 #6: 拥抱微服务"></a>技巧 #6: 拥抱微服务</h2><p>如果你有项目部署上的问题或有即将到来的大型项目，那么是时候采用微服务架构了。了解这两种技术，以便在 2018 年的微服务场景保持最新状态。</p>
+<blockquote>
+<p><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a> 是一个应用器引擎，它可以将软件运行所需要的一切打包到一个可移植的容器中。该文件系统包含了运行所需的所有东西：代码，运行时，系统工具和系统库。</p>
+</blockquote>
+<blockquote>
+<p><a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a> 是一个进行自动化部署、扩展和容器操作的开源平台。</p>
+</blockquote>
+<p>在深入到容器和编排之前，可以通过改进现有的代码来进行热身。 遵循<a href="https://12factor.net/" target="_blank" rel="noopener"> 12-factor 的应用程序</a>方法，你可以更容易地容器化和部署你的服务。</p>
+<h2 id="技巧-7-监控你的服务"><a href="#技巧-7-监控你的服务" class="headerlink" title="技巧 #7: 监控你的服务"></a>技巧 #7: 监控你的服务</h2><p>在你的用户注意到它们之前解决问题。 监控和警报是生产部署的重要组成部分，但是熟练掌握复杂的微服务系统并非易事。幸运的是，这是一个快速发展的领域，具有不断完善的工具。看看<a href="https://blog.risingstack.com/the-future-of-microservices-monitoring-and-instrumentation/" target="_blank" rel="noopener">未来的监测</a>或者了解最近的<a href="https://blog.risingstack.com/distributed-tracing-opentracing-node-js/" target="_blank" rel="noopener"> OpenTracing 标准</a>。</p>
+<p>如果你是一个更实际的人，我们的<a href="https://blog.risingstack.com/node-js-performance-monitoring-with-prometheus/" target="_blank" rel="noopener"> Prometheus 教程</a>给监控世界提供了一个很好的介绍。</p>
+<h2 id="技巧-8-贡献开源项目"><a href="#技巧-8-贡献开源项目" class="headerlink" title="技巧 #8: 贡献开源项目"></a>技巧 #8: 贡献开源项目</h2><p>你有什么喜欢的 Node.js 项目吗？在你的帮助下它们有机会变得更好。只要找到符合你兴趣的问题，并帮助他们解决问题。</p>
+<p>如果您不知道如何开始，请仔细阅读<a href="https://egghead.io/articles/get-started-contributing-to-javascript-open-source" target="_blank" rel="noopener">这些快速提示</a>或观看有关 GitHub 上的开源贡献的<a href="https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github" target="_blank" rel="noopener">课程</a>。实践是最好的学习方式，特别是程序员。</p>
+<h2 id="你有什么-Node-js-开发建议"><a href="#你有什么-Node-js-开发建议" class="headerlink" title="你有什么 Node.js 开发建议"></a>你有什么 Node.js 开发建议</h2><p>对于 Node.js 开发者在 2018 年需要知道的技巧你还有什么建议？ 在评论部分留下你的意见！</p>
+<p><strong>我们希望你会有一个很棒2018年。快乐编码！</strong></p>
+<p><a href="https://twitter.com/RisingStack" target="_blank" rel="noopener">Follow @RisingStack</a></p>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Node/">Node</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/front-test/" data-tooltip="前端单元测试" aria-label="NEXT: 前端单元测试">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 PLDaily. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/front-test/" data-tooltip="前端单元测试" aria-label="NEXT: 前端单元测试">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">PLDaily</h4>
+        
+            <div id="about-card-bio"><p>yesterday you said tomorrow</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>

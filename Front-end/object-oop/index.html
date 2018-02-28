@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="PLDaily">
+    <title>对象精讲 - PLDaily</title>
+    <meta name="author" content="PLDaily">
+    
+    
+        <link rel="icon" href="http://yoursite.com/assets/images/avatar.ico">
+    
+    
+    <meta name="description" content="在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="对象精讲">
+<meta property="og:url" content="http://yoursite.com/Front-end/object-oop/index.html">
+<meta property="og:site_name" content="PLDaily">
+<meta property="og:description" content="在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-28T09:31:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象精讲">
+<meta name="twitter:description" content="在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/avatar.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">PLDaily</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">PLDaily</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>yesterday you said tomorrow</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="Archives"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/pldaily" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            对象精讲
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-10-29T15:36:03+08:00">
+	
+		    Oct 29, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Front-end/">Front-end</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。<br><a id="more"></a></p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.sayName = function() &#123;</span><br><span class="line">        console.log(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person1 = new Person(<span class="string">'aaa'</span>);</span><br><span class="line">var person2 = new Person(<span class="string">'bbb'</span>);</span><br><span class="line">console.log(person1.sayName == person2.sayName);//false</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>所以我们需要使用原型共享一些属性与方法</p>
+</blockquote>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h3 id="原型的共享"><a href="#原型的共享" class="headerlink" title="原型的共享"></a>原型的共享</h3><p>javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = <span class="string">"aaa"</span>;</span><br><span class="line">Person.prototype.sayName = function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person();</span><br><span class="line">var person2 = new Person();</span><br><span class="line">console.log(person1.sayName == person2.sayName);//true</span><br></pre></td></tr></table></figure></p>
+<h3 id="实例，原型，构造函数三者之间的关系"><a href="#实例，原型，构造函数三者之间的关系" class="headerlink" title="实例，原型，构造函数三者之间的关系"></a>实例，原型，构造函数三者之间的关系</h3><p>每个函数都有一个原型属性，这个属性指向函数的原型对象<br> <strong>proto</strong>存在于实例与构造函数的原型对象之间<br>原型对象中的constructor属性指向构造函数<br>构造函数中的this指向实例</p>
+<h3 id="new的实现"><a href="#new的实现" class="headerlink" title="new的实现"></a>new的实现</h3><p>通过以上的属性，我们可以直接实现new操作符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line">var person1 = &#123;&#125;;</span><br><span class="line">person1.__proto__ = Person.prototype;</span><br><span class="line">Person.call(person1, <span class="string">"aaa"</span>);</span><br><span class="line">person1.sayName();//aaa</span><br></pre></td></tr></table></figure></p>
+<h3 id="实例读取属性与方法的顺序"><a href="#实例读取属性与方法的顺序" class="headerlink" title="实例读取属性与方法的顺序"></a>实例读取属性与方法的顺序</h3><p>当代码读取某个对象的某个属性时，从对象本身开始，到构造函数内部，再到原型去获取。相同的属性会屏蔽其他相同的属性，其他相同的属性并不会消失。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">    this.name = <span class="string">"aaa"</span>;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.name = <span class="string">"bbb"</span>;</span><br><span class="line"></span><br><span class="line">var person1 = new Person();</span><br><span class="line"></span><br><span class="line">person1.name = <span class="string">"ccc"</span>;</span><br><span class="line"></span><br><span class="line">console.log(person1.name);//<span class="string">"ccc"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="重写原型对象（通过对象字面量来重写整个原型对象）"><a href="#重写原型对象（通过对象字面量来重写整个原型对象）" class="headerlink" title="重写原型对象（通过对象字面量来重写整个原型对象）"></a>重写原型对象（通过对象字面量来重写整个原型对象）</h3><h4 id="一、实例未创建前"><a href="#一、实例未创建前" class="headerlink" title="一、实例未创建前"></a>一、实例未创建前</h4><p>通过对象字面来重写原型对象会将原来的原型对象覆盖，导致原来的原型对象的constructor指向构造函数被新的原型对象所替换，指向了Object。所以需要在对象字面量中添加constructor属性指向构造函数。</p>
+<h4 id="constructor的指向"><a href="#constructor的指向" class="headerlink" title="constructor的指向"></a>constructor的指向</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.aaa = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">abc.prototype.bbb = <span class="number">2</span>;</span><br><span class="line">abc.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: abc,</span><br><span class="line">    "ccc": 3,</span><br><span class="line">    "ddd": 4</span><br><span class="line">&#125;</span><br><span class="line">var a = new abc();</span><br><span class="line">console.log(a.<span class="keyword">constructor</span>);//abc函数</span><br><span class="line">console.log(abc.prototype.<span class="keyword">constructor</span>);//abc函数</span><br></pre></td></tr></table></figure>
+<h4 id="二、实例创建后"><a href="#二、实例创建后" class="headerlink" title="二、实例创建后"></a>二、实例创建后</h4><p>通过对象字面来重写原型对象，该原型对象将不起作用。</p>
+<h3 id="重写原型对象代码示例"><a href="#重写原型对象代码示例" class="headerlink" title="重写原型对象代码示例"></a>重写原型对象代码示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function abc() &#123;</span><br><span class="line">    this.aaa = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">abc.prototype.bbb = <span class="number">2</span>;</span><br><span class="line">abc.prototype = &#123;</span><br><span class="line">    constructor: abc,</span><br><span class="line">    <span class="string">"ccc"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">"ddd"</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line">var a = new abc();</span><br><span class="line"></span><br><span class="line">abc.prototype.eee = <span class="number">5</span>;//创建实例后不是重写，相当于为重写后的原型对象添加新的属性与方法</span><br><span class="line">console.log(a.aaa);//<span class="number">1</span></span><br><span class="line">console.log(a.bbb);//undefined</span><br><span class="line">console.log(a.ccc);//<span class="number">3</span></span><br><span class="line">console.log(a.ddd);//<span class="number">4</span></span><br><span class="line">console.log(a.eee);//<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function abc() &#123;</span><br><span class="line">    this.aaa = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">abc.prototype.bbb = <span class="number">2</span>;</span><br><span class="line">var a = new abc();</span><br><span class="line"></span><br><span class="line">abc.prototype.ccc = <span class="number">3</span>;//创建实例后不是重写，相当于为原来的原型对象添加新的属性与方法</span><br><span class="line">console.log(a.aaa);//<span class="number">1</span></span><br><span class="line">console.log(a.bbb);//<span class="number">2</span></span><br><span class="line">console.log(a.ccc);//<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function abc() &#123;</span><br><span class="line">    this.aaa = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">abc.prototype.bbb = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">var a = new abc();</span><br><span class="line"></span><br><span class="line">abc.prototype = &#123;//创建实例后重写原型，不起作用</span><br><span class="line">    constructor: abc,</span><br><span class="line">    <span class="string">"ccc"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">"ddd"</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line">abc.prototype.eee = <span class="number">5</span>;</span><br><span class="line">console.log(a.aaa);//<span class="number">1</span></span><br><span class="line">console.log(a.bbb);//<span class="number">2</span></span><br><span class="line">console.log(a.ccc);//undefined</span><br><span class="line">console.log(a.ddd);//undefined</span><br><span class="line">console.log(a.eee);//undefined</span><br></pre></td></tr></table></figure>
+<h3 id="原型对象的问题"><a href="#原型对象的问题" class="headerlink" title="原型对象的问题"></a>原型对象的问题</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    constructor: Person,</span><br><span class="line">    arrs: [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">&#125;</span><br><span class="line">var person1 = new Person();</span><br><span class="line">person1.arrs.push(<span class="number">3</span>);</span><br><span class="line">var person2 = new Person();</span><br><span class="line">console.log(person2.arrs);//[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>原型对象共享的本质使新创建的person2获取的属性发放所person1影响。</p>
+</blockquote>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>一、组合使用构造函数模式和原型模式<br>使用最广的模式，结合了构造函数与原型的优缺点。不过多复述。<br>二、动态原型模式<br>独立的构造函数和原型，动态原型模式将他们分装在一个构造函数中。<br>三、寄生构造函数模式<br>为某一个对象添加额外的方法<br>四、稳妥构造函数模式<br>定义私有的变量和属性，只能通过函数内部的方法去获取。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.sayName = function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType(name, age) &#123;</span><br><span class="line">    SuperType.call(this, name);//继承构造函数内部的属性与方法</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = new SuperType();//创建一个SuperType的实例，将其指向SubType的原型对象</span><br><span class="line">SubType.prototype.constructor = SuperType;</span><br><span class="line">SubType.prototype.sayAge = function() &#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var pcd = new SubType(<span class="string">'pcd'</span>, <span class="number">21</span>);</span><br><span class="line">pcd.sayName();</span><br><span class="line">pcd.sayAge();</span><br></pre></td></tr></table></figure>
+<p>注1：新创建的SuperType实例指向SubType的原型对象，其中也包括了SuperType内部的属性与方法，但还是将SuperType的属性与方法继承到SubType中是因为原型对象中方法和属性具有共享性。<br>注2：SubType的原型不能写成字面量的形式，否则会将继承的原型对象覆盖。</p>
+<h3 id="寄生组合继承"><a href="#寄生组合继承" class="headerlink" title="寄生组合继承"></a>寄生组合继承</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.sayName = function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType(name, age) &#123;</span><br><span class="line">    SuperType.call(this, name);//继承构造函数内部的属性与方法</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = SuperType.prototype;</span><br><span class="line">SubType.prototype.constructor = SuperType;</span><br><span class="line">SubType.prototype.sayAge = function() &#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var pcd = new SubType(<span class="string">'pcd'</span>, <span class="number">21</span>);</span><br><span class="line">pcd.sayName();</span><br><span class="line">pcd.sayAge();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>SuperType的原型对象直接赋值给SubType从而实现继承。</p>
+</blockquote>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = SuperType.prototype;</span><br><span class="line">SubType.prototype.constructor = SuperType;</span><br><span class="line">SubType.prototype.sayName = function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var pcd = new SuperType(<span class="string">'pcd'</span>);</span><br><span class="line">pcd.sayName();//<span class="string">"pcd"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>继承中的父类可以使用子类的原型方法</p>
+</blockquote>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/JavaScript/">JavaScript</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/git/" data-tooltip="git指令" aria-label="PREVIOUS: git指令">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/web-storage/" data-tooltip="WEB客户端存储" aria-label="NEXT: WEB客户端存储">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 PLDaily. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/git/" data-tooltip="git指令" aria-label="PREVIOUS: git指令">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/web-storage/" data-tooltip="WEB客户端存储" aria-label="NEXT: WEB客户端存储">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">PLDaily</h4>
+        
+            <div id="about-card-bio"><p>yesterday you said tomorrow</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>

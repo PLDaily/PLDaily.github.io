@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="PLDaily">
+    <title>页面自适应布局 - PLDaily</title>
+    <meta name="author" content="PLDaily">
+    
+    
+        <link rel="icon" href="http://yoursite.com/assets/images/avatar.ico">
+    
+    
+    <meta name="description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="页面自适应布局">
+<meta property="og:url" content="http://yoursite.com/Front-end/Self-adaptive-layout/index.html">
+<meta property="og:site_name" content="PLDaily">
+<meta property="og:description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-28T09:31:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="页面自适应布局">
+<meta name="twitter:description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/avatar.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">PLDaily</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">PLDaily</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>yesterday you said tomorrow</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="Archives"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/pldaily" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            页面自适应布局
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-09-15T15:03:09+08:00">
+	
+		    Sep 15, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Front-end/">Front-end</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。<br><a id="more"></a></p>
+<h2 id="俩列布局-左边固定，右边自适应"><a href="#俩列布局-左边固定，右边自适应" class="headerlink" title="俩列布局: 左边固定，右边自适应"></a>俩列布局: 左边固定，右边自适应</h2><h3 id="1-左边设置为浮动，右边不设浮动与宽度"><a href="#1-左边设置为浮动，右边不设浮动与宽度" class="headerlink" title="1.左边设置为浮动，右边不设浮动与宽度"></a>1.左边设置为浮动，右边不设浮动与宽度</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">	padding: <span class="number">0</span>;</span><br><span class="line">	margin: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#main &#123;</span></span><br><span class="line">	height: <span class="number">800</span>px;</span><br><span class="line">	background-color: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#left &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">220</span>px;</span><br><span class="line">	height: <span class="number">500</span>px;</span><br><span class="line">	background-color: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#right &#123;</span></span><br><span class="line">	padding-left: <span class="number">220</span>px;/* margin-left: <span class="number">220</span>px;border-left: <span class="number">220</span>px solid; */</span><br><span class="line">	background-color: green;</span><br><span class="line">	height: <span class="number">500</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=<span class="string">"main"</span>&gt;</span><br><span class="line">	&lt;div id="left"&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id="right"&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>原理:<br>在元素不设宽度的情况下：<br>若元素为普通流中元素，元素宽度等于父元素宽度;<br>若元素不在文档流中,元素宽度等于内容宽度;</p>
+<h3 id="2-左边设置为浮动，右边不设浮动但设置宽度为100"><a href="#2-左边设置为浮动，右边不设浮动但设置宽度为100" class="headerlink" title="2.左边设置为浮动，右边不设浮动但设置宽度为100%"></a>2.左边设置为浮动，右边不设浮动但设置宽度为100%</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">	padding: <span class="number">0</span>;</span><br><span class="line">	margin: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#main &#123;</span></span><br><span class="line">	height: <span class="number">800</span>px;</span><br><span class="line">	background-color: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#left &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">220</span>px;</span><br><span class="line">	height: <span class="number">500</span>px;</span><br><span class="line">	background-color: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#right &#123;</span></span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	padding-left: <span class="number">220</span>px;</span><br><span class="line">	box-sizing: border-box; </span><br><span class="line">	/* border-left: <span class="number">220</span>px solid;</span><br><span class="line">	box-sizing: border-box; */</span><br><span class="line">	background-color: green;</span><br><span class="line">	height: <span class="number">500</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=<span class="string">"main"</span>&gt;</span><br><span class="line">	&lt;div id="left"&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id="right"&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>原理:<br>在元素宽度为100%的情况下：<br>若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100%<br>设置box-sizing（兼容性IE8+）使#right的宽度为原来的100%。</p>
+<h3 id="3-俩边都设置浮动时"><a href="#3-俩边都设置浮动时" class="headerlink" title="3.俩边都设置浮动时"></a>3.俩边都设置浮动时</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">	padding: <span class="number">0</span>;</span><br><span class="line">	margin: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#main &#123;</span></span><br><span class="line">	height: <span class="number">800</span>px;</span><br><span class="line">	background-color: yellow;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#left &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	background-color: red;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	margin-right: <span class="number">-200</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#right &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	border: <span class="number">1</span>px solid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#rightContent &#123;</span></span><br><span class="line">	margin-left: <span class="number">200</span>px;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	background-color: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"main"</span>&gt;</span><br><span class="line">	&lt;div id="left"&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id=<span class="string">"right"</span>&gt;</span><br><span class="line">		&lt;div id=<span class="string">"rightContent"</span>&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>原理:<br>1.首先将#left设置固定宽度并向左浮动，#right设置width: 100%; 并向左浮动。由于页面宽度限制#left与#right会处于俩行。<br>2.将#left设置css属性margin-right: -#left的宽度; 让其不占据原来的位置，此时的#left与#right处于同一行，但#right会覆盖掉#left。<br>3.设置#rightContent的margin-left: #left的宽度px。</p>
+<h2 id="三列布局-左边右边固定，中间自适应"><a href="#三列布局-左边右边固定，中间自适应" class="headerlink" title="三列布局: 左边右边固定，中间自适应"></a>三列布局: 左边右边固定，中间自适应</h2><h3 id="1-基本的布局方式"><a href="#1-基本的布局方式" class="headerlink" title="1.基本的布局方式"></a>1.基本的布局方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">	padding: <span class="number">0</span>;</span><br><span class="line">	margin: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#main &#123;</span></span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	background-color: yellow;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	height: <span class="number">500</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#left &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">150</span>px;</span><br><span class="line">	background-color: red;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	margin-right: <span class="number">-150</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#right &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	background-color: green;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	margin-left: <span class="number">-200</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#center &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#centerContent &#123;</span></span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	margin: <span class="number">0</span> <span class="number">200</span>px <span class="number">0</span> <span class="number">150</span>px;</span><br><span class="line">	background-color: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"main"</span>&gt;</span><br><span class="line">	&lt;div id="left"&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id=<span class="string">"center"</span>&gt;</span><br><span class="line">		&lt;div id=<span class="string">"centerContent"</span>&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div id="right"&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>原理:<br>原理跟俩列布局的俩边都浮动的自适应相同<br>右边的定位使用了marin-left: -#left的宽度值; 原理与#right相同。</p>
+<h3 id="2-定位的方式布局"><a href="#2-定位的方式布局" class="headerlink" title="2.定位的方式布局"></a>2.定位的方式布局</h3><p>该方式简单，不做叙述。该方法不能实现等高布局，在设置定位的时候父元素要有高度，不能实现高度自适应。</p>
+<h2 id="三列布局-左边中间固定，右边自适应"><a href="#三列布局-左边中间固定，右边自适应" class="headerlink" title="三列布局: 左边中间固定，右边自适应"></a>三列布局: 左边中间固定，右边自适应</h2><h3 id="1-基本的布局方式-1"><a href="#1-基本的布局方式-1" class="headerlink" title="1.基本的布局方式"></a>1.基本的布局方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">	padding: <span class="number">0</span>;</span><br><span class="line">	margin: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#main &#123;</span></span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	background-color: yellow;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">	position: relative;</span><br><span class="line">	height: <span class="number">500</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#left &#123;</span></span><br><span class="line">	width: <span class="number">150</span>px;</span><br><span class="line">	background-color: red;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	float: left;</span><br><span class="line">	margin-right: <span class="number">-150</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#center &#123;</span></span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	background-color: green;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">	float: left;</span><br><span class="line">	position: relative;</span><br><span class="line">	left: <span class="number">150</span>px; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#right &#123;</span></span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	float: left;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#rightContent &#123;</span></span><br><span class="line">	background-color: white;</span><br><span class="line">	margin-left: <span class="number">350</span>px;</span><br><span class="line">	height: <span class="number">300</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=<span class="string">"main"</span>&gt;</span><br><span class="line">	&lt;div id="left"&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id=<span class="string">"center"</span>&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div id=<span class="string">"right"</span>&gt;</span><br><span class="line">		&lt;div id=<span class="string">"rightContent"</span>&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>原理:<br>原理跟俩列布局的俩边都浮动的自适应相同<br>但中间块#center的布局使用了绝对定位的方式</p>
+<h2 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h2><h3 id="1-基本的布局方式-2"><a href="#1-基本的布局方式-2" class="headerlink" title="1.基本的布局方式"></a>1.基本的布局方式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">	padding: <span class="number">0</span>;</span><br><span class="line">	margin: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#main &#123;</span></span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	background-color: yellow;</span><br><span class="line">	overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#left &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">150</span>px;</span><br><span class="line">	background-color: red;</span><br><span class="line">	padding-bottom: <span class="number">9999</span>px;</span><br><span class="line">	margin-bottom: <span class="number">-9999</span>px;</span><br><span class="line">	margin-right: <span class="number">-150</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#right &#123;</span></span><br><span class="line">	float: left;</span><br><span class="line">	width: <span class="number">100</span>%;</span><br><span class="line">	padding-bottom: <span class="number">9999</span>px;</span><br><span class="line">	margin-bottom: <span class="number">-9999</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#rightContent &#123;</span></span><br><span class="line">	margin-left: <span class="number">150</span>px;</span><br><span class="line">	background-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"main"</span>&gt;</span><br><span class="line">	&lt;div id="left"&gt;aaaa&lt;/div&gt;</span><br><span class="line">	&lt;div id=<span class="string">"right"</span>&gt;</span><br><span class="line">		&lt;div id=<span class="string">"rightContent"</span>&gt;</span><br><span class="line">			aaaa&lt;br&gt;&lt;br&gt;&lt;br&gt;aaaa</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>原理:<br>父元素#main不设高度设置overflow: hidden;，#left与#right设置css属性padding-bottom: 9999px; margin-bottom: -9999px;以上示例以俩列布局俩边均浮动为例，其余俩种俩列自适应方式及三列自适应均可实现。<br>使用定位的布局方式不可实现等高布局，使用定位布局的时候需要先给父级添加一个高度值</p>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/CSS/">CSS</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/cross-domain/" data-tooltip="跨域" aria-label="PREVIOUS: 跨域">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/ES6/" data-tooltip="ES6环境搭建" aria-label="NEXT: ES6环境搭建">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 PLDaily. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/cross-domain/" data-tooltip="跨域" aria-label="PREVIOUS: 跨域">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/ES6/" data-tooltip="ES6环境搭建" aria-label="NEXT: ES6环境搭建">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">PLDaily</h4>
+        
+            <div id="about-card-bio"><p>yesterday you said tomorrow</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>
