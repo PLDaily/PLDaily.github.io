@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="PLDaily">
+    <title>事件循环 - PLDaily</title>
+    <meta name="author" content="PLDaily">
+    
+        <meta name="keywords" content="JavaScript">
+    
+    
+        <link rel="icon" href="http://yoursite.com/assets/images/avatar.ico">
+    
+    
+    <meta name="description" content="本文记录对事件循环的理解">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="事件循环">
+<meta property="og:url" content="http://yoursite.com/Front-end/event-loop/index.html">
+<meta property="og:site_name" content="PLDaily">
+<meta property="og:description" content="本文记录对事件循环的理解">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-01T06:43:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="事件循环">
+<meta name="twitter:description" content="本文记录对事件循环的理解">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://yoursite.com/assets/images/avatar.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">PLDaily</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">PLDaily</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>yesterday you said tomorrow</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="Archives"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/pldaily" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            事件循环
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-03-16T17:08:24+08:00">
+	
+		    Mar 16, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Front-end/">Front-end</a>
+
+
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>本文记录对事件循环的理解</p>
+<a id="more"></a>
+<h2 id="setTimeout与setInterval"><a href="#setTimeout与setInterval" class="headerlink" title="setTimeout与setInterval"></a>setTimeout与setInterval</h2><ul>
+<li>定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。</li>
+<li>javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。</li>
+<li>异步队列中的处理程序会有优先级，鼠标点击处理程序优先级会高于Timer处理程序与Interval处理程序。<br>举例：<br>一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。</li>
+</ul>
+<p>不同点：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	setTimeout(repeatMe, <span class="number">10</span>);</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;, <span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
+<p>setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()，<br>而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。</p>
+<h2 id="任务队列macrotask与microtask"><a href="#任务队列macrotask与microtask" class="headerlink" title="任务队列macrotask与microtask"></a>任务队列macrotask与microtask</h2><p>事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：</p>
+<ol>
+<li>在 macrotask 队列中执行最早的那个 task ，然后移出</li>
+<li>执行 microtask 队列中所有可用的任务，然后移出</li>
+<li>下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)</li>
+</ol>
+<p>macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;  </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;  </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout 1'</span>)</span><br><span class="line">  <span class="built_in">Promise</span>.resolve()</span><br><span class="line">      .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'promise 3'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'promise 4'</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'setTimeout 2'</span>)</span><br><span class="line">          <span class="built_in">Promise</span>.resolve()</span><br><span class="line">              .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'promise 5'</span>)</span><br><span class="line">              &#125;)</span><br><span class="line">              .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'promise 6'</span>)</span><br><span class="line">              &#125;)</span><br><span class="line">              .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                clearInterval(interval)</span><br><span class="line">              &#125;)</span><br><span class="line">        &#125;, <span class="number">0</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'promise 1'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'promise 2'</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>以上代码的输出结果？<br>首次执行setTimeout、setTimeout，作为一个macrotask，将其回调函数放入自己的队列之中。在下一次循环中执行回调<br>其次会执行microtask。<br>重复以上步骤，输出：<br>promise 1<br>promise 2<br>setInterval<br>setTimeout 1<br>promise 3<br>promise 4<br>setInterval<br>setTimeout 2<br>promise 5<br>promise 6</p>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/singleton-mode/" data-tooltip="单例模式" aria-label="PREVIOUS: 单例模式">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/observer-mode/" data-tooltip="发布-订阅模式(观察者模式)" aria-label="NEXT: 发布-订阅模式(观察者模式)">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 PLDaily. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/singleton-mode/" data-tooltip="单例模式" aria-label="PREVIOUS: 单例模式">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/Front-end/observer-mode/" data-tooltip="发布-订阅模式(观察者模式)" aria-label="NEXT: 发布-订阅模式(观察者模式)">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/avatar.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">PLDaily</h4>
+        
+            <div id="about-card-bio"><p>yesterday you said tomorrow</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/bg.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>
