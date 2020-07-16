@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,16 +13,18 @@
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Docker 学习笔记 - PLDaily Blog">
-    <meta name="twitter:description" content="本文记录 Docker 的学习笔记。 docker安装启动 ubuntu下的安装
+    <meta name="twitter:description" content="本文记录 Docker 的学习笔记。
+docker安装启动 ubuntu下的安装
 max下的安装
 国内镜像: 网易蜂巢
 基本信息  docker版本
- docker version   Docker 状态
- docker info  镜像  拉取镜像
- docker pull hello-world   查看拉取的镜像
- docker images   删除镜像
- docker rim 镜像名  容器  基本镜像创建容器
- docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令   查看容器">
+ docker version  Docker 状态
+ docker info 镜像  拉取镜像
+ docker pull hello-world  查看拉取的镜像
+ docker images  删除镜像
+ docker rim 镜像名 容器  基本镜像创建容器
+ docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令  查看容器
+ docker ps(正在运行) docker ps -a (所有)  进入容器">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -31,16 +33,18 @@ max下的安装
     <meta property="og:locale" content="">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Docker 学习笔记 - PLDaily Blog">
-    <meta property="og:description" content="本文记录 Docker 的学习笔记。 docker安装启动 ubuntu下的安装
+    <meta property="og:description" content="本文记录 Docker 的学习笔记。
+docker安装启动 ubuntu下的安装
 max下的安装
 国内镜像: 网易蜂巢
 基本信息  docker版本
- docker version   Docker 状态
- docker info  镜像  拉取镜像
- docker pull hello-world   查看拉取的镜像
- docker images   删除镜像
- docker rim 镜像名  容器  基本镜像创建容器
- docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令   查看容器">
+ docker version  Docker 状态
+ docker info 镜像  拉取镜像
+ docker pull hello-world  查看拉取的镜像
+ docker images  删除镜像
+ docker rim 镜像名 容器  基本镜像创建容器
+ docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令  查看容器
+ docker ps(正在运行) docker ps -a (所有)  进入容器">
     <meta property="og:url" content="https://pldaily.github.io/posts/docker-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -48,16 +52,18 @@ max下的安装
     <title>Docker 学习笔记 - PLDaily Blog</title>
 
     <meta name="author" content="">
-    <meta name="description" content="本文记录 Docker 的学习笔记。 docker安装启动 ubuntu下的安装
+    <meta name="description" content="本文记录 Docker 的学习笔记。
+docker安装启动 ubuntu下的安装
 max下的安装
 国内镜像: 网易蜂巢
 基本信息  docker版本
- docker version   Docker 状态
- docker info  镜像  拉取镜像
- docker pull hello-world   查看拉取的镜像
- docker images   删除镜像
- docker rim 镜像名  容器  基本镜像创建容器
- docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令   查看容器">
+ docker version  Docker 状态
+ docker info 镜像  拉取镜像
+ docker pull hello-world  查看拉取的镜像
+ docker images  删除镜像
+ docker rim 镜像名 容器  基本镜像创建容器
+ docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令  查看容器
+ docker ps(正在运行) docker ps -a (所有)  进入容器">
 
     
     
@@ -102,111 +108,64 @@ max下的安装
         
         
 <article class="mb-12">
-    
-
-<p>本文记录 Docker 的学习笔记。
-<!-- more --></p>
-
+    <p>本文记录 Docker 的学习笔记。</p>
+<!-- raw HTML omitted -->
 <h2 id="docker安装启动">docker安装启动</h2>
-
 <p>ubuntu下的<a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-from-a-package">安装</a></p>
-
 <p>max下的<a href="https://download.docker.com/mac/stable/Docker.dmg">安装</a></p>
-
 <p>国内镜像: <a href="https://c.163.com/hub#/m/library/">网易蜂巢</a></p>
-
 <h2 id="基本信息">基本信息</h2>
-
 <blockquote>
 <p>docker版本</p>
 </blockquote>
-
 <pre><code>docker version
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>Docker 状态</p>
 </blockquote>
-
 <pre><code>docker info
-</code></pre>
-
-<h3 id="镜像">镜像</h3>
-
+</code></pre><h3 id="镜像">镜像</h3>
 <blockquote>
 <p>拉取镜像</p>
 </blockquote>
-
 <pre><code>docker pull hello-world
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>查看拉取的镜像</p>
 </blockquote>
-
 <pre><code>docker images
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>删除镜像</p>
 </blockquote>
-
 <pre><code>docker rim 镜像名 
-</code></pre>
-
-<h2 id="容器">容器</h2>
-
+</code></pre><h2 id="容器">容器</h2>
 <blockquote>
 <p>基本镜像创建容器</p>
 </blockquote>
-
 <pre><code>docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh]    # '[]'表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>查看容器</p>
 </blockquote>
-
 <pre><code>docker ps(正在运行)
-</code></pre>
-
-<pre><code>docker ps -a (所有)
-</code></pre>
-
-<blockquote>
+</code></pre><pre><code>docker ps -a (所有)
+</code></pre><blockquote>
 <p>进入容器</p>
 </blockquote>
-
 <pre><code>docker exec -it 容器名 /bin/sh    # 接入后台运行的容器shell
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>开启关闭容器</p>
 </blockquote>
-
 <pre><code>docker stop/start 容器名    # 关闭或重新启动容器
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>退出容器</p>
 </blockquote>
-
 <pre><code>exit
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>删除容器</p>
 </blockquote>
-
 <pre><code>docker rm [-f] 容器名    # 删除容器, 会丢失里面的数据, f: 强制
-</code></pre>
-
-<h2 id="创建镜像">创建镜像</h2>
-
+</code></pre><h2 id="创建镜像">创建镜像</h2>
 <blockquote>
 <p>新建dockerfile文件</p>
 </blockquote>
-
 <pre><code>From hub.c.163.com/library/ubuntu
 
 MAINTAINER PLDaily &quot;pcd12321@gmail.com&quot;
@@ -217,52 +176,32 @@ RUN apt-get install -y nginx
 
 EXPOSE 80
 
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>docker build</p>
 </blockquote>
-
 <pre><code>docker build -t=&quot;pladily/static_web&quot; . #-t为该docker的name，.代表当前目录
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>推到docker hub</p>
 </blockquote>
-
 <pre><code>docker push pldaily/static_web
-</code></pre>
-
-<h2 id="简单示例">简单示例</h2>
-
+</code></pre><h2 id="简单示例">简单示例</h2>
 <blockquote>
 <p>登陆</p>
 </blockquote>
-
 <pre><code>docker login -u gitlab-ci -p y$4E*^MwFl7NqAL oa.52liuda.com:25000
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>拉取</p>
 </blockquote>
-
 <pre><code>docker pull oa.52liuda.com:25000/ops/mobile:bloat
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>创建容器</p>
 </blockquote>
-
 <pre><code>docker run -d -p 80:80 --name h5test oa.52liuda.com:25000/ops/mobile:bloat
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>进入容器</p>
 </blockquote>
-
 <pre><code>docker exec -it h5test /bin/bash
 </code></pre>
-
 
     
 </article>

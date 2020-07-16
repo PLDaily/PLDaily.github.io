@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,10 +14,9 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="单例模式 - PLDaily Blog">
     <meta name="twitter:description" content="单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
-javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。 * 使用命名空间
-var singleTon = { name: &#39;pcd&#39;, getName: function() { console.log(this.name); } }   使用闭包封装私有变量
-var singleTon = (function() { var _name = &#39;pcd&#39;; return { getName: function() { console.log(_name); } } })();   使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
-var CreateLoginLayer = function(html) { var div; div = document.createElement(&#39;div&#39;); div.innerHTML = html; div.style.display = &#39;none&#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!">
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。
+ 使用命名空间  var singleTon = { name: &amp;#39;pcd&amp;#39;, getName: function() { console.log(this.name); } }  使用闭包封装私有变量  var singleTon = (function() { var _name = &amp;#39;pcd&amp;#39;; return { getName: function() { console.log(_name); } } })(); 使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&amp;#39;div&amp;#39;); div.innerHTML = html; div.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!instance) { instance = CreateLoginLayer(html); } return instance; } })(); 惰性单例 惰性单例是指在需要的时候才创建对象实例。">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -27,10 +26,9 @@ var CreateLoginLayer = function(html) { var div; div = document.createElement(&#
     <meta property="og:type" content="article">
     <meta property="og:title" content="单例模式 - PLDaily Blog">
     <meta property="og:description" content="单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
-javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。 * 使用命名空间
-var singleTon = { name: &#39;pcd&#39;, getName: function() { console.log(this.name); } }   使用闭包封装私有变量
-var singleTon = (function() { var _name = &#39;pcd&#39;; return { getName: function() { console.log(_name); } } })();   使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
-var CreateLoginLayer = function(html) { var div; div = document.createElement(&#39;div&#39;); div.innerHTML = html; div.style.display = &#39;none&#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!">
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。
+ 使用命名空间  var singleTon = { name: &amp;#39;pcd&amp;#39;, getName: function() { console.log(this.name); } }  使用闭包封装私有变量  var singleTon = (function() { var _name = &amp;#39;pcd&amp;#39;; return { getName: function() { console.log(_name); } } })(); 使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&amp;#39;div&amp;#39;); div.innerHTML = html; div.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!instance) { instance = CreateLoginLayer(html); } return instance; } })(); 惰性单例 惰性单例是指在需要的时候才创建对象实例。">
     <meta property="og:url" content="https://pldaily.github.io/posts/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -39,10 +37,9 @@ var CreateLoginLayer = function(html) { var div; div = document.createElement(&#
 
     <meta name="author" content="">
     <meta name="description" content="单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
-javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。 * 使用命名空间
-var singleTon = { name: &#39;pcd&#39;, getName: function() { console.log(this.name); } }   使用闭包封装私有变量
-var singleTon = (function() { var _name = &#39;pcd&#39;; return { getName: function() { console.log(_name); } } })();   使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
-var CreateLoginLayer = function(html) { var div; div = document.createElement(&#39;div&#39;); div.innerHTML = html; div.style.display = &#39;none&#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!">
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。
+ 使用命名空间  var singleTon = { name: &amp;#39;pcd&amp;#39;, getName: function() { console.log(this.name); } }  使用闭包封装私有变量  var singleTon = (function() { var _name = &amp;#39;pcd&amp;#39;; return { getName: function() { console.log(_name); } } })(); 使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&amp;#39;div&amp;#39;); div.innerHTML = html; div.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!instance) { instance = CreateLoginLayer(html); } return instance; } })(); 惰性单例 惰性单例是指在需要的时候才创建对象实例。">
 
     
     
@@ -87,86 +84,69 @@ var CreateLoginLayer = function(html) { var div; div = document.createElement(&#
         
         
 <article class="mb-12">
-    
-
-<p>单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。</p>
-
-<!-- more -->
-
+    <p>单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。</p>
+<!-- raw HTML omitted -->
 <h2 id="javascript中的单例模式">javascript中的单例模式</h2>
-
-<p>在javascript开发中，我们经常会把全局变量当成单例模式来使用。
-* 使用命名空间</p>
-
-<pre><code class="language-javascript">var singleTon = {
-	name: 'pcd',
-	getName: function() {
-		console.log(this.name);
-	}
-}
-</code></pre>
-
+<p>在javascript开发中，我们经常会把全局变量当成单例模式来使用。</p>
 <ul>
-<li><p>使用闭包封装私有变量</p>
-
-<pre><code class="language-javascript">var singleTon = (function() {
-	var _name = 'pcd';
-	return {
-		getName: function() {
-			console.log(_name);
-		}
-	}
-})();
-</code></pre></li>
+<li>使用命名空间</li>
 </ul>
-
-<h2 id="使用代理实现单例模式">使用代理实现单例模式</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">singleTon</span> <span style="color:#f92672">=</span> {
+	<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;pcd&#39;</span>,
+	<span style="color:#a6e22e">getName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+	}
+}
+</code></pre></div><ul>
+<li>使用闭包封装私有变量</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">singleTon</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;pcd&#39;</span>;
+	<span style="color:#66d9ef">return</span> {
+		<span style="color:#a6e22e">getName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">_name</span>);
+		}
+	}
+})();
+</code></pre></div><h2 id="使用代理实现单例模式">使用代理实现单例模式</h2>
 <p>代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。</p>
-
-<pre><code class="language-javascript">var CreateLoginLayer = function(html) {
-	var div;
-	div = document.createElement('div');
-	div.innerHTML = html;
-	div.style.display = 'none';
-	document.body.appendChild(div);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">CreateLoginLayer</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">html</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">div</span>;
+	<span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
+	<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">html</span>;
+	<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
+	document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">div</span>);
 }
 
-var ProxyCreateLoginLayer = (function() {
-	var instance;
-	return function(html) {
-		if(!instance) {
-			instance = CreateLoginLayer(html);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ProxyCreateLoginLayer</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance</span>;
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">html</span>) {
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">instance</span>) {
+			<span style="color:#a6e22e">instance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CreateLoginLayer</span>(<span style="color:#a6e22e">html</span>);
 		}
-		return instance;
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">instance</span>;
 	}
 })();
-</code></pre>
-
-<h2 id="惰性单例">惰性单例</h2>
-
+</code></pre></div><h2 id="惰性单例">惰性单例</h2>
 <p>惰性单例是指在需要的时候才创建对象实例。</p>
-
-<pre><code class="language-javascript">var createLoginLayer = (function() {
-	var div;
-	return function() {
-		if(!div) {
-			div = document.createElement('div');
-			div.innerHTML = '我是登陆框';
-			div.style.display = 'none';
-			document.body.appendChild(div);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">createLoginLayer</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">div</span>;
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>() {
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">div</span>) {
+			<span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
+			<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;我是登陆框&#39;</span>;
+			<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
+			document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">div</span>);
 		}
-		return div;
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">div</span>;
 	}
 })();
 
-document.getElementById('loginBtn').onclick = function() {
-	var loginLayer = createLoginLayer();
-	LoginLayer.style.display = 'block';
+document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;loginBtn&#39;</span>).<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">loginLayer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createLoginLayer</span>();
+	<span style="color:#a6e22e">LoginLayer</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;block&#39;</span>;
 }
-</code></pre>
-
-<p>程序初始加载是不会创建div实例，第一次点击loginBtn按钮后生成div实例，再次点击则不会再次生成div实例。</p>
+</code></pre></div><p>程序初始加载是不会创建div实例，第一次点击loginBtn按钮后生成div实例，再次点击则不会再次生成div实例。</p>
 
 
     

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,8 +13,9 @@
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ES6 环境搭建 - PLDaily Blog">
-    <meta name="twitter:description" content="对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp&#43;webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。 重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
-webpack.config.js的配置 module.exports = { entry: &#39;./main&#39;,//入口文件 output: { filename: &#39;bundle.js&#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &#39;babel&#39;,//使用babel加载器 query: { presets: [&#39;es2015&#39;]//解析成ES5的形式 } }] } }  index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;quot;bundle.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  package.json { &amp;quot;name&amp;quot;: &amp;quot;ES6_environment&amp;quot;, &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;, &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;main&amp;quot;: &amp;quot;index.js&amp;quot;, &amp;quot;scripts&amp;quot;: {//可以使用npm run的快捷方式 &amp;quot;start&amp;quot;: &amp;quot;live-server --port=3004&amp;quot;, &amp;quot;watch&amp;quot;: &amp;quot;webpack -w&amp;quot; }, &amp;quot;keywords&amp;quot;: [], &amp;quot;author&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;license&amp;quot;: &amp;quot;ISC&amp;quot;, &amp;quot;devDependencies&amp;quot;: { &amp;quot;babel-core&amp;quot;: &amp;quot;^6.">
+    <meta name="twitter:description" content="对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp&#43;webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。
+重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
+webpack.config.js的配置 module.exports = { entry: &amp;#39;./main&amp;#39;,//入口文件 output: { filename: &amp;#39;bundle.js&amp;#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &amp;#39;babel&amp;#39;,//使用babel加载器 query: { presets: [&amp;#39;es2015&amp;#39;]//解析成ES5的形式 } }] } } index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;#34;bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; package.json { &amp;#34;name&amp;#34;: &amp;#34;ES6_environment&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;scripts&amp;#34;: {//可以使用npm run的快捷方式 &amp;#34;start&amp;#34;: &amp;#34;live-server --port=3004&amp;#34;, &amp;#34;watch&amp;#34;: &amp;#34;webpack -w&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;babel-core&amp;#34;: &amp;#34;^6.">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -23,8 +24,9 @@ webpack.config.js的配置 module.exports = { entry: &#39;./main&#39;,//入口�
     <meta property="og:locale" content="">
     <meta property="og:type" content="article">
     <meta property="og:title" content="ES6 环境搭建 - PLDaily Blog">
-    <meta property="og:description" content="对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp&#43;webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。 重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
-webpack.config.js的配置 module.exports = { entry: &#39;./main&#39;,//入口文件 output: { filename: &#39;bundle.js&#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &#39;babel&#39;,//使用babel加载器 query: { presets: [&#39;es2015&#39;]//解析成ES5的形式 } }] } }  index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;quot;bundle.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  package.json { &amp;quot;name&amp;quot;: &amp;quot;ES6_environment&amp;quot;, &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;, &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;main&amp;quot;: &amp;quot;index.js&amp;quot;, &amp;quot;scripts&amp;quot;: {//可以使用npm run的快捷方式 &amp;quot;start&amp;quot;: &amp;quot;live-server --port=3004&amp;quot;, &amp;quot;watch&amp;quot;: &amp;quot;webpack -w&amp;quot; }, &amp;quot;keywords&amp;quot;: [], &amp;quot;author&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;license&amp;quot;: &amp;quot;ISC&amp;quot;, &amp;quot;devDependencies&amp;quot;: { &amp;quot;babel-core&amp;quot;: &amp;quot;^6.">
+    <meta property="og:description" content="对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp&#43;webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。
+重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
+webpack.config.js的配置 module.exports = { entry: &amp;#39;./main&amp;#39;,//入口文件 output: { filename: &amp;#39;bundle.js&amp;#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &amp;#39;babel&amp;#39;,//使用babel加载器 query: { presets: [&amp;#39;es2015&amp;#39;]//解析成ES5的形式 } }] } } index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;#34;bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; package.json { &amp;#34;name&amp;#34;: &amp;#34;ES6_environment&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;scripts&amp;#34;: {//可以使用npm run的快捷方式 &amp;#34;start&amp;#34;: &amp;#34;live-server --port=3004&amp;#34;, &amp;#34;watch&amp;#34;: &amp;#34;webpack -w&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;babel-core&amp;#34;: &amp;#34;^6.">
     <meta property="og:url" content="https://pldaily.github.io/posts/es6-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -32,8 +34,9 @@ webpack.config.js的配置 module.exports = { entry: &#39;./main&#39;,//入口�
     <title>ES6 环境搭建 - PLDaily Blog</title>
 
     <meta name="author" content="">
-    <meta name="description" content="对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp&#43;webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。 重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
-webpack.config.js的配置 module.exports = { entry: &#39;./main&#39;,//入口文件 output: { filename: &#39;bundle.js&#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &#39;babel&#39;,//使用babel加载器 query: { presets: [&#39;es2015&#39;]//解析成ES5的形式 } }] } }  index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;quot;bundle.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  package.json { &amp;quot;name&amp;quot;: &amp;quot;ES6_environment&amp;quot;, &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;, &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;main&amp;quot;: &amp;quot;index.js&amp;quot;, &amp;quot;scripts&amp;quot;: {//可以使用npm run的快捷方式 &amp;quot;start&amp;quot;: &amp;quot;live-server --port=3004&amp;quot;, &amp;quot;watch&amp;quot;: &amp;quot;webpack -w&amp;quot; }, &amp;quot;keywords&amp;quot;: [], &amp;quot;author&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;license&amp;quot;: &amp;quot;ISC&amp;quot;, &amp;quot;devDependencies&amp;quot;: { &amp;quot;babel-core&amp;quot;: &amp;quot;^6.">
+    <meta name="description" content="对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp&#43;webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。
+重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
+webpack.config.js的配置 module.exports = { entry: &amp;#39;./main&amp;#39;,//入口文件 output: { filename: &amp;#39;bundle.js&amp;#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &amp;#39;babel&amp;#39;,//使用babel加载器 query: { presets: [&amp;#39;es2015&amp;#39;]//解析成ES5的形式 } }] } } index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;#34;bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; package.json { &amp;#34;name&amp;#34;: &amp;#34;ES6_environment&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;scripts&amp;#34;: {//可以使用npm run的快捷方式 &amp;#34;start&amp;#34;: &amp;#34;live-server --port=3004&amp;#34;, &amp;#34;watch&amp;#34;: &amp;#34;webpack -w&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;babel-core&amp;#34;: &amp;#34;^6.">
 
     
     
@@ -78,82 +81,64 @@ webpack.config.js的配置 module.exports = { entry: &#39;./main&#39;,//入口�
         
         
 <article class="mb-12">
-    
-
-<p>对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp+webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。
-<!-- more --></p>
-
+    <p>对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp+webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。</p>
+<!-- raw HTML omitted -->
 <h3 id="重要实现思路">重要实现思路</h3>
-
 <p>通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。</p>
-
-<h3 id="webpack-config-js的配置">webpack.config.js的配置</h3>
-
-<pre><code class="language-bash">module.exports = {
-  entry: './main',//入口文件
-  output: {
-    filename: 'bundle.js'//输出文件
-  },
-  module: {
-    loaders: [{
-      test: /\.js$/,//正则匹配文件，对其进行解析
+<h3 id="webpackconfigjs的配置">webpack.config.js的配置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">module.exports <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+  entry: <span style="color:#e6db74">&#39;./main&#39;</span>,//入口文件
+  output: <span style="color:#f92672">{</span>
+    filename: <span style="color:#e6db74">&#39;bundle.js&#39;</span>//输出文件
+  <span style="color:#f92672">}</span>,
+  module: <span style="color:#f92672">{</span>
+    loaders: <span style="color:#f92672">[{</span>
+      test: /<span style="color:#ae81ff">\.</span>js$/,//正则匹配文件，对其进行解析
       exclude: /node_modules/,//不对node_modules里的js文件进行解析
-      loader: 'babel',//使用babel加载器
-      query: {
-        presets: ['es2015']//解析成ES5的形式
-      }
-    }]
-  }
-}
+      loader: <span style="color:#e6db74">&#39;babel&#39;</span>,//使用babel加载器
+      query: <span style="color:#f92672">{</span>
+        presets: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;es2015&#39;</span><span style="color:#f92672">]</span>//解析成ES5的形式
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}]</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 
-</code></pre>
-
-<h3 id="index-html">index.html</h3>
-
-<pre><code class="language-bash">&lt;!DOCTYPE html&gt;
+</code></pre></div><h3 id="indexhtml">index.html</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;ES6&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+    &lt;script src<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bundle.js&#34;</span>&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-
-<h3 id="package-json">package.json</h3>
-
-<pre><code class="language-bash">{
-  &quot;name&quot;: &quot;ES6_environment&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {//可以使用npm run的快捷方式
-    &quot;start&quot;: &quot;live-server --port=3004&quot;,
-    &quot;watch&quot;: &quot;webpack -w&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;,
-  &quot;devDependencies&quot;: {
-    &quot;babel-core&quot;: &quot;^6.3.17&quot;,
-    &quot;babel-loader&quot;: &quot;^6.2.0&quot;,
-    &quot;babel-preset-es2015&quot;: &quot;^6.3.13&quot;,
-    &quot;live-server&quot;: &quot;^0.9.0&quot;,
-    &quot;webpack&quot;: &quot;^1.12.9&quot;
-  }
-}
-</code></pre>
-
-<h3 id="执行命令">执行命令</h3>
-
-<pre><code class="language-bash">$ npm install //安装依赖
+</code></pre></div><h3 id="packagejson">package.json</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;ES6_environment&#34;</span>,
+  <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+  <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#e6db74">&#34;main&#34;</span>: <span style="color:#e6db74">&#34;index.js&#34;</span>,
+  <span style="color:#e6db74">&#34;scripts&#34;</span>: <span style="color:#f92672">{</span>//可以使用npm run的快捷方式
+    <span style="color:#e6db74">&#34;start&#34;</span>: <span style="color:#e6db74">&#34;live-server --port=3004&#34;</span>,
+    <span style="color:#e6db74">&#34;watch&#34;</span>: <span style="color:#e6db74">&#34;webpack -w&#34;</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;keywords&#34;</span>: <span style="color:#f92672">[]</span>,
+  <span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#e6db74">&#34;license&#34;</span>: <span style="color:#e6db74">&#34;ISC&#34;</span>,
+  <span style="color:#e6db74">&#34;devDependencies&#34;</span>: <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;babel-core&#34;</span>: <span style="color:#e6db74">&#34;^6.3.17&#34;</span>,
+    <span style="color:#e6db74">&#34;babel-loader&#34;</span>: <span style="color:#e6db74">&#34;^6.2.0&#34;</span>,
+    <span style="color:#e6db74">&#34;babel-preset-es2015&#34;</span>: <span style="color:#e6db74">&#34;^6.3.13&#34;</span>,
+    <span style="color:#e6db74">&#34;live-server&#34;</span>: <span style="color:#e6db74">&#34;^0.9.0&#34;</span>,
+    <span style="color:#e6db74">&#34;webpack&#34;</span>: <span style="color:#e6db74">&#34;^1.12.9&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="执行命令">执行命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ npm install //安装依赖
 $ npm run watch //用于监听文件是否发生变化
 $ npm start //打开浏览器监听port：3004
-</code></pre>
-
-<h3 id="注意事项">注意事项</h3>
-
+</code></pre></div><h3 id="注意事项">注意事项</h3>
 <p>以上方法是将ES6的语法编译成ES5后执行，在调试的时候有时不是能很好的体现ES6的属性。也可以通过google浏览器F12在console中直接输入代码编译调试。</p>
 
 

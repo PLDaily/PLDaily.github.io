@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,12 +13,11 @@
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="前端单元测试 - PLDaily Blog">
-    <meta name="twitter:description" content="为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。 TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
+    <meta name="twitter:description" content="为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。
+TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
 服务端代码测试 所谓服务端代码，指的就是一个node的模块，能在node的环境中运行。以一个项目为例，代码结构如下:
-. ├── index.js ├── node_modules ├── package.json └── test └── test.js  前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
-npm install mocha chai --save-dev   index.js
-const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js
-const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) })   describe用于给测试用例分组，it代表一个测试用例。">
+. ├── index.js ├── node_modules ├── package.json └── test └── test.js 前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
+npm install mocha chai --save-dev  index.js  const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js  const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) }) describe用于给测试用例分组，it代表一个测试用例。">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -27,12 +26,11 @@ const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = r
     <meta property="og:locale" content="">
     <meta property="og:type" content="article">
     <meta property="og:title" content="前端单元测试 - PLDaily Blog">
-    <meta property="og:description" content="为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。 TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
+    <meta property="og:description" content="为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。
+TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
 服务端代码测试 所谓服务端代码，指的就是一个node的模块，能在node的环境中运行。以一个项目为例，代码结构如下:
-. ├── index.js ├── node_modules ├── package.json └── test └── test.js  前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
-npm install mocha chai --save-dev   index.js
-const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js
-const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) })   describe用于给测试用例分组，it代表一个测试用例。">
+. ├── index.js ├── node_modules ├── package.json └── test └── test.js 前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
+npm install mocha chai --save-dev  index.js  const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js  const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) }) describe用于给测试用例分组，it代表一个测试用例。">
     <meta property="og:url" content="https://pldaily.github.io/posts/%E5%89%8D%E7%AB%AF%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -40,12 +38,11 @@ const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = r
     <title>前端单元测试 - PLDaily Blog</title>
 
     <meta name="author" content="">
-    <meta name="description" content="为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。 TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
+    <meta name="description" content="为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。
+TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
 服务端代码测试 所谓服务端代码，指的就是一个node的模块，能在node的环境中运行。以一个项目为例，代码结构如下:
-. ├── index.js ├── node_modules ├── package.json └── test └── test.js  前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
-npm install mocha chai --save-dev   index.js
-const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js
-const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) })   describe用于给测试用例分组，it代表一个测试用例。">
+. ├── index.js ├── node_modules ├── package.json └── test └── test.js 前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
+npm install mocha chai --save-dev  index.js  const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js  const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) }) describe用于给测试用例分组，it代表一个测试用例。">
 
     
     
@@ -90,101 +87,64 @@ const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = r
         
         
 <article class="mb-12">
-    
-
-<p>为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。
-<!-- more --></p>
-
+    <p>为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。</p>
+<!-- raw HTML omitted -->
 <h3 id="tdd与bdd的区别">TDD与BDD的区别</h3>
-
 <p>TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见<a href="https://github.com/jdavis/tdd-vs-bdd">示例</a></p>
-
 <h3 id="服务端代码测试">服务端代码测试</h3>
-
 <p>所谓服务端代码，指的就是一个node的模块，能在node的环境中运行。以一个项目为例，代码结构如下:</p>
-
 <pre><code>.
 ├── index.js
 ├── node_modules
 ├── package.json
 └── test
     └── test.js
-</code></pre>
-
-<p>前端测试框架主要是<a href="https://mochajs.org/">Mocha</a>与<a href="https://jasmine.github.io/">Jasmine</a>，这里我们选择Mocha，断言库有<a href="https://github.com/shouldjs/should.js">should</a>、<a href="https://github.com/Automattic/expect.js">expect</a>、<a href="http://chaijs.com/">chai</a>以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。</p>
-
-<pre><code class="language-Git">npm install mocha chai --save-dev
-</code></pre>
-
-<ul>
-<li><p>index.js</p>
-
+</code></pre><p>前端测试框架主要是<a href="https://mochajs.org/">Mocha</a>与<a href="https://jasmine.github.io/">Jasmine</a>，这里我们选择Mocha，断言库有<a href="https://github.com/shouldjs/should.js">should</a>、<a href="https://github.com/Automattic/expect.js">expect</a>、<a href="http://chaijs.com/">chai</a>以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。</p>
+<pre><code class="language-Git" data-lang="Git">npm install mocha chai --save-dev
+</code></pre><ul>
+<li>index.js</li>
+</ul>
 <pre><code>const getNum = (value) =&gt; {
-return value * 2
+  return value * 2
 }
 
 module.exports = getNum
-</code></pre></li>
-
-<li><p>test.js</p>
-
+</code></pre><ul>
+<li>test.js</li>
+</ul>
 <pre><code>const chai = require('chai')
 const expect = chai.expect
 const getNum = require('../index')
 
 describe('Test', function() {
-it('should return 20 when the value is 10', function() {
-	expect(getNum(10)).to.equal(20)
+  it('should return 20 when the value is 10', function() {
+  	expect(getNum(10)).to.equal(20)
+  })
 })
-})
-</code></pre></li>
-</ul>
-
-<p>describe用于给测试用例分组，it代表一个测试用例。</p>
-
+</code></pre><p>describe用于给测试用例分组，it代表一个测试用例。</p>
 <ul>
-<li><p>package.json</p>
-
-<pre><code>&quot;scripts&quot;: {
-&quot;test&quot;: &quot;mocha&quot;
-}
-</code></pre></li>
+<li>package.json</li>
 </ul>
-
-<p> 需要在全局下安装Mocha</p>
-
+<pre><code>&quot;scripts&quot;: {
+  &quot;test&quot;: &quot;mocha&quot;
+}
+</code></pre><p> 需要在全局下安装Mocha</p>
 <pre><code>npm install mocha -g
-</code></pre>
-
-<p>项目目录下执行</p>
-
-<pre><code class="language-git">npm run test
-</code></pre>
-
-<p>测试通过
-<img width="324" alt="2018-01-11 10 43 02" src="https://user-images.githubusercontent.com/11615211/34821686-89f77060-f6ff-11e7-9875-f5e878b27a69.png"></p>
-
+</code></pre><p>项目目录下执行</p>
+<pre><code class="language-git" data-lang="git">npm run test
+</code></pre><p>测试通过
+<!-- raw HTML omitted --></p>
 <p>完成代码测试之后我们再去看看代码测试的覆盖率。测试代码覆盖率我们选择使用<a href="https://github.com/gotwarlost/istanbul">istanbul</a>，全局安装</p>
-
 <pre><code>npm install -g istanbul
-</code></pre>
-
-<p>使用istanbul启动Mocha</p>
-
+</code></pre><p>使用istanbul启动Mocha</p>
 <pre><code>istanbul cover _mocha
-</code></pre>
-
-<p>测试通过，覆盖率100%</p>
-
-<p><img width="565" alt="2018-01-11 11 15 35" src="https://user-images.githubusercontent.com/11615211/34821707-961104c4-f6ff-11e7-9bd9-ffedadcac833.png"></p>
-
+</code></pre><p>测试通过，覆盖率100%</p>
+<!-- raw HTML omitted -->
 <p>行覆盖率（line coverage）：是否每一行都执行了？
 函数覆盖率（function coverage）：是否每个函数都调用了？
 分支覆盖率（branch coverage）：是否每个if代码块都执行了？
 语句覆盖率（statement coverage）：是否每个语句都执行了？</p>
-
 <p>修改index.js再看代码覆盖率</p>
-
 <pre><code>const getNum = (value) =&gt; {
   if(value === 0) {
 	return 1
@@ -194,14 +154,9 @@ it('should return 20 when the value is 10', function() {
 }
 
 module.exports = getNum
-</code></pre>
-
-<p>发现代码覆盖率发生了变化</p>
-
-<p><img width="567" alt="2018-01-11 11 13 34" src="https://user-images.githubusercontent.com/11615211/34821960-4099ac84-f700-11e7-99f8-c2a665457cf8.png"></p>
-
+</code></pre><p>发现代码覆盖率发生了变化</p>
+<!-- raw HTML omitted -->
 <p>修改test.js添加测试用例</p>
-
 <pre><code>describe('Test', function() {
   it('should return 20 when the value is 10', function() {
   	expect(getNum(10)).to.equal(20)
@@ -210,16 +165,10 @@ module.exports = getNum
     expect(getNum(0)).to.equal(0)
   })
 })
-</code></pre>
-
-<p>代码覆盖率又回到了100%</p>
-
-<p><img width="567" alt="2018-01-11 11 26 17" src="https://user-images.githubusercontent.com/11615211/34821742-a99a982a-f6ff-11e7-9169-fa265197159e.png"></p>
-
+</code></pre><p>代码覆盖率又回到了100%</p>
+<!-- raw HTML omitted -->
 <h3 id="客户端代码">客户端代码</h3>
-
 <p>客户端代码即运行在浏览器中的代码，代码中包含了window、document等对象，需要在浏览器环境下才能起作用。还是以一个项目为例，代码结构如下:</p>
-
 <pre><code>.
 ├── index.js
 ├── node_modules
@@ -227,132 +176,96 @@ module.exports = getNum
 └── test
     └── test.js
     └── test.html
-</code></pre>
-
-<p>我们依然使用Mocha测试库及chai断言库。</p>
-
+</code></pre><p>我们依然使用Mocha测试库及chai断言库。</p>
 <pre><code>npm install mocha chai --save-dev
-</code></pre>
-
-<ul>
-<li><p>index.js</p>
-
+</code></pre><ul>
+<li>index.js</li>
+</ul>
 <pre><code>window.createDiv = function(value) {
-var oDiv = document.createElement('div')
-oDiv.id = 'myDiv'
-oDiv.innerHTML = value
-document.body.appendChild(oDiv)
+  var oDiv = document.createElement('div')
+  oDiv.id = 'myDiv'
+  oDiv.innerHTML = value
+  document.body.appendChild(oDiv)
 }
-</code></pre></li>
-
-<li><p>test.js</p>
-
+</code></pre><ul>
+<li>test.js</li>
+</ul>
 <pre><code>mocha.ui('bdd')
 
 var expect = chai.expect
 describe(&quot;Tests&quot;, function () {
-before(function () {
-createDiv('test')
-})
-it(&quot;content right&quot;, function () {
-var el = document.querySelector('#myDiv')
-expect(el).to.not.equal(null)
-expect(el.innerHTML).to.equal(&quot;test&quot;)
-})
+  before(function () {
+    createDiv('test')
+  })
+  it(&quot;content right&quot;, function () {
+    var el = document.querySelector('#myDiv')
+    expect(el).to.not.equal(null)
+    expect(el.innerHTML).to.equal(&quot;test&quot;)
+  })
 })
 
 mocha.run()
-</code></pre></li>
-
-<li><p>test.html</p>
-
-<pre><code>&lt;html&gt;
-&lt;head&gt;
- &lt;title&gt; Tests &lt;/title&gt;
- &lt;link rel=&quot;stylesheet&quot; href=&quot;../node_modules/mocha/mocha.css&quot;/&gt;
-&lt;/head&gt;
-&lt;body&gt;
- &lt;div id=&quot;mocha&quot;&gt;&lt;/div&gt;
- &lt;script src=&quot;../node_modules/mocha/mocha.js&quot;&gt;&lt;/script&gt;
- &lt;script src=&quot;../node_modules/chai/chai.js&quot;&gt;&lt;/script&gt;
- &lt;script src=&quot;../index.js&quot;&gt;&lt;/script&gt;
- &lt;script src=&quot;./test.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></li>
+</code></pre><ul>
+<li>test.html</li>
 </ul>
-
-<p>直接用浏览器打开test.html文件便能看到测试结果
-<img src="https://user-images.githubusercontent.com/11615211/34821773-bcf4636a-f6ff-11e7-9f92-223e31eaf553.png" alt="2018-01-11 2 15 12" /></p>
-
+<pre><code>&lt;html&gt;
+   &lt;head&gt;
+     &lt;title&gt; Tests &lt;/title&gt;
+     &lt;link rel=&quot;stylesheet&quot; href=&quot;../node_modules/mocha/mocha.css&quot;/&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+     &lt;div id=&quot;mocha&quot;&gt;&lt;/div&gt;
+     &lt;script src=&quot;../node_modules/mocha/mocha.js&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;../node_modules/chai/chai.js&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;../index.js&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;./test.js&quot;&gt;&lt;/script&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre><p>直接用浏览器打开test.html文件便能看到测试结果
+<img src="https://user-images.githubusercontent.com/11615211/34821773-bcf4636a-f6ff-11e7-9f92-223e31eaf553.png" alt="2018-01-11 2 15 12"></p>
 <p>当然我们可以选择<a href="http://phantomjs.org/">PhantomJS</a>模拟浏览器去做测试，这里我们使用<a href="https://github.com/nathanboktae/mocha-phantomjs">mocha-phantomjs</a>对test.html做测试。</p>
-
 <p>全局安装mocha-phantomjs</p>
-
 <pre><code>npm install mocha-phantomjs -g
-</code></pre>
-
-<p>修改package.json</p>
-
+</code></pre><p>修改package.json</p>
 <pre><code>&quot;scripts&quot;: {
   &quot;test&quot;: &quot;mocha-phantomjs test/test.html&quot;
 }
-</code></pre>
-
-<p>项目目录下执行</p>
-
+</code></pre><p>项目目录下执行</p>
 <pre><code>npm run test
-</code></pre>
-
-<p>mocha-phantomjs在mac下执行会报<code>phantomjs terminated with signal SIGSEGV</code>，暂时没有找到什么解决方案。所以我在ubuntu下执行，结果显示如图</p>
-
-<p><img src="https://user-images.githubusercontent.com/11615211/34821810-db0fd622-f6ff-11e7-8f80-53eda337076b.png" alt="2018-01-11 2 31 45" /></p>
-
+</code></pre><p>mocha-phantomjs在mac下执行会报<code>phantomjs terminated with signal SIGSEGV</code>，暂时没有找到什么解决方案。所以我在ubuntu下执行，结果显示如图</p>
+<p><img src="https://user-images.githubusercontent.com/11615211/34821810-db0fd622-f6ff-11e7-8f80-53eda337076b.png" alt="2018-01-11 2 31 45"></p>
 <p>上述方式虽然能完成代码的单元测试，但是要完成代码覆盖率的计算也没有什么好的方式，所以我选择引入测试管理工具<a href="https://karma-runner.github.io/2.0/index.html">karma</a></p>
-
 <h3 id="karma使用指南">karma使用指南</h3>
-
 <p>略去一大堆介绍karma的废话，项目下引入karma</p>
-
 <pre><code>npm install karma --save-dev
-</code></pre>
-
-<p>初始化配置karma配置文件</p>
-
+</code></pre><p>初始化配置karma配置文件</p>
 <pre><code>npm install karma -g
 karma init
-</code></pre>
-
-<p>使用karma默认配置看看每一项的作用</p>
-
+</code></pre><p>使用karma默认配置看看每一项的作用</p>
 <ul>
-<li><p>Karma.conf.js</p>
-
-<pre><code>module.exports = function(config) {
-config.set({
-basePath: '', // 设置根目录
-frameworks: ['jasmine'], // 测试框架
-files: [ // 浏览器中加载的文件
-],
-exclude: [ // 浏览器中加载的文件中排除的文件
-],
-preprocessors: { // 预处理
-},
-reporters: ['progress'], // 添加额外的插件
-port: 9876, // 开启测试服务时监听的端口
-colors: true,
-logLevel: config.LOG_INFO,
-autoWatch: true, // 监听文件变化，发生变化则重新编译
-browsers: ['Chrome'], // 测试的浏览器
-singleRun: false, // 执行测试用例后是否关闭测试服务
-concurrency: Infinity
-})
-}
-</code></pre></li>
+<li>Karma.conf.js</li>
 </ul>
-
-<p>此时的项目结构如下所示</p>
-
+<pre><code>module.exports = function(config) {
+  config.set({
+    basePath: '', // 设置根目录
+    frameworks: ['jasmine'], // 测试框架
+    files: [ // 浏览器中加载的文件
+    ],
+    exclude: [ // 浏览器中加载的文件中排除的文件
+    ],
+    preprocessors: { // 预处理
+    },
+    reporters: ['progress'], // 添加额外的插件
+    port: 9876, // 开启测试服务时监听的端口
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true, // 监听文件变化，发生变化则重新编译
+    browsers: ['Chrome'], // 测试的浏览器
+    singleRun: false, // 执行测试用例后是否关闭测试服务
+    concurrency: Infinity
+  })
+}
+</code></pre><p>此时的项目结构如下所示</p>
 <pre><code>.
 ├── index.js
 ├── node_modules
@@ -360,82 +273,55 @@ concurrency: Infinity
 ├── karma.conf.js
 └── test
     └── test.js
-</code></pre>
-
-<p>首先我们将测试框架jasmine改为我们熟悉的mocha及chai，添加files及plugins</p>
-
+</code></pre><p>首先我们将测试框架jasmine改为我们熟悉的mocha及chai，添加files及plugins</p>
 <pre><code>npm install karma karma-mocha karma-chai mocha chai karma-chrome-launcher --save-dev
-</code></pre>
-
-<ul>
-<li><p>karma.conf.js</p>
-
-<pre><code>module.exports = function(config) {
-config.set({
-basePath: '',
-frameworks: ['mocha', 'chai'],
-files: [
-    'index.js',
-    'test/*.js'
-],
-exclude: [
-],
-preprocessors: {
-},
-reporters: ['progress'],
-port: 9876,
-colors: true,
-logLevel: config.LOG_INFO,
-autoWatch: true,
-browsers: ['Chrome'],
-singleRun: false,
-concurrency: Infinity,
-plugins: [
-  'karma-chrome-launcher',
-  'karma-mocha',
-  'karma-chai',
-]
-})
-}
-</code></pre></li>
+</code></pre><ul>
+<li>karma.conf.js</li>
 </ul>
-
-<p>全局安装karma-cli</p>
-
+<pre><code>module.exports = function(config) {
+  config.set({
+    basePath: '',
+    frameworks: ['mocha', 'chai'],
+    files: [
+        'index.js',
+        'test/*.js'
+    ],
+    exclude: [
+    ],
+    preprocessors: {
+    },
+    reporters: ['progress'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    concurrency: Infinity,
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-mocha',
+      'karma-chai',
+    ]
+  })
+}
+</code></pre><p>全局安装karma-cli</p>
 <pre><code>npm install -g karma-cli
-</code></pre>
-
-<p>修改package.json</p>
-
+</code></pre><p>修改package.json</p>
 <pre><code>&quot;scripts&quot;: {
   &quot;test&quot;: &quot;karma start karma.conf.js&quot;
 }
-</code></pre>
-
-<p>执行npm run test便可以启用chrome去加载页面。</p>
-
-<p><img width="610" alt="2018-01-11 5 13 27" src="https://user-images.githubusercontent.com/11615211/34821863-f1ea35e0-f6ff-11e7-9645-10b845bf0035.png"></p>
-
+</code></pre><p>执行npm run test便可以启用chrome去加载页面。</p>
+<!-- raw HTML omitted -->
 <h3 id="karma测试代码覆盖率">karma测试代码覆盖率</h3>
-
 <p>测试代码覆盖率，我们还是选择使用PhantomJS模拟浏览器，将<code>singleRun</code>设为<code>true</code>，即执行完测试用例就退出测试服务。</p>
-
 <pre><code>npm install karma-phantomjs-launcher --save-dev
-</code></pre>
-
-<p>将<code>browsers</code>中的<code>Chrome</code>改为<code>PhantomJS</code>，<code>plugins</code>中的<code>karma-chrome-launcher</code>改为<code>karma-phantomjs-launcher</code></p>
-
+</code></pre><p>将<code>browsers</code>中的<code>Chrome</code>改为<code>PhantomJS</code>，<code>plugins</code>中的<code>karma-chrome-launcher</code>改为<code>karma-phantomjs-launcher</code></p>
 <p>执行npm run test ，测试通过且自动退出如图所示</p>
-
-<p><img width="565" alt="2018-01-11 5 17 32" src="https://user-images.githubusercontent.com/11615211/34821876-fbd9b990-f6ff-11e7-8c1b-184ee96fa4ba.png"></p>
-
+<!-- raw HTML omitted -->
 <p>引入karma代码覆盖率模块karma-coverage，改模块依赖于istanbul</p>
-
 <pre><code>npm install istanbul karma-coverage --save-dev
-</code></pre>
-
-<p>修改karma.conf.js</p>
-
+</code></pre><p>修改karma.conf.js</p>
 <pre><code>module.exports = function(config) {
   config.set({
     basePath: '',
@@ -468,109 +354,92 @@ plugins: [
     ]
   })
 }
-</code></pre>
-
-<p>对index.js文件使用coverage进行预处理，加入karma-coverage插件，覆盖率测试输出coverageReporter配置，详见<a href="https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md">这里</a>这里为了方便截图显示将其设为<code>text-summary</code></p>
-
+</code></pre><p>对index.js文件使用coverage进行预处理，加入karma-coverage插件，覆盖率测试输出coverageReporter配置，详见<a href="https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md">这里</a>这里为了方便截图显示将其设为<code>text-summary</code></p>
 <p>执行npm run test，显示结果如下图所示</p>
-
-<p><img width="569" alt="2018-01-11 5 30 10" src="https://user-images.githubusercontent.com/11615211/34821893-07cfdfcc-f700-11e7-9c0d-d8dc2bf0b6bb.png"></p>
-
+<!-- raw HTML omitted -->
 <h3 id="es6代码覆盖率计算">ES6代码覆盖率计算</h3>
-
 <p>目前的浏览器并不能兼容所有ES6代码，所以ES6代码都需要经过babel编译后才可在浏览器环境中运行，但编译后的代码webpack会加入许多其他的模块，对编译后的代码做测试覆盖率就没什么意义了。</p>
-
 <ul>
-<li><p>index.js</p>
-
+<li>index.js</li>
+</ul>
 <pre><code>const createDiv = value =&gt; {
-var oDiv = document.createElement('div')
-oDiv.id = 'myDiv'
-oDiv.innerHTML = value
-document.body.appendChild(oDiv)
+  var oDiv = document.createElement('div')
+  oDiv.id = 'myDiv'
+  oDiv.innerHTML = value
+  document.body.appendChild(oDiv)
 }
 
 module.exports = createDiv
-</code></pre></li>
-</ul>
-
-<p>我们使用ES6中的箭头函数</p>
-
+</code></pre><p>我们使用ES6中的箭头函数</p>
 <ul>
-<li><p>test.js</p>
-
+<li>test.js</li>
+</ul>
 <pre><code>const createDiv = require('../index')
 describe(&quot;Tests&quot;, function () {
-before(function () {
-createDiv('test')
+  before(function () {
+    createDiv('test')
+  })
+  it(&quot;content right&quot;, function () {
+    var el = document.querySelector('#myDiv')
+    expect(el).to.not.equal(null)
+    expect(el.innerHTML).to.equal(&quot;test&quot;)
+  })
 })
-it(&quot;content right&quot;, function () {
-var el = document.querySelector('#myDiv')
-expect(el).to.not.equal(null)
-expect(el.innerHTML).to.equal(&quot;test&quot;)
-})
-})
-</code></pre></li>
-
-<li><p>kama.conf.js</p>
-
-<pre><code>module.exports = function(config) {
-config.set({
-basePath: '',
-frameworks: ['mocha', 'chai'],
-files: [
-    'test/*.js'
-],
-exclude: [
-],
-preprocessors: {
-    'index.js': ['coverage'],
-    'test/*.js': ['webpack']
-},
-reporters: ['progress', 'coverage'],
-port: 9876,
-colors: true,
-logLevel: config.LOG_INFO,
-autoWatch: true,
-browsers: ['PhantomJS'],
-singleRun: true,
-concurrency: Infinity,
-coverageReporter: {
-  type : 'text-summary'
-},
-webpack: {
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            &quot;presets&quot;: [&quot;es2015&quot;],
-            &quot;plugins&quot;: [[&quot;istanbul&quot;]]
-          }
-        }
-      }
-    ]
-  }
-},
-plugins: [
-  'karma-phantomjs-launcher',
-  'karma-mocha',
-  'karma-coverage',
-  'karma-webpack',
-  'karma-chai',
-]
-})
-}
-</code></pre></li>
+</code></pre><ul>
+<li>kama.conf.js</li>
 </ul>
-
-<p>test.js文件通过require引入index.js文件，所以files只需引入test.js文件，再对test.js做webpack预处理。</p>
-
+<pre><code>module.exports = function(config) {
+  config.set({
+    basePath: '',
+    frameworks: ['mocha', 'chai'],
+    files: [
+        'test/*.js'
+    ],
+    exclude: [
+    ],
+    preprocessors: {
+        'index.js': ['coverage'],
+        'test/*.js': ['webpack']
+    },
+    reporters: ['progress', 'coverage'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['PhantomJS'],
+    singleRun: true,
+    concurrency: Infinity,
+    coverageReporter: {
+      type : 'text-summary'
+    },
+    webpack: {
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                &quot;presets&quot;: [&quot;es2015&quot;],
+                &quot;plugins&quot;: [[&quot;istanbul&quot;]]
+              }
+            }
+          }
+        ]
+      }
+    },
+    plugins: [
+      'karma-phantomjs-launcher',
+      'karma-mocha',
+      'karma-coverage',
+      'karma-webpack',
+      'karma-chai',
+    ]
+  })
+}
+</code></pre><p>test.js文件通过require引入index.js文件，所以files只需引入test.js文件，再对test.js做webpack预处理。</p>
 <p>需要相关的babel，webpack，karma依赖如下：</p>
-
 <pre><code>&quot;devDependencies&quot;: {
   &quot;babel-core&quot;: &quot;^6.26.0&quot;,
   &quot;babel-loader&quot;: &quot;^7.1.2&quot;,
@@ -587,107 +456,87 @@ plugins: [
   &quot;mocha&quot;: &quot;^4.1.0&quot;,
   &quot;webpack&quot;: &quot;^3.10.0&quot;
 }
-</code></pre>
-
-<p>执行npm run dev显示如图所示</p>
-
-<p><img width="565" alt="2018-01-11 6 03 57" src="https://user-images.githubusercontent.com/11615211/34821908-1621cfae-f700-11e7-95bc-40ca5be5417b.png"></p>
-
+</code></pre><p>执行npm run dev显示如图所示</p>
+<!-- raw HTML omitted -->
 <h3 id="travisci及coveralls">travisCI及coveralls</h3>
-
 <p>travisCI的配置这里不做详解，我们将通过代码测试覆盖率上传到coveralls获取一个covarage的icon。</p>
-
-<p><img src="https://user-images.githubusercontent.com/11615211/34821915-1b098d68-f700-11e7-9650-2cb7a0e0b920.png" alt="2018-01-11 6 29 18" /></p>
-
+<p><img src="https://user-images.githubusercontent.com/11615211/34821915-1b098d68-f700-11e7-9650-2cb7a0e0b920.png" alt="2018-01-11 6 29 18"></p>
 <p>如果你是服务端代码使用istanbul计算代码覆盖率的</p>
-
 <ul>
-<li><p>.travis.yml</p>
-
+<li>.travis.yml</li>
+</ul>
 <pre><code>language: node_js
 node_js:
 - 'stable'
 - 8
 branches:
-only:
-- master
+  only:
+  - master
 install:
 - npm install
 script:
 - npm test
 after_script: &quot;npm install coveralls &amp;&amp; cat ./coverage/lcov.info | coveralls&quot;
-</code></pre></li>
-</ul>
-
-<p>如果你是服务端代码使用karma计算代码覆盖率的，则需使用coveralls模块</p>
-
+</code></pre><p>如果你是服务端代码使用karma计算代码覆盖率的，则需使用coveralls模块</p>
 <pre><code>npm install coveralls karma-coveralls --save-dev
-</code></pre>
-
-<ul>
-<li><p>Karma.conf.js</p>
-
+</code></pre><ul>
+<li>Karma.conf.js</li>
+</ul>
 <pre><code>// Karma configuration
 module.exports = function(config) {
-config.set({
-basePath: '',
-frameworks: ['mocha', 'chai'],
-files: [
-  'test/*.js'
-],
-exclude: [],
-preprocessors: {
-  'test/*.js': ['webpack'],
-  'index.js': ['coverage']
-},
-reporters: ['progress', 'coverage', 'coveralls'],
-port: 9876,
-colors: true,
-logLevel: config.LOG_INFO,
-autoWatch: true,
-browsers: ['PhantomJS'],
-singleRun: true,
-concurrency: Infinity,
-webpack: {
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            &quot;presets&quot;: [&quot;es2015&quot;],
-            &quot;plugins&quot;: [[&quot;istanbul&quot;], [&quot;transform-runtime&quot;]]
+  config.set({
+    basePath: '',
+    frameworks: ['mocha', 'chai'],
+    files: [
+      'test/*.js'
+    ],
+    exclude: [],
+    preprocessors: {
+      'test/*.js': ['webpack'],
+      'index.js': ['coverage']
+    },
+    reporters: ['progress', 'coverage', 'coveralls'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['PhantomJS'],
+    singleRun: true,
+    concurrency: Infinity,
+    webpack: {
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                &quot;presets&quot;: [&quot;es2015&quot;],
+                &quot;plugins&quot;: [[&quot;istanbul&quot;], [&quot;transform-runtime&quot;]]
+              }
+            }
           }
-        }
+        ]
       }
-    ]
-  }
-},
-coverageReporter: {
-  type : 'lcov',
-  dir : 'coverage/'
-},
-plugins: [
-  'karma-webpack',
-  'karma-phantomjs-launcher',
-  'karma-coverage',
-  'karma-mocha',
-  'karma-chai',
-  'karma-coveralls'
-],
-})
+    },
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+    },
+    plugins: [
+      'karma-webpack',
+      'karma-phantomjs-launcher',
+      'karma-coverage',
+      'karma-mocha',
+      'karma-chai',
+      'karma-coveralls'
+    ],
+  })
 }
-</code></pre></li>
-</ul>
-
-<p>plugins添加karma-coveralls，reporters添加coveralls，coverageReporter输出配置改为lcov。</p>
-
+</code></pre><p>plugins添加karma-coveralls，reporters添加coveralls，coverageReporter输出配置改为lcov。</p>
 <p>可以参考我自己实现的一个<a href="https://github.com/PLDaily/show-toast">show-toast</a>库</p>
-
 <h3 id="参考">参考</h3>
-
 <p><a href="https://github.com/tmallfe/tmallfe.github.io/issues/37">https://github.com/tmallfe/tmallfe.github.io/issues/37</a>
 <a href="https://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/">https://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/</a>
 <a href="https://github.com/jdavis/tdd-vs-bdd">https://github.com/jdavis/tdd-vs-bdd</a>

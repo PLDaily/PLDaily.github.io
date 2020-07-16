@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://pldaily.github.io/tags/http/</loc>
+    <lastmod>2018-01-26T17:08:24+00:00</lastmod>
+  </url>
   
   <url>
     <loc>https://pldaily.github.io/tags/https/</loc>
@@ -50,11 +55,6 @@
   <url>
     <loc>https://pldaily.github.io/posts/dns-%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2017-09-15T17:08:24+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://pldaily.github.io/tags/http/</loc>
-    <lastmod>2017-09-09T17:08:24+00:00</lastmod>
   </url>
   
   <url>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,15 +13,16 @@
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="通过 hexo &#43; NexT 搭建博客 - PLDaily Blog">
-    <meta name="twitter:description" content=" 一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。 搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
-deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master  1.安装
-npm install hexo-deployer-git --save  2.将deploy 的 type由github改为git
+    <meta name="twitter:description" content="一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。
+搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
+deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master 1.安装
+npm install hexo-deployer-git --save 2.将deploy 的 type由github改为git
 上传代码成功后your_user_name.github.io显示404 主要有一下四种原因： 1.github仓库名必须与你的用户名相同 2.在git中输入指令时没有输入你的用户名与邮箱 3.需要等待十几分钟后网站才能正常运行 4.github给你发的邮箱没有打开验证 我是由于邮箱没有验证造成网页显示404
 主题配置 主题配置可以通过查看官网配置：NexT官网
 如何删除一篇文章 在source目录下先删除该文章，再讲主目录下的db.json删除,使用命令hexo clean清除所有，在用hexo g构建，亲测有效。 注：public文件中的图片等一些在之前文章用到的需要先备份。
 如何在文章中添加图片 1._config.yml 中有 post_asset_folder:true 2.执行
-npm install https://github.com/CodeFalling/hexo-asset-image --save  3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
-![logo](images/bg1.jpg)  ">
+npm install https://github.com/CodeFalling/hexo-asset-image --save 3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
+![logo](images/bg1.jpg) ">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -30,15 +31,16 @@ npm install https://github.com/CodeFalling/hexo-asset-image --save  3.在文章�
     <meta property="og:locale" content="">
     <meta property="og:type" content="article">
     <meta property="og:title" content="通过 hexo &#43; NexT 搭建博客 - PLDaily Blog">
-    <meta property="og:description" content=" 一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。 搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
-deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master  1.安装
-npm install hexo-deployer-git --save  2.将deploy 的 type由github改为git
+    <meta property="og:description" content="一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。
+搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
+deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master 1.安装
+npm install hexo-deployer-git --save 2.将deploy 的 type由github改为git
 上传代码成功后your_user_name.github.io显示404 主要有一下四种原因： 1.github仓库名必须与你的用户名相同 2.在git中输入指令时没有输入你的用户名与邮箱 3.需要等待十几分钟后网站才能正常运行 4.github给你发的邮箱没有打开验证 我是由于邮箱没有验证造成网页显示404
 主题配置 主题配置可以通过查看官网配置：NexT官网
 如何删除一篇文章 在source目录下先删除该文章，再讲主目录下的db.json删除,使用命令hexo clean清除所有，在用hexo g构建，亲测有效。 注：public文件中的图片等一些在之前文章用到的需要先备份。
 如何在文章中添加图片 1._config.yml 中有 post_asset_folder:true 2.执行
-npm install https://github.com/CodeFalling/hexo-asset-image --save  3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
-![logo](images/bg1.jpg)  ">
+npm install https://github.com/CodeFalling/hexo-asset-image --save 3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
+![logo](images/bg1.jpg) ">
     <meta property="og:url" content="https://pldaily.github.io/posts/%E9%80%9A%E8%BF%87-hexo-next-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -46,15 +48,16 @@ npm install https://github.com/CodeFalling/hexo-asset-image --save  3.在文章�
     <title>通过 hexo &#43; NexT 搭建博客 - PLDaily Blog</title>
 
     <meta name="author" content="">
-    <meta name="description" content=" 一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。 搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
-deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master  1.安装
-npm install hexo-deployer-git --save  2.将deploy 的 type由github改为git
+    <meta name="description" content="一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。
+搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
+deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master 1.安装
+npm install hexo-deployer-git --save 2.将deploy 的 type由github改为git
 上传代码成功后your_user_name.github.io显示404 主要有一下四种原因： 1.github仓库名必须与你的用户名相同 2.在git中输入指令时没有输入你的用户名与邮箱 3.需要等待十几分钟后网站才能正常运行 4.github给你发的邮箱没有打开验证 我是由于邮箱没有验证造成网页显示404
 主题配置 主题配置可以通过查看官网配置：NexT官网
 如何删除一篇文章 在source目录下先删除该文章，再讲主目录下的db.json删除,使用命令hexo clean清除所有，在用hexo g构建，亲测有效。 注：public文件中的图片等一些在之前文章用到的需要先备份。
 如何在文章中添加图片 1._config.yml 中有 post_asset_folder:true 2.执行
-npm install https://github.com/CodeFalling/hexo-asset-image --save  3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
-![logo](images/bg1.jpg)  ">
+npm install https://github.com/CodeFalling/hexo-asset-image --save 3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
+![logo](images/bg1.jpg) ">
 
     
     
@@ -103,61 +106,38 @@ npm install https://github.com/CodeFalling/hexo-asset-image --save  3.在文章�
         
         
 <article class="mb-12">
-    
-
-<p>一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。
-<!-- more --></p>
-
+    <p>一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。</p>
+<!-- raw HTML omitted -->
 <h3 id="搭建hexo个人博客无法部署到github">搭建Hexo个人博客无法部署到github</h3>
-
 <p>主要原因是由于__config.yml中deploy的配置
 解决方案：</p>
-
-<pre><code class="language-bash">deploy:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">deploy:
   type: git
   repository: https://github.com/pcd12321/pcd12321.github.io.git
   branch: master
-</code></pre>
-
-<p>1.安装</p>
-
-<pre><code class="language-bash"> npm install hexo-deployer-git --save
-</code></pre>
-
-<p>2.将deploy 的 type由github改为git</p>
-
-<h3 id="上传代码成功后your-user-name-github-io显示404">上传代码成功后your_user_name.github.io显示404</h3>
-
+</code></pre></div><p>1.安装</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> npm install hexo-deployer-git --save
+</code></pre></div><p>2.将deploy 的 type由github改为git</p>
+<h3 id="上传代码成功后your_user_namegithubio显示404">上传代码成功后your_user_name.github.io显示404</h3>
 <p>主要有一下四种原因：
 1.github仓库名必须与你的用户名相同
 2.在git中输入指令时没有输入你的用户名与邮箱
 3.需要等待十几分钟后网站才能正常运行
 4.github给你发的邮箱没有打开验证
 我是由于邮箱没有验证造成网页显示404</p>
-
 <h3 id="主题配置">主题配置</h3>
-
 <p>主题配置可以通过查看官网配置：<a href="http://theme-next.iissnan.com/">NexT官网</a></p>
-
 <h3 id="如何删除一篇文章">如何删除一篇文章</h3>
-
 <p>在source目录下先删除该文章，再讲主目录下的db.json删除,使用命令hexo clean清除所有，在用hexo g构建，亲测有效。
 注：public文件中的图片等一些在之前文章用到的需要先备份。</p>
-
 <h3 id="如何在文章中添加图片">如何在文章中添加图片</h3>
-
 <p>1._config.yml 中有 post_asset_folder:true
 2.执行</p>
-
-<pre><code class="language-bash">npm install https://github.com/CodeFalling/hexo-asset-image --save
-</code></pre>
-
-<p>3.在文章的目录下新建一个文件夹images放入需要的文件
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install https://github.com/CodeFalling/hexo-asset-image --save
+</code></pre></div><p>3.在文章的目录下新建一个文件夹images放入需要的文件
 4.在文章中使用</p>
-
-<pre><code class="language-bash">  ![logo](images/bg1.jpg)
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  !<span style="color:#f92672">[</span>logo<span style="color:#f92672">](</span>images/bg1.jpg<span style="color:#f92672">)</span>
+</code></pre></div>
 
     
 </article>

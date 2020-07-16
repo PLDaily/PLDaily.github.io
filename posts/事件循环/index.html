@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,10 +15,10 @@
     <meta name="twitter:title" content="事件循环 - PLDaily Blog">
     <meta name="twitter:description" content="本文记录对事件循环的理解
 setTimeout与setInterval  定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。 javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。 异步队列中的处理程序会有优先级，鼠标点击处理程序优先级会高于Timer处理程序与Interval处理程序。 举例： 一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。  不同点：
-setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10)  setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
-任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为： 1. 在 macrotask 队列中执行最早的那个 task ，然后移出 2. 执行 microtask 队列中所有可用的任务，然后移出 3. 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)
-macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
-示例 console.log(&#39;start&#39;) const interval = setInterval(() =&amp;gt; { console.log(&#39;setInterval&#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&#39;setTimeout 1&#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&#39;promise 3&#39;) }) .then(() =&amp;gt; { console.log(&#39;promise 4&#39;) }) .">
+setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10) setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
+任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：
+ 在 macrotask 队列中执行最早的那个 task ，然后移出 执行 microtask 队列中所有可用的任务，然后移出 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)  macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
+示例 console.log(&amp;#39;start&amp;#39;) const interval = setInterval(() =&amp;gt; { console.log(&amp;#39;setInterval&amp;#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&amp;#39;setTimeout 1&amp;#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&amp;#39;promise 3&amp;#39;) }) .then(() =&amp;gt; { console.log(&amp;#39;promise 4&amp;#39;) }) .then(() =&amp;gt; { setTimeout(() =&amp;gt; { console.">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -29,10 +29,10 @@ macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()�
     <meta property="og:title" content="事件循环 - PLDaily Blog">
     <meta property="og:description" content="本文记录对事件循环的理解
 setTimeout与setInterval  定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。 javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。 异步队列中的处理程序会有优先级，鼠标点击处理程序优先级会高于Timer处理程序与Interval处理程序。 举例： 一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。  不同点：
-setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10)  setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
-任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为： 1. 在 macrotask 队列中执行最早的那个 task ，然后移出 2. 执行 microtask 队列中所有可用的任务，然后移出 3. 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)
-macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
-示例 console.log(&#39;start&#39;) const interval = setInterval(() =&amp;gt; { console.log(&#39;setInterval&#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&#39;setTimeout 1&#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&#39;promise 3&#39;) }) .then(() =&amp;gt; { console.log(&#39;promise 4&#39;) }) .">
+setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10) setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
+任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：
+ 在 macrotask 队列中执行最早的那个 task ，然后移出 执行 microtask 队列中所有可用的任务，然后移出 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)  macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
+示例 console.log(&amp;#39;start&amp;#39;) const interval = setInterval(() =&amp;gt; { console.log(&amp;#39;setInterval&amp;#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&amp;#39;setTimeout 1&amp;#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&amp;#39;promise 3&amp;#39;) }) .then(() =&amp;gt; { console.log(&amp;#39;promise 4&amp;#39;) }) .then(() =&amp;gt; { setTimeout(() =&amp;gt; { console.">
     <meta property="og:url" content="https://pldaily.github.io/posts/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -42,10 +42,10 @@ macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()�
     <meta name="author" content="">
     <meta name="description" content="本文记录对事件循环的理解
 setTimeout与setInterval  定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。 javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。 异步队列中的处理程序会有优先级，鼠标点击处理程序优先级会高于Timer处理程序与Interval处理程序。 举例： 一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。  不同点：
-setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10)  setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
-任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为： 1. 在 macrotask 队列中执行最早的那个 task ，然后移出 2. 执行 microtask 队列中所有可用的任务，然后移出 3. 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)
-macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
-示例 console.log(&#39;start&#39;) const interval = setInterval(() =&amp;gt; { console.log(&#39;setInterval&#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&#39;setTimeout 1&#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&#39;promise 3&#39;) }) .then(() =&amp;gt; { console.log(&#39;promise 4&#39;) }) .">
+setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10) setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
+任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：
+ 在 macrotask 队列中执行最早的那个 task ，然后移出 执行 microtask 队列中所有可用的任务，然后移出 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)  macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
+示例 console.log(&amp;#39;start&amp;#39;) const interval = setInterval(() =&amp;gt; { console.log(&amp;#39;setInterval&amp;#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&amp;#39;setTimeout 1&amp;#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&amp;#39;promise 3&amp;#39;) }) .then(() =&amp;gt; { console.log(&amp;#39;promise 4&amp;#39;) }) .then(() =&amp;gt; { setTimeout(() =&amp;gt; { console.">
 
     
     
@@ -90,14 +90,9 @@ macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()�
         
         
 <article class="mb-12">
-    
-
-<p>本文记录对事件循环的理解</p>
-
-<!-- more -->
-
+    <p>本文记录对事件循环的理解</p>
+<!-- raw HTML omitted -->
 <h2 id="settimeout与setinterval">setTimeout与setInterval</h2>
-
 <ul>
 <li>定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。</li>
 <li>javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。</li>
@@ -105,74 +100,65 @@ macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()�
 举例：
 一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。</li>
 </ul>
-
 <p>不同点：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span>() {
+	<span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">repeatMe</span>, <span style="color:#ae81ff">10</span>);
+}, <span style="color:#ae81ff">10</span>);
 
-<pre><code class="language-javascript">setTimeout(function() {
-	setTimeout(repeatMe, 10);
-}, 10);
-
-setInterval(function() {
+<span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">function</span>() {
 	
-}, 10)
-</code></pre>
-
-<p>setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()，
+}, <span style="color:#ae81ff">10</span>)
+</code></pre></div><p>setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()，
 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。</p>
-
 <h2 id="任务队列macrotask与microtask">任务队列macrotask与microtask</h2>
-
-<p>事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：
-1. 在 macrotask 队列中执行最早的那个 task ，然后移出
-2. 执行 microtask 队列中所有可用的任务，然后移出
-3. 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)</p>
-
+<p>事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：</p>
+<ol>
+<li>在 macrotask 队列中执行最早的那个 task ，然后移出</li>
+<li>执行 microtask 队列中所有可用的任务，然后移出</li>
+<li>下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)</li>
+</ol>
 <p>macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。</p>
-
 <h2 id="示例">示例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;start&#39;</span>)
 
-<pre><code class="language-javascript">console.log('start')
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">interval</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setInterval</span>(() =&gt; {  
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;setInterval&#39;</span>)
+}, <span style="color:#ae81ff">0</span>)
 
-const interval = setInterval(() =&gt; {  
-  console.log('setInterval')
-}, 0)
-
-setTimeout(() =&gt; {  
-  console.log('setTimeout 1')
-  Promise.resolve()
-      .then(() =&gt; {
-        console.log('promise 3')
+<span style="color:#a6e22e">setTimeout</span>(() =&gt; {  
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;setTimeout 1&#39;</span>)
+  Promise.<span style="color:#a6e22e">resolve</span>()
+      .<span style="color:#a6e22e">then</span>(() =&gt; {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;promise 3&#39;</span>)
       })
-      .then(() =&gt; {
-        console.log('promise 4')
+      .<span style="color:#a6e22e">then</span>(() =&gt; {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;promise 4&#39;</span>)
       })
-      .then(() =&gt; {
-        setTimeout(() =&gt; {
-          console.log('setTimeout 2')
-          Promise.resolve()
-              .then(() =&gt; {
-                console.log('promise 5')
+      .<span style="color:#a6e22e">then</span>(() =&gt; {
+        <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;setTimeout 2&#39;</span>)
+          Promise.<span style="color:#a6e22e">resolve</span>()
+              .<span style="color:#a6e22e">then</span>(() =&gt; {
+                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;promise 5&#39;</span>)
               })
-              .then(() =&gt; {
-                console.log('promise 6')
+              .<span style="color:#a6e22e">then</span>(() =&gt; {
+                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;promise 6&#39;</span>)
               })
-              .then(() =&gt; {
-                clearInterval(interval)
+              .<span style="color:#a6e22e">then</span>(() =&gt; {
+                <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">interval</span>)
               })
-        }, 0)
+        }, <span style="color:#ae81ff">0</span>)
       })
-}, 0)
+}, <span style="color:#ae81ff">0</span>)
 
-Promise.resolve()
-    .then(() =&gt; {  
-        console.log('promise 1')
+Promise.<span style="color:#a6e22e">resolve</span>()
+    .<span style="color:#a6e22e">then</span>(() =&gt; {  
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;promise 1&#39;</span>)
     })
-    .then(() =&gt; {
-        console.log('promise 2')
+    .<span style="color:#a6e22e">then</span>(() =&gt; {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;promise 2&#39;</span>)
     })
-</code></pre>
-
-<p>以上代码的输出结果？
+</code></pre></div><p>以上代码的输出结果？
 首次执行setTimeout、setTimeout，作为一个macrotask，将其回调函数放入自己的队列之中。在下一次循环中执行回调
 其次会执行microtask。
 重复以上步骤，输出：

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,8 +13,9 @@
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="页面自适应布局 - PLDaily Blog">
-    <meta name="twitter:description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。 俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
-2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8&#43;）使#right的宽度为原来的100%。">
+    <meta name="twitter:description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。
+俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
+2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8&#43;）使#right的宽度为原来的100%。">
     <meta name="twitter:site" content="https://pldaily.github.io/">
     <meta name="twitter:creator" content="">
     <meta name="twitter:image" content="https://pldaily.github.io/">
@@ -23,8 +24,9 @@
     <meta property="og:locale" content="">
     <meta property="og:type" content="article">
     <meta property="og:title" content="页面自适应布局 - PLDaily Blog">
-    <meta property="og:description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。 俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
-2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8&#43;）使#right的宽度为原来的100%。">
+    <meta property="og:description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。
+俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
+2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8&#43;）使#right的宽度为原来的100%。">
     <meta property="og:url" content="https://pldaily.github.io/posts/%E9%A1%B5%E9%9D%A2%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">
     <meta property="og:site_name" content="PLDaily Blog">
     <meta property="og:image" content="https://pldaily.github.io/">
@@ -32,8 +34,9 @@
     <title>页面自适应布局 - PLDaily Blog</title>
 
     <meta name="author" content="">
-    <meta name="description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。 俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
-2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8&#43;）使#right的宽度为原来的100%。">
+    <meta name="description" content="关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。
+俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
+2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8&#43;）使#right的宽度为原来的100%。">
 
     
     
@@ -78,281 +81,249 @@
         
         
 <article class="mb-12">
-    
-
-<p>关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。
-<!-- more--></p>
-
-<h2 id="俩列布局-左边固定-右边自适应">俩列布局: 左边固定，右边自适应</h2>
-
-<h3 id="1-左边设置为浮动-右边不设浮动与宽度">1.左边设置为浮动，右边不设浮动与宽度</h3>
-
-<pre><code class="language-python">* {
-	padding: 0;
-	margin: 0;
+    <p>关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。</p>
+<!-- raw HTML omitted -->
+<h2 id="俩列布局-左边固定右边自适应">俩列布局: 左边固定，右边自适应</h2>
+<h3 id="1左边设置为浮动右边不设浮动与宽度">1.左边设置为浮动，右边不设浮动与宽度</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">*</span> {
+	padding: <span style="color:#ae81ff">0</span>;
+	margin: <span style="color:#ae81ff">0</span>;
 }
-#main {
-	height: 800px;
-	background-color: yellow;
+<span style="color:#75715e">#main {</span>
+	height: <span style="color:#ae81ff">800</span>px;
+	background<span style="color:#f92672">-</span>color: yellow;
 }
-#left {
+<span style="color:#75715e">#left {</span>
 	float: left;
-	width: 220px;
-	height: 500px;
-	background-color: red;
+	width: <span style="color:#ae81ff">220</span>px;
+	height: <span style="color:#ae81ff">500</span>px;
+	background<span style="color:#f92672">-</span>color: red;
 }
-#right {
-	padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */
-	background-color: green;
-	height: 500px;
+<span style="color:#75715e">#right {</span>
+	padding<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">220</span>px;<span style="color:#f92672">/*</span> margin<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">220</span>px;border<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">220</span>px solid; <span style="color:#f92672">*/</span>
+	background<span style="color:#f92672">-</span>color: green;
+	height: <span style="color:#ae81ff">500</span>px;
 }
-&lt;div id=&quot;main&quot;&gt;
-	&lt;div id=&quot;left&quot;&gt;&lt;/div&gt;
-	&lt;div id=&quot;right&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>原理:
+<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>原理:
 在元素不设宽度的情况下：
 若元素为普通流中元素，元素宽度等于父元素宽度;
 若元素不在文档流中,元素宽度等于内容宽度;</p>
-
-<h3 id="2-左边设置为浮动-右边不设浮动但设置宽度为100">2.左边设置为浮动，右边不设浮动但设置宽度为100%</h3>
-
-<pre><code class="language-python">* {
-	padding: 0;
-	margin: 0;
+<h3 id="2左边设置为浮动右边不设浮动但设置宽度为100">2.左边设置为浮动，右边不设浮动但设置宽度为100%</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">*</span> {
+	padding: <span style="color:#ae81ff">0</span>;
+	margin: <span style="color:#ae81ff">0</span>;
 }
-#main {
-	height: 800px;
-	background-color: yellow;
+<span style="color:#75715e">#main {</span>
+	height: <span style="color:#ae81ff">800</span>px;
+	background<span style="color:#f92672">-</span>color: yellow;
 }
-#left {
+<span style="color:#75715e">#left {</span>
 	float: left;
-	width: 220px;
-	height: 500px;
-	background-color: red;
+	width: <span style="color:#ae81ff">220</span>px;
+	height: <span style="color:#ae81ff">500</span>px;
+	background<span style="color:#f92672">-</span>color: red;
 }
-#right {
-	width: 100%;
-	padding-left: 220px;
-	box-sizing: border-box; 
-	/* border-left: 220px solid;
-	box-sizing: border-box; */
-	background-color: green;
-	height: 500px;
+<span style="color:#75715e">#right {</span>
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+	padding<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">220</span>px;
+	box<span style="color:#f92672">-</span>sizing: border<span style="color:#f92672">-</span>box; 
+	<span style="color:#f92672">/*</span> border<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">220</span>px solid;
+	box<span style="color:#f92672">-</span>sizing: border<span style="color:#f92672">-</span>box; <span style="color:#f92672">*/</span>
+	background<span style="color:#f92672">-</span>color: green;
+	height: <span style="color:#ae81ff">500</span>px;
 }
-&lt;div id=&quot;main&quot;&gt;
-	&lt;div id=&quot;left&quot;&gt;&lt;/div&gt;
-	&lt;div id=&quot;right&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>原理:
+<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>原理:
 在元素宽度为100%的情况下：
 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100%
 设置box-sizing（兼容性IE8+）使#right的宽度为原来的100%。</p>
-
-<h3 id="3-俩边都设置浮动时">3.俩边都设置浮动时</h3>
-
-<pre><code class="language-python">* {
-	padding: 0;
-	margin: 0;
+<h3 id="3俩边都设置浮动时">3.俩边都设置浮动时</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">*</span> {
+	padding: <span style="color:#ae81ff">0</span>;
+	margin: <span style="color:#ae81ff">0</span>;
 }
-#main {
-	height: 800px;
-	background-color: yellow;
+<span style="color:#75715e">#main {</span>
+	height: <span style="color:#ae81ff">800</span>px;
+	background<span style="color:#f92672">-</span>color: yellow;
 	overflow: hidden;
-	width: 100%;
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
 }
-#left {
+<span style="color:#75715e">#left {</span>
 	float: left;
-	width: 200px;
-	background-color: red;
-	height: 300px;
-	margin-right: -200px;
+	width: <span style="color:#ae81ff">200</span>px;
+	background<span style="color:#f92672">-</span>color: red;
+	height: <span style="color:#ae81ff">300</span>px;
+	margin<span style="color:#f92672">-</span>right: <span style="color:#f92672">-</span><span style="color:#ae81ff">200</span>px;
 }
-#right {
+<span style="color:#75715e">#right {</span>
 	float: left;
-	width: 100%;
-	height: 300px;
-	border: 1px solid;
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+	height: <span style="color:#ae81ff">300</span>px;
+	border: <span style="color:#ae81ff">1</span>px solid;
 }
-#rightContent {
-	margin-left: 200px;
-	height: 300px;
-	background-color: white;
+<span style="color:#75715e">#rightContent {</span>
+	margin<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">200</span>px;
+	height: <span style="color:#ae81ff">300</span>px;
+	background<span style="color:#f92672">-</span>color: white;
 }
 
-&lt;div id=&quot;main&quot;&gt;
-	&lt;div id=&quot;left&quot;&gt;&lt;/div&gt;
-	&lt;div id=&quot;right&quot;&gt;
-		&lt;div id=&quot;rightContent&quot;&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>原理:
+<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rightContent&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>原理:
 1.首先将#left设置固定宽度并向左浮动，#right设置width: 100%; 并向左浮动。由于页面宽度限制#left与#right会处于俩行。
 2.将#left设置css属性margin-right: -#left的宽度; 让其不占据原来的位置，此时的#left与#right处于同一行，但#right会覆盖掉#left。
 3.设置#rightContent的margin-left: #left的宽度px。</p>
-
-<h2 id="三列布局-左边右边固定-中间自适应">三列布局: 左边右边固定，中间自适应</h2>
-
-<h3 id="1-基本的布局方式">1.基本的布局方式</h3>
-
-<pre><code class="language-python">* {
-	padding: 0;
-	margin: 0;
+<h2 id="三列布局-左边右边固定中间自适应">三列布局: 左边右边固定，中间自适应</h2>
+<h3 id="1基本的布局方式">1.基本的布局方式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">*</span> {
+	padding: <span style="color:#ae81ff">0</span>;
+	margin: <span style="color:#ae81ff">0</span>;
 }
-#main {
-	width: 100%;
-	background-color: yellow;
+<span style="color:#75715e">#main {</span>
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+	background<span style="color:#f92672">-</span>color: yellow;
 	overflow: hidden;
-	height: 500px;
+	height: <span style="color:#ae81ff">500</span>px;
 }
-#left {
+<span style="color:#75715e">#left {</span>
 	float: left;
-	width: 150px;
-	background-color: red;
-	height: 300px;
-	margin-right: -150px;
+	width: <span style="color:#ae81ff">150</span>px;
+	background<span style="color:#f92672">-</span>color: red;
+	height: <span style="color:#ae81ff">300</span>px;
+	margin<span style="color:#f92672">-</span>right: <span style="color:#f92672">-</span><span style="color:#ae81ff">150</span>px;
 }
-#right {
+<span style="color:#75715e">#right {</span>
 	float: left;
-	width: 200px;
-	background-color: green;
-	height: 300px;
-	margin-left: -200px;
+	width: <span style="color:#ae81ff">200</span>px;
+	background<span style="color:#f92672">-</span>color: green;
+	height: <span style="color:#ae81ff">300</span>px;
+	margin<span style="color:#f92672">-</span>left: <span style="color:#f92672">-</span><span style="color:#ae81ff">200</span>px;
 }
-#center {
+<span style="color:#75715e">#center {</span>
 	float: left;
-	height: 300px;
-	width: 100%;
+	height: <span style="color:#ae81ff">300</span>px;
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
 }
-#centerContent {
-	height: 300px;
-	margin: 0 200px 0 150px;
-	background-color: white;
+<span style="color:#75715e">#centerContent {</span>
+	height: <span style="color:#ae81ff">300</span>px;
+	margin: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">200</span>px <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">150</span>px;
+	background<span style="color:#f92672">-</span>color: white;
 }
 
-&lt;div id=&quot;main&quot;&gt;
-	&lt;div id=&quot;left&quot;&gt;&lt;/div&gt;
-	&lt;div id=&quot;center&quot;&gt;
-		&lt;div id=&quot;centerContent&quot;&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div id=&quot;right&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>原理:
+<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;centerContent&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>原理:
 原理跟俩列布局的俩边都浮动的自适应相同
 右边的定位使用了marin-left: -#left的宽度值; 原理与#right相同。</p>
-
-<h3 id="2-定位的方式布局">2.定位的方式布局</h3>
-
+<h3 id="2定位的方式布局">2.定位的方式布局</h3>
 <p>该方式简单，不做叙述。该方法不能实现等高布局，在设置定位的时候父元素要有高度，不能实现高度自适应。</p>
-
-<h2 id="三列布局-左边中间固定-右边自适应">三列布局: 左边中间固定，右边自适应</h2>
-
-<h3 id="1-基本的布局方式-1">1.基本的布局方式</h3>
-
-<pre><code class="language-python">* {
-	padding: 0;
-	margin: 0;
+<h2 id="三列布局-左边中间固定右边自适应">三列布局: 左边中间固定，右边自适应</h2>
+<h3 id="1基本的布局方式-1">1.基本的布局方式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">*</span> {
+	padding: <span style="color:#ae81ff">0</span>;
+	margin: <span style="color:#ae81ff">0</span>;
 }
-#main {
-	width: 100%;
-	background-color: yellow;
+<span style="color:#75715e">#main {</span>
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+	background<span style="color:#f92672">-</span>color: yellow;
 	overflow: hidden;
 	position: relative;
-	height: 500px;
+	height: <span style="color:#ae81ff">500</span>px;
 }
-#left {
-	width: 150px;
-	background-color: red;
-	height: 300px;
+<span style="color:#75715e">#left {</span>
+	width: <span style="color:#ae81ff">150</span>px;
+	background<span style="color:#f92672">-</span>color: red;
+	height: <span style="color:#ae81ff">300</span>px;
 	float: left;
-	margin-right: -150px;
+	margin<span style="color:#f92672">-</span>right: <span style="color:#f92672">-</span><span style="color:#ae81ff">150</span>px;
 }
-#center {
-	width: 200px;
-	background-color: green;
-	height: 300px;
+<span style="color:#75715e">#center {</span>
+	width: <span style="color:#ae81ff">200</span>px;
+	background<span style="color:#f92672">-</span>color: green;
+	height: <span style="color:#ae81ff">300</span>px;
 	float: left;
 	position: relative;
-	left: 150px; 
+	left: <span style="color:#ae81ff">150</span>px; 
 }
-#right {
-	width: 100%;
+<span style="color:#75715e">#right {</span>
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
 	float: left;
-	height: 300px;
+	height: <span style="color:#ae81ff">300</span>px;
 }
-#rightContent {
-	background-color: white;
-	margin-left: 350px;
-	height: 300px;
+<span style="color:#75715e">#rightContent {</span>
+	background<span style="color:#f92672">-</span>color: white;
+	margin<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">350</span>px;
+	height: <span style="color:#ae81ff">300</span>px;
 }
-&lt;div id=&quot;main&quot;&gt;
-	&lt;div id=&quot;left&quot;&gt;&lt;/div&gt;
-	&lt;div id=&quot;center&quot;&gt;
-	&lt;/div&gt;
-	&lt;div id=&quot;right&quot;&gt;
-		&lt;div id=&quot;rightContent&quot;&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>原理:
+<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">&gt;&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rightContent&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>原理:
 原理跟俩列布局的俩边都浮动的自适应相同
 但中间块#center的布局使用了绝对定位的方式</p>
-
 <h2 id="等高布局">等高布局</h2>
-
-<h3 id="1-基本的布局方式-2">1.基本的布局方式</h3>
-
-<pre><code class="language-python">* {
-	padding: 0;
-	margin: 0;
+<h3 id="1基本的布局方式-2">1.基本的布局方式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">*</span> {
+	padding: <span style="color:#ae81ff">0</span>;
+	margin: <span style="color:#ae81ff">0</span>;
 }
-#main {
-	width: 100%;
-	background-color: yellow;
+<span style="color:#75715e">#main {</span>
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+	background<span style="color:#f92672">-</span>color: yellow;
 	overflow: hidden;
 }
-#left {
+<span style="color:#75715e">#left {</span>
 	float: left;
-	width: 150px;
-	background-color: red;
-	padding-bottom: 9999px;
-	margin-bottom: -9999px;
-	margin-right: -150px;
+	width: <span style="color:#ae81ff">150</span>px;
+	background<span style="color:#f92672">-</span>color: red;
+	padding<span style="color:#f92672">-</span>bottom: <span style="color:#ae81ff">9999</span>px;
+	margin<span style="color:#f92672">-</span>bottom: <span style="color:#f92672">-</span><span style="color:#ae81ff">9999</span>px;
+	margin<span style="color:#f92672">-</span>right: <span style="color:#f92672">-</span><span style="color:#ae81ff">150</span>px;
 }
-#right {
+<span style="color:#75715e">#right {</span>
 	float: left;
-	width: 100%;
-	padding-bottom: 9999px;
-	margin-bottom: -9999px;
+	width: <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+	padding<span style="color:#f92672">-</span>bottom: <span style="color:#ae81ff">9999</span>px;
+	margin<span style="color:#f92672">-</span>bottom: <span style="color:#f92672">-</span><span style="color:#ae81ff">9999</span>px;
 }
-#rightContent {
-	margin-left: 150px;
-	background-color: green;
+<span style="color:#75715e">#rightContent {</span>
+	margin<span style="color:#f92672">-</span>left: <span style="color:#ae81ff">150</span>px;
+	background<span style="color:#f92672">-</span>color: green;
 }
 
-&lt;div id=&quot;main&quot;&gt;
-	&lt;div id=&quot;left&quot;&gt;aaaa&lt;/div&gt;
-	&lt;div id=&quot;right&quot;&gt;
-		&lt;div id=&quot;rightContent&quot;&gt;
-			aaaa&lt;br&gt;&lt;br&gt;&lt;br&gt;aaaa
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>原理:
+<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span><span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">&gt;</span>aaaa<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span><span style="color:#f92672">&gt;</span>
+		<span style="color:#f92672">&lt;</span>div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rightContent&#34;</span><span style="color:#f92672">&gt;</span>
+			aaaa<span style="color:#f92672">&lt;</span>br<span style="color:#f92672">&gt;&lt;</span>br<span style="color:#f92672">&gt;&lt;</span>br<span style="color:#f92672">&gt;</span>aaaa
+		<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+	<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;/</span>div<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>原理:
 父元素#main不设高度设置overflow: hidden;，#left与#right设置css属性padding-bottom: 9999px; margin-bottom: -9999px;以上示例以俩列布局俩边均浮动为例，其余俩种俩列自适应方式及三列自适应均可实现。
 使用定位的布局方式不可实现等高布局，使用定位布局的时候需要先给父级添加一个高度值</p>
 
