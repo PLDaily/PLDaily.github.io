@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="DNS 协议 - PLDaily Blog">
+    <meta name="twitter:description" content=" DNS是一种能进行主机名到IP地址转化的目录服务。所有的DNS请求和回答报文使用UDP数据经端口53发送。 DNS服务器类型  根DNS服务器 顶级域（TLD）DNS服务器 权威DNS服务器  DNS查询过程  主机向本地DNS发送DNS查询报文
+ 本地DNS服务器判断是否有主机的缓存（DNS服务器会缓存主机名/IP地址对，通常会缓存俩天），有则直接返回IP地址
+ 本地无DNS缓存则请求根DNS服务器，根DNS服务器返回主机的顶级域服务器（TLD）的IP地址列表
+ 请求TDL服务器返回主机的权威DNS服务器，如果TDL不知道主机的权威DNS服务器则还需通过向中间DNS服务器发送请求获取权威DNS服务器
+  上述所示一次DNS查询需要发送8份报文，4份查询报文和4份回答报文，如果需要经过中间服务器则需发送10份报文 ">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="DNS 协议 - PLDaily Blog">
+    <meta property="og:description" content=" DNS是一种能进行主机名到IP地址转化的目录服务。所有的DNS请求和回答报文使用UDP数据经端口53发送。 DNS服务器类型  根DNS服务器 顶级域（TLD）DNS服务器 权威DNS服务器  DNS查询过程  主机向本地DNS发送DNS查询报文
+ 本地DNS服务器判断是否有主机的缓存（DNS服务器会缓存主机名/IP地址对，通常会缓存俩天），有则直接返回IP地址
+ 本地无DNS缓存则请求根DNS服务器，根DNS服务器返回主机的顶级域服务器（TLD）的IP地址列表
+ 请求TDL服务器返回主机的权威DNS服务器，如果TDL不知道主机的权威DNS服务器则还需通过向中间DNS服务器发送请求获取权威DNS服务器
+  上述所示一次DNS查询需要发送8份报文，4份查询报文和4份回答报文，如果需要经过中间服务器则需发送10份报文 ">
+    <meta property="og:url" content="https://pldaily.github.io/posts/dns-%E5%8D%8F%E8%AE%AE/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>DNS 协议 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content=" DNS是一种能进行主机名到IP地址转化的目录服务。所有的DNS请求和回答报文使用UDP数据经端口53发送。 DNS服务器类型  根DNS服务器 顶级域（TLD）DNS服务器 权威DNS服务器  DNS查询过程  主机向本地DNS发送DNS查询报文
+ 本地DNS服务器判断是否有主机的缓存（DNS服务器会缓存主机名/IP地址对，通常会缓存俩天），有则直接返回IP地址
+ 本地无DNS缓存则请求根DNS服务器，根DNS服务器返回主机的顶级域服务器（TLD）的IP地址列表
+ 请求TDL服务器返回主机的权威DNS服务器，如果TDL不知道主机的权威DNS服务器则还需通过向中间DNS服务器发送请求获取权威DNS服务器
+  上述所示一次DNS查询需要发送8份报文，4份查询报文和4份回答报文，如果需要经过中间服务器则需发送10份报文 ">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">DNS 协议</h1>
+    <time datetime="2017-09-15 17:08:24 UTC">15 Sep 2017</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/dns">DNS</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>DNS是一种能进行主机名到IP地址转化的目录服务。所有的DNS请求和回答报文使用UDP数据经端口53发送。
+<!-- more --></p>
+
+<h2 id="dns服务器类型">DNS服务器类型</h2>
+
+<ul>
+<li>根DNS服务器</li>
+<li>顶级域（TLD）DNS服务器</li>
+<li>权威DNS服务器</li>
+</ul>
+
+<h2 id="dns查询过程">DNS查询过程</h2>
+
+<ul>
+<li><p>主机向本地DNS发送DNS查询报文</p></li>
+
+<li><p>本地DNS服务器判断是否有主机的缓存（DNS服务器会缓存主机名/IP地址对，通常会缓存俩天），有则直接返回IP地址</p></li>
+
+<li><p>本地无DNS缓存则请求根DNS服务器，根DNS服务器返回主机的顶级域服务器（TLD）的IP地址列表</p></li>
+
+<li><p>请求TDL服务器返回主机的权威DNS服务器，如果TDL不知道主机的权威DNS服务器则还需通过向中间DNS服务器发送请求获取权威DNS服务器</p></li>
+</ul>
+
+<p>上述所示一次DNS查询需要发送8份报文，4份查询报文和4份回答报文，如果需要经过中间服务器则需发送10份报文
+<img width="420" alt="2017-09-20 10 14 38" src="https://user-images.githubusercontent.com/11615211/30648830-8a5c24f8-9e51-11e7-9315-fb93e87c90ac.png"></p>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

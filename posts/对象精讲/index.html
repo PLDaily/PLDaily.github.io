@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="对象精讲 - PLDaily Blog">
+    <meta name="twitter:description" content="在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。 构造函数 创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。
+function Person(name) { this.name = name; this.sayName = function() { console.log(this.name); } } var person1 = new Person(&#39;aaa&#39;); var person2 = new Person(&#39;bbb&#39;); console.log(person1.sayName == person2.sayName);//false   所以我们需要使用原型共享一些属性与方法
+ 原型 原型的共享 javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。
+function Person(name) {} Person.prototype.name = &amp;quot;aaa&amp;quot;; Person.prototype.sayName = function() { console.log(this.name); } var person1 = new Person(); var person2 = new Person(); console.log(person1.sayName == person2.sayName);//true  实例，原型，构造函数三者之间的关系 每个函数都有一个原型属性，这个属性指向函数的原型对象 proto存在于实例与构造函数的原型对象之间 原型对象中的constructor属性指向构造函数 构造函数中的this指向实例
+new的实现 通过以上的属性，我们可以直接实现new操作符">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="对象精讲 - PLDaily Blog">
+    <meta property="og:description" content="在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。 构造函数 创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。
+function Person(name) { this.name = name; this.sayName = function() { console.log(this.name); } } var person1 = new Person(&#39;aaa&#39;); var person2 = new Person(&#39;bbb&#39;); console.log(person1.sayName == person2.sayName);//false   所以我们需要使用原型共享一些属性与方法
+ 原型 原型的共享 javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。
+function Person(name) {} Person.prototype.name = &amp;quot;aaa&amp;quot;; Person.prototype.sayName = function() { console.log(this.name); } var person1 = new Person(); var person2 = new Person(); console.log(person1.sayName == person2.sayName);//true  实例，原型，构造函数三者之间的关系 每个函数都有一个原型属性，这个属性指向函数的原型对象 proto存在于实例与构造函数的原型对象之间 原型对象中的constructor属性指向构造函数 构造函数中的this指向实例
+new的实现 通过以上的属性，我们可以直接实现new操作符">
+    <meta property="og:url" content="https://pldaily.github.io/posts/%E5%AF%B9%E8%B1%A1%E7%B2%BE%E8%AE%B2/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>对象精讲 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。 构造函数 创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。
+function Person(name) { this.name = name; this.sayName = function() { console.log(this.name); } } var person1 = new Person(&#39;aaa&#39;); var person2 = new Person(&#39;bbb&#39;); console.log(person1.sayName == person2.sayName);//false   所以我们需要使用原型共享一些属性与方法
+ 原型 原型的共享 javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。
+function Person(name) {} Person.prototype.name = &amp;quot;aaa&amp;quot;; Person.prototype.sayName = function() { console.log(this.name); } var person1 = new Person(); var person2 = new Person(); console.log(person1.sayName == person2.sayName);//true  实例，原型，构造函数三者之间的关系 每个函数都有一个原型属性，这个属性指向函数的原型对象 proto存在于实例与构造函数的原型对象之间 原型对象中的constructor属性指向构造函数 构造函数中的this指向实例
+new的实现 通过以上的属性，我们可以直接实现new操作符">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">对象精讲</h1>
+    <time datetime="2016-10-29 15:36:03 UTC">29 Oct 2016</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。
+<!-- more --></p>
+
+<h2 id="构造函数">构造函数</h2>
+
+<p>创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。</p>
+
+<pre><code class="language-python">    function Person(name) {
+        this.name = name;
+        this.sayName = function() {
+            console.log(this.name);
+        }
+    }
+    var person1 = new Person('aaa');
+    var person2 = new Person('bbb');
+    console.log(person1.sayName == person2.sayName);//false
+</code></pre>
+
+<blockquote>
+<p>所以我们需要使用原型共享一些属性与方法</p>
+</blockquote>
+
+<h2 id="原型">原型</h2>
+
+<h3 id="原型的共享">原型的共享</h3>
+
+<p>javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。</p>
+
+<pre><code class="language-python">    function Person(name) {}
+
+    Person.prototype.name = &quot;aaa&quot;;
+    Person.prototype.sayName = function() {
+        console.log(this.name);
+    }
+
+    var person1 = new Person();
+    var person2 = new Person();
+    console.log(person1.sayName == person2.sayName);//true
+</code></pre>
+
+<h3 id="实例-原型-构造函数三者之间的关系">实例，原型，构造函数三者之间的关系</h3>
+
+<p>每个函数都有一个原型属性，这个属性指向函数的原型对象
+ <strong>proto</strong>存在于实例与构造函数的原型对象之间
+原型对象中的constructor属性指向构造函数
+构造函数中的this指向实例</p>
+
+<h3 id="new的实现">new的实现</h3>
+
+<p>通过以上的属性，我们可以直接实现new操作符</p>
+
+<pre><code class="language-python">    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.sayName = function() {
+        console.log(this.name);
+    }
+    var person1 = {};
+    person1.__proto__ = Person.prototype;
+    Person.call(person1, &quot;aaa&quot;);
+    person1.sayName();//aaa
+</code></pre>
+
+<h3 id="实例读取属性与方法的顺序">实例读取属性与方法的顺序</h3>
+
+<p>当代码读取某个对象的某个属性时，从对象本身开始，到构造函数内部，再到原型去获取。相同的属性会屏蔽其他相同的属性，其他相同的属性并不会消失。</p>
+
+<pre><code class="language-python">    function Person() {
+        this.name = &quot;aaa&quot;;
+    }
+    Person.prototype.name = &quot;bbb&quot;;
+
+    var person1 = new Person();
+
+    person1.name = &quot;ccc&quot;;
+
+    console.log(person1.name);//&quot;ccc&quot;
+</code></pre>
+
+<h3 id="重写原型对象-通过对象字面量来重写整个原型对象">重写原型对象（通过对象字面量来重写整个原型对象）</h3>
+
+<h4 id="一-实例未创建前">一、实例未创建前</h4>
+
+<p>通过对象字面来重写原型对象会将原来的原型对象覆盖，导致原来的原型对象的constructor指向构造函数被新的原型对象所替换，指向了Object。所以需要在对象字面量中添加constructor属性指向构造函数。</p>
+
+<h4 id="constructor的指向">constructor的指向</h4>
+
+<pre><code class="language-javascript">function abc() {
+    this.aaa = 1;
+}
+abc.prototype.bbb = 2;
+abc.prototype = {
+    constructor: abc,
+    &quot;ccc&quot;: 3,
+    &quot;ddd&quot;: 4
+}
+var a = new abc();
+console.log(a.constructor);//abc函数
+console.log(abc.prototype.constructor);//abc函数
+</code></pre>
+
+<h4 id="二-实例创建后">二、实例创建后</h4>
+
+<p>通过对象字面来重写原型对象，该原型对象将不起作用。</p>
+
+<h3 id="重写原型对象代码示例">重写原型对象代码示例</h3>
+
+<pre><code class="language-python">    function abc() {
+        this.aaa = 1;
+    }
+    abc.prototype.bbb = 2;
+    abc.prototype = {
+        constructor: abc,
+        &quot;ccc&quot;: 3,
+        &quot;ddd&quot;: 4
+    }
+    var a = new abc();
+
+    abc.prototype.eee = 5;//创建实例后不是重写，相当于为重写后的原型对象添加新的属性与方法
+    console.log(a.aaa);//1
+    console.log(a.bbb);//undefined
+    console.log(a.ccc);//3
+    console.log(a.ddd);//4
+    console.log(a.eee);//5
+
+</code></pre>
+
+<pre><code class="language-python">    function abc() {
+        this.aaa = 1;
+    }
+    abc.prototype.bbb = 2;
+    var a = new abc();
+
+    abc.prototype.ccc = 3;//创建实例后不是重写，相当于为原来的原型对象添加新的属性与方法
+    console.log(a.aaa);//1
+    console.log(a.bbb);//2
+    console.log(a.ccc);//3
+</code></pre>
+
+<pre><code class="language-python">    function abc() {
+        this.aaa = 1;
+    }
+    abc.prototype.bbb = 2;
+    
+    var a = new abc();
+
+    abc.prototype = {//创建实例后重写原型，不起作用
+        constructor: abc,
+        &quot;ccc&quot;: 3,
+        &quot;ddd&quot;: 4
+    }
+    abc.prototype.eee = 5;
+    console.log(a.aaa);//1
+    console.log(a.bbb);//2
+    console.log(a.ccc);//undefined
+    console.log(a.ddd);//undefined
+    console.log(a.eee);//undefined
+</code></pre>
+
+<h3 id="原型对象的问题">原型对象的问题</h3>
+
+<pre><code class="language-python">    function Person() {}
+    Person.prototype = {
+        constructor: Person,
+        arrs: [1, 2]
+    }
+    var person1 = new Person();
+    person1.arrs.push(3);
+    var person2 = new Person();
+    console.log(person2.arrs);//[1, 2, 3]
+</code></pre>
+
+<blockquote>
+<p>原型对象共享的本质使新创建的person2获取的属性发放所person1影响。</p>
+</blockquote>
+
+<h2 id="模式">模式</h2>
+
+<p>一、组合使用构造函数模式和原型模式
+使用最广的模式，结合了构造函数与原型的优缺点。不过多复述。
+二、动态原型模式
+独立的构造函数和原型，动态原型模式将他们分装在一个构造函数中。
+三、寄生构造函数模式
+为某一个对象添加额外的方法
+四、稳妥构造函数模式
+定义私有的变量和属性，只能通过函数内部的方法去获取。</p>
+
+<h2 id="继承">继承</h2>
+
+<h3 id="组合继承">组合继承</h3>
+
+<pre><code class="language-python">    function SuperType(name) {
+        this.name = name;
+    }
+
+    SuperType.prototype.sayName = function() {
+        console.log(this.name);
+    }
+
+    function SubType(name, age) {
+        SuperType.call(this, name);//继承构造函数内部的属性与方法
+        this.age = age;
+    }
+
+    SubType.prototype = new SuperType();//创建一个SuperType的实例，将其指向SubType的原型对象
+    SubType.prototype.constructor = SuperType;
+    SubType.prototype.sayAge = function() {
+        console.log(this.age);
+    }
+
+    var pcd = new SubType('pcd', 21);
+    pcd.sayName();
+    pcd.sayAge();
+</code></pre>
+
+<p>注1：新创建的SuperType实例指向SubType的原型对象，其中也包括了SuperType内部的属性与方法，但还是将SuperType的属性与方法继承到SubType中是因为原型对象中方法和属性具有共享性。
+注2：SubType的原型不能写成字面量的形式，否则会将继承的原型对象覆盖。</p>
+
+<h3 id="寄生组合继承">寄生组合继承</h3>
+
+<pre><code class="language-python">    function SuperType(name) {
+        this.name = name;
+    }
+
+    SuperType.prototype.sayName = function() {
+        console.log(this.name);
+    }
+
+    function SubType(name, age) {
+        SuperType.call(this, name);//继承构造函数内部的属性与方法
+        this.age = age;
+    }
+
+    SubType.prototype = SuperType.prototype;
+    SubType.prototype.constructor = SuperType;
+    SubType.prototype.sayAge = function() {
+        console.log(this.age);
+    }
+
+    var pcd = new SubType('pcd', 21);
+    pcd.sayName();
+    pcd.sayAge();
+</code></pre>
+
+<blockquote>
+<p>SuperType的原型对象直接赋值给SubType从而实现继承。</p>
+</blockquote>
+
+<h3 id="注意事项">注意事项</h3>
+
+<pre><code class="language-python">    function SuperType(name) {
+        this.name = name;
+    }
+
+    function SubType() {
+    }
+
+    SubType.prototype = SuperType.prototype;
+    SubType.prototype.constructor = SuperType;
+    SubType.prototype.sayName = function() {
+        console.log(this.name);
+    }
+
+    var pcd = new SuperType('pcd');
+    pcd.sayName();//&quot;pcd&quot;
+</code></pre>
+
+<blockquote>
+<p>继承中的父类可以使用子类的原型方法</p>
+</blockquote>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

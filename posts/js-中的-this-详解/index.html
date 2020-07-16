@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JS 中的 this 详解 - PLDaily Blog">
+    <meta name="twitter:description" content="本文记录对 JS 中 this 的详解
+this的绑定方式 默认绑定 没调用对象指向全局
+function foo() { console.log(this.a); } var a = 1; foo();//1  隐式绑定 var a = 1; function foo() { console.log(this.a); } var obj = { a: 2, foo: foo } obj.foo();//2 var bar = obj.foo; bar();//1  显式绑定 function foo() { console.log(this.a); } var a = 1; var obj = { a: 2 } foo.call(obj);//2 foo.apply(obj);//2 var bar = foo.bind(obj); bar();//2  new绑定 function foo(a) { this.">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JS 中的 this 详解 - PLDaily Blog">
+    <meta property="og:description" content="本文记录对 JS 中 this 的详解
+this的绑定方式 默认绑定 没调用对象指向全局
+function foo() { console.log(this.a); } var a = 1; foo();//1  隐式绑定 var a = 1; function foo() { console.log(this.a); } var obj = { a: 2, foo: foo } obj.foo();//2 var bar = obj.foo; bar();//1  显式绑定 function foo() { console.log(this.a); } var a = 1; var obj = { a: 2 } foo.call(obj);//2 foo.apply(obj);//2 var bar = foo.bind(obj); bar();//2  new绑定 function foo(a) { this.">
+    <meta property="og:url" content="https://pldaily.github.io/posts/js-%E4%B8%AD%E7%9A%84-this-%E8%AF%A6%E8%A7%A3/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>JS 中的 this 详解 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="本文记录对 JS 中 this 的详解
+this的绑定方式 默认绑定 没调用对象指向全局
+function foo() { console.log(this.a); } var a = 1; foo();//1  隐式绑定 var a = 1; function foo() { console.log(this.a); } var obj = { a: 2, foo: foo } obj.foo();//2 var bar = obj.foo; bar();//1  显式绑定 function foo() { console.log(this.a); } var a = 1; var obj = { a: 2 } foo.call(obj);//2 foo.apply(obj);//2 var bar = foo.bind(obj); bar();//2  new绑定 function foo(a) { this.">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">JS 中的 this 详解</h1>
+    <time datetime="2016-10-09 17:08:24 UTC">09 Oct 2016</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>本文记录对 JS 中 this     的详解</p>
+
+<!-- more -->
+
+<h2 id="this的绑定方式">this的绑定方式</h2>
+
+<h3 id="默认绑定">默认绑定</h3>
+
+<p>没调用对象指向全局</p>
+
+<pre><code class="language-javascript">
+function foo() {
+    console.log(this.a);
+}
+var a = 1;
+foo();//1
+</code></pre>
+
+<h3 id="隐式绑定">隐式绑定</h3>
+
+<pre><code class="language-javascript">
+var a = 1;
+function foo() {
+    console.log(this.a);        
+}
+var obj = {
+    a: 2,
+    foo: foo
+}
+obj.foo();//2
+var bar = obj.foo;
+bar();//1
+</code></pre>
+
+<h3 id="显式绑定">显式绑定</h3>
+
+<pre><code class="language-javascript">
+function foo() {
+    console.log(this.a);        
+}
+var a = 1;
+var obj = {
+    a: 2
+}
+
+foo.call(obj);//2
+foo.apply(obj);//2
+var bar = foo.bind(obj);
+bar();//2
+</code></pre>
+
+<h3 id="new绑定">new绑定</h3>
+
+<pre><code class="language-javascript">function foo(a) {
+    this.a = a;
+}
+
+var a = 1;
+
+var bar = new foo(3);
+console.log(bar.a);//3
+
+</code></pre>
+
+<h2 id="各绑定方式的优先级">各绑定方式的优先级</h2>
+
+<h3 id="显示与隐式的比较">显示与隐式的比较</h3>
+
+<pre><code class="language-javascript">
+function foo() {
+    console.log(this.a);
+}
+
+var obj1 = {
+    a: 1,
+    foo: foo
+}
+var obj2 = {
+    a: 2
+}
+
+obj1.foo();//1
+obj1.foo.call(obj2);//2
+</code></pre>
+
+<p>所以显式优先级高于隐式</p>
+
+<h3 id="new与隐式的比较">new与隐式的比较</h3>
+
+<pre><code class="language-javascript">
+function foo(a) {
+    this.a = a;
+}
+var obj = {
+    a: 1,
+    foo: foo
+}
+
+obj.foo(2);
+console.log(obj.a);//2
+
+var bar = new obj.foo(3);
+console.log(obj.a);//2此时obj.foo(3)未起作用，new优先级大于隐式
+console.log(bar.a);//3
+</code></pre>
+
+<h3 id="显式与new的比较">显式与new的比较</h3>
+
+<pre><code class="language-javascript">
+function foo(a) {
+    this.a = a;
+}
+
+var obj = {};
+
+var bar = foo.bind(obj);
+bar(2);
+console.log(obj.a);//2
+
+var baz = new bar(3);
+console.log(obj.a);//2使用new未将obj.a改变为3，显式优先级高于new
+console.log(baz.a);//3this绑定新创建的对象baz
+</code></pre>
+
+<h2 id="bind的用法">bind的用法</h2>
+
+<p>一般情况下在使用对象调用函数是会使用以下方式书写，将对象赋值给函数内部的局部变量，调用函数时能从局部变量中获取</p>
+
+<pre><code class="language-javascript">var x = 10;
+var myObj = {
+    x: 0,
+    deal: function() {
+        var that = this;
+        return function() {
+            return ++that.x;
+        }
+    }
+};
+
+var aaa = myObj.deal();
+console.log(aaa());//1
+</code></pre>
+
+<p>不将对象赋值到函数内部的局部变量，函数调用时从全局中去获取</p>
+
+<pre><code class="language-javascript">var aaa = myObj.deal();
+console.log(aaa());//1
+
+var x = 10;
+var myObj = {
+    x: 0,
+    deal: function() {
+        return function() {
+            return ++this.x;
+        }
+    }
+};
+
+var aaa = myObj.deal();
+console.log(aaa());//11
+</code></pre>
+
+<p>bind相当于将myObj（上下文）传入到函数中</p>
+
+<pre><code class="language-javascript">var x = 10;
+var myObj = {
+    x: 0,
+    deal: function() {
+        return (function() {
+            return ++this.x;
+        }).bind(this);
+    }
+};
+
+var aaa = myObj.deal();
+console.log(aaa());//1
+</code></pre>
+
+<p>bind使用参数的形式传入时</p>
+
+<pre><code class="language-javascript">function foo(p1) {
+    this.val = p1;
+}
+
+var baz = foo.bind(null, 'p1');
+var bar = new baz('p2');
+console.log(bar.val);//p1
+</code></pre>
+
+<pre><code class="language-javascript">function foo(p1, p2) {
+    this.val = p1 + p2;
+}
+
+var baz = foo.bind(null, 'p1');
+var bar = new baz('p2');
+console.log(bar.val);//p1p2
+</code></pre>
+
+<pre><code class="language-javascript">function foo(p1) {
+    this.val = p1;
+}
+
+var baz = foo.bind('p1');
+var bar = new baz('p2');
+console.log(bar.val);//p2
+</code></pre>
+
+<p>使用new新建对象时即被忽略</p>
+
+<h2 id="null-undefined作为this绑定对象传入call-apply和bind时-实际应用的是默认绑定规则">null、undefined作为this绑定对象传入call、apply和bind时，实际应用的是默认绑定规则</h2>
+
+<pre><code class="language-javascript">
+function foo() {
+    console.log(this.a);
+}
+var a = 1;
+foo.call(null);//1
+</code></pre>
+
+<h2 id="绑定到全局的this改为局部-使用空集合符号">绑定到全局的this改为局部，使用空集合符号</h2>
+
+<pre><code class="language-javascript">
+var Ø = Object.create(null);
+function foo() {
+    console.log(this.a);
+}
+foo.call(Ø);//undefined
+</code></pre>
+
+<h2 id="es6箭头函数中的this-与self-this的机制一样">ES6箭头函数中的this(与self=this的机制一样)</h2>
+
+<p>以下例子需要ES6环境下使用，可参考<a href="https://github.com/PLDaily/ES6">https://github.com/PLDaily/ES6</a></p>
+
+<pre><code class="language-javascript">
+var Person = function() {
+    this.name = 'pcd';
+    this.hello = () =&gt; {
+        console.log(this.name);//this在定义是已经被锁死
+    }
+}
+
+var bb = new Person();
+bb.hello.bind({&quot;name&quot;: &quot;dcp&quot;});
+bb.hello();//pcd
+</code></pre>
+
+<h2 id="注意事项">注意事项</h2>
+
+<pre><code class="language-javascript">var a;
+a++;
+console.log(a);//NaN
+</code></pre>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

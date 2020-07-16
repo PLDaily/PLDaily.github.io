@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="字符编码详解 - PLDaily Blog">
+    <meta name="twitter:description" content="本文记录对字符编码的理解
+ASCLL码 ASCLL: 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为ASCII码，一直沿用至今。 ASCII码一共规定了128个字符的编码，比如空格&amp;rdquo;SPACE&amp;rdquo;是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0
+Unicode Unicode: 将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储，不同标准占的字节数不同(大于1字节)
+UTF-8 UTF-8: UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。 UTF-8的编码规则很简单，只有二条：
+对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 对于n字节的符号（n&amp;gt;1），第一个字节的前n位都设为1，第n&#43;1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。 英文在unicode中占2-4个字节（不同标准占的字节数不同，总之大于1字节)，但utf-8中占一个字节
+   Unicode UTF-8     0000 0000-0000 007F 0xxxxxxx   0000 0080-0000 07FF 110xxxxx 10xxxxxx   0000 0800-0000 FFFF 1110xxxx 10xxxxxx 10xxxxxx   0001 0000-0010 FFFF 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx    UTF-16 UTF-16：就是任何字符对应的数字都用两个字节来保存.但是很显然如果都是英文字母这做有点浪费，但汉字在utf-16中占2个字节，但在utf-8中可能占3个字节。
+JS中的字符编码 JS中字符以UTF-16的格式存储，每个字符为为2个字节，可存字符为2^8*2^8个字符，但超出这个范围即Unicode编码大于65536，则通过四个字节存储。 以古文&amp;rdquo;𣦵&amp;rdquo;为例，Unicode值为145845，大于65536，以4个字节存储。 现有的charAt、charCodeAt只能处理Unicode编码范围内的字符，ES6引入codePointAt方法
+var s = &amp;ldquo;𣦵&amp;rdquo;; console.log(s.codePointAt(0));//145845 charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="字符编码详解 - PLDaily Blog">
+    <meta property="og:description" content="本文记录对字符编码的理解
+ASCLL码 ASCLL: 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为ASCII码，一直沿用至今。 ASCII码一共规定了128个字符的编码，比如空格&amp;rdquo;SPACE&amp;rdquo;是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0
+Unicode Unicode: 将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储，不同标准占的字节数不同(大于1字节)
+UTF-8 UTF-8: UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。 UTF-8的编码规则很简单，只有二条：
+对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 对于n字节的符号（n&amp;gt;1），第一个字节的前n位都设为1，第n&#43;1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。 英文在unicode中占2-4个字节（不同标准占的字节数不同，总之大于1字节)，但utf-8中占一个字节
+   Unicode UTF-8     0000 0000-0000 007F 0xxxxxxx   0000 0080-0000 07FF 110xxxxx 10xxxxxx   0000 0800-0000 FFFF 1110xxxx 10xxxxxx 10xxxxxx   0001 0000-0010 FFFF 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx    UTF-16 UTF-16：就是任何字符对应的数字都用两个字节来保存.但是很显然如果都是英文字母这做有点浪费，但汉字在utf-16中占2个字节，但在utf-8中可能占3个字节。
+JS中的字符编码 JS中字符以UTF-16的格式存储，每个字符为为2个字节，可存字符为2^8*2^8个字符，但超出这个范围即Unicode编码大于65536，则通过四个字节存储。 以古文&amp;rdquo;𣦵&amp;rdquo;为例，Unicode值为145845，大于65536，以4个字节存储。 现有的charAt、charCodeAt只能处理Unicode编码范围内的字符，ES6引入codePointAt方法
+var s = &amp;ldquo;𣦵&amp;rdquo;; console.log(s.codePointAt(0));//145845 charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数">
+    <meta property="og:url" content="https://pldaily.github.io/posts/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E8%AF%A6%E8%A7%A3/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>字符编码详解 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="本文记录对字符编码的理解
+ASCLL码 ASCLL: 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为ASCII码，一直沿用至今。 ASCII码一共规定了128个字符的编码，比如空格&amp;rdquo;SPACE&amp;rdquo;是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0
+Unicode Unicode: 将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储，不同标准占的字节数不同(大于1字节)
+UTF-8 UTF-8: UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。 UTF-8的编码规则很简单，只有二条：
+对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 对于n字节的符号（n&amp;gt;1），第一个字节的前n位都设为1，第n&#43;1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。 英文在unicode中占2-4个字节（不同标准占的字节数不同，总之大于1字节)，但utf-8中占一个字节
+   Unicode UTF-8     0000 0000-0000 007F 0xxxxxxx   0000 0080-0000 07FF 110xxxxx 10xxxxxx   0000 0800-0000 FFFF 1110xxxx 10xxxxxx 10xxxxxx   0001 0000-0010 FFFF 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx    UTF-16 UTF-16：就是任何字符对应的数字都用两个字节来保存.但是很显然如果都是英文字母这做有点浪费，但汉字在utf-16中占2个字节，但在utf-8中可能占3个字节。
+JS中的字符编码 JS中字符以UTF-16的格式存储，每个字符为为2个字节，可存字符为2^8*2^8个字符，但超出这个范围即Unicode编码大于65536，则通过四个字节存储。 以古文&amp;rdquo;𣦵&amp;rdquo;为例，Unicode值为145845，大于65536，以4个字节存储。 现有的charAt、charCodeAt只能处理Unicode编码范围内的字符，ES6引入codePointAt方法
+var s = &amp;ldquo;𣦵&amp;rdquo;; console.log(s.codePointAt(0));//145845 charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">字符编码详解</h1>
+    <time datetime="2017-01-19 17:08:24 UTC">19 Jan 2017</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>本文记录对字符编码的理解</p>
+
+<!-- more -->
+
+<h2 id="ascll码">ASCLL码</h2>
+
+<p>ASCLL: 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为ASCII码，一直沿用至今。
+ASCII码一共规定了128个字符的编码，比如空格&rdquo;SPACE&rdquo;是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0</p>
+
+<h2 id="unicode">Unicode</h2>
+
+<p>Unicode: 将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储，不同标准占的字节数不同(大于1字节)</p>
+
+<h2 id="utf-8">UTF-8</h2>
+
+<p>UTF-8: UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。
+UTF-8的编码规则很简单，只有二条：</p>
+
+<h3 id="对于单字节的符号-字节的第一位设为0-后面7位为这个符号的unicode码-因此对于英语字母-utf-8编码和ascii码是相同的">对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</h3>
+
+<h3 id="对于n字节的符号-n-1-第一个字节的前n位都设为1-第n-1位设为0-后面字节的前两位一律设为10-剩下的没有提及的二进制位-全部为这个符号的unicode码">对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</h3>
+
+<p>英文在unicode中占2-4个字节（不同标准占的字节数不同，总之大于1字节)，但utf-8中占一个字节</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Unicode</th>
+<th align="center">UTF-8</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0000 0000-0000 007F</td>
+<td align="center">0xxxxxxx</td>
+</tr>
+
+<tr>
+<td align="center">0000 0080-0000 07FF</td>
+<td align="center">110xxxxx 10xxxxxx</td>
+</tr>
+
+<tr>
+<td align="center">0000 0800-0000 FFFF</td>
+<td align="center">1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+
+<tr>
+<td align="center">0001 0000-0010 FFFF</td>
+<td align="center">11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="utf-16">UTF-16</h2>
+
+<p>UTF-16：就是任何字符对应的数字都用两个字节来保存.但是很显然如果都是英文字母这做有点浪费，但汉字在utf-16中占2个字节，但在utf-8中可能占3个字节。</p>
+
+<h2 id="js中的字符编码">JS中的字符编码</h2>
+
+<p>JS中字符以UTF-16的格式存储，每个字符为为2个字节，可存字符为2^8*2^8个字符，但超出这个范围即Unicode编码大于65536，则通过四个字节存储。 以古文&rdquo;𣦵&rdquo;为例，Unicode值为145845，大于65536，以4个字节存储。 现有的charAt、charCodeAt只能处理Unicode编码范围内的字符，ES6引入codePointAt方法</p>
+
+<p>var s = &ldquo;𣦵&rdquo;;
+console.log(s.codePointAt(0));//145845
+charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数</p>
+
+<h2 id="js中的编码解码函数">JS中的编码解码函数</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">decodeURI()</td>
+<td align="center">解码某个编码的 URI。</td>
+</tr>
+
+<tr>
+<td align="center">decodeURIComponent()</td>
+<td align="center">解码一个编码的 URI 组件。</td>
+</tr>
+
+<tr>
+<td align="center">encodeURI()</td>
+<td align="center">把字符串编码为 URI。</td>
+</tr>
+
+<tr>
+<td align="center">encodeURIComponent()</td>
+<td align="center">把字符串编码为 URI 组件。</td>
+</tr>
+
+<tr>
+<td align="center">escape()</td>
+<td align="center">对字符串进行编码。（以弃用）</td>
+</tr>
+
+<tr>
+<td align="center">unescape()</td>
+<td align="center">对由 escape() 编码的字符串进行解码。（以弃用）</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="示例">示例</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;编码/解码&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    var test = &quot;http://www.test.com/My test/&quot;;
+
+    var test1 = encodeURI(test);
+    var test2 = decodeURI(test1);
+    var test3 = encodeURIComponent(test);
+    var test4 = decodeURIComponent(test3);
+
+    console.log(test1);/*
+    http://www.test.com/My%20test/
+    */
+    console.log(test2);/*
+    http://www.test.com/My test/
+    */
+    console.log(test3);/*
+    http%3A%2F%2Fwww.test.com%2FMy%20test%2F
+    */
+    console.log(test4);/*
+    http://www.test.com/My test/
+    */
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

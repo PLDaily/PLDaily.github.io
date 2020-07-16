@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="WEB 客户端存储 - PLDaily Blog">
+    <meta name="twitter:description" content="web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。 cookie cookie的保存 cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码
+cookie设置的参数 key：名 value：值 path：路径 expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)
+存储cookie function setCookie(name, value, expires, path) { document.cookie =name &#43; &#39;=&#39; &#43; encodeURIComponent(value) &#43; &#39;;expires = &#39; &#43; expires &#43; &#39;;path = &#39; &#43; path; } setCookie(&amp;quot;name&amp;quot;, &amp;quot;pcd&amp;quot;, 1000*60*60, &#39;/&#39;);  获取cookie function getCookie(key) { var all = document.cookie; var list = all.split(&#39;;&#39;); if(all === &#39;&#39;) { return cookie; } for(var i = 0; i &amp;lt; list.length; i&#43;&#43;) { var cookie = list[i].">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="WEB 客户端存储 - PLDaily Blog">
+    <meta property="og:description" content="web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。 cookie cookie的保存 cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码
+cookie设置的参数 key：名 value：值 path：路径 expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)
+存储cookie function setCookie(name, value, expires, path) { document.cookie =name &#43; &#39;=&#39; &#43; encodeURIComponent(value) &#43; &#39;;expires = &#39; &#43; expires &#43; &#39;;path = &#39; &#43; path; } setCookie(&amp;quot;name&amp;quot;, &amp;quot;pcd&amp;quot;, 1000*60*60, &#39;/&#39;);  获取cookie function getCookie(key) { var all = document.cookie; var list = all.split(&#39;;&#39;); if(all === &#39;&#39;) { return cookie; } for(var i = 0; i &amp;lt; list.length; i&#43;&#43;) { var cookie = list[i].">
+    <meta property="og:url" content="https://pldaily.github.io/posts/web-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>WEB 客户端存储 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。 cookie cookie的保存 cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码
+cookie设置的参数 key：名 value：值 path：路径 expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)
+存储cookie function setCookie(name, value, expires, path) { document.cookie =name &#43; &#39;=&#39; &#43; encodeURIComponent(value) &#43; &#39;;expires = &#39; &#43; expires &#43; &#39;;path = &#39; &#43; path; } setCookie(&amp;quot;name&amp;quot;, &amp;quot;pcd&amp;quot;, 1000*60*60, &#39;/&#39;);  获取cookie function getCookie(key) { var all = document.cookie; var list = all.split(&#39;;&#39;); if(all === &#39;&#39;) { return cookie; } for(var i = 0; i &amp;lt; list.length; i&#43;&#43;) { var cookie = list[i].">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">WEB 客户端存储</h1>
+    <time datetime="2016-10-13 16:56:04 UTC">13 Oct 2016</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。
+<!-- more --></p>
+
+<h2 id="cookie">cookie</h2>
+
+<h3 id="cookie的保存">cookie的保存</h3>
+
+<p>cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码</p>
+
+<h3 id="cookie设置的参数">cookie设置的参数</h3>
+
+<p>key：名
+value：值
+path：路径
+expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)</p>
+
+<h3 id="存储cookie">存储cookie</h3>
+
+<pre><code class="language-javascript">function setCookie(name, value, expires, path) {
+    document.cookie =name + '=' + encodeURIComponent(value) + ';expires = ' + expires + ';path = ' + path;
+}
+
+setCookie(&quot;name&quot;, &quot;pcd&quot;, 1000*60*60, '/');
+</code></pre>
+
+<h3 id="获取cookie">获取cookie</h3>
+
+<pre><code class="language-javascript">function getCookie(key) {
+    var all = document.cookie;
+    var list = all.split(';');
+    if(all === '') {
+        return cookie;
+    }
+    for(var i = 0; i &lt; list.length; i++) {
+        var cookie = list[i].trim();//去除空白字符
+        var p = cookie.indexOf('=');
+        var name = cookie.substring(0, p);
+        if(name == key) {
+            var value = cookie.substring(p + 1);
+            value = decodeURIComponent(value);
+            return value;
+        }
+    }
+
+    return false;
+}
+
+console.log(getCookie('name'));//pcd
+</code></pre>
+
+<h3 id="cookie的局限性">cookie的局限性：</h3>
+
+<p>因为每一次HTTP请求会把这些数据传输到服务器，所以浏览器对每个cookie的保存数据不能超过4k。</p>
+
+<h2 id="localstorage与sessionstorage">localStorage与sessionStorage</h2>
+
+<h3 id="兼容性-支持ie8及ie8">兼容性：支持IE8及IE8+</h3>
+
+<h3 id="容量-5-10m">容量：5-10M</h3>
+
+<h3 id="区别">区别：</h3>
+
+<ol>
+<li>localStorage存储的数据是永久的，除非刻意删除</li>
+<li>sessionStorage存储的数据是暂时的，到浏览器关闭前</li>
+<li>sessionStorage作用域是限制在顶层窗口，同源共享限于同一标签页面，例：两个标签页运行同一同源页面，其中一个页面对sessionStorage进行修改操作时，另一页面无法获取该操作后的属性。
+4.localStorage与sessionStorage不同，例：两个标签页运行同一同源页面，其中一个页面对localStorage进行修改操作时，另一页面就会接收到一个存储事件，即可以获取该操作后的属性。</li>
+</ol>
+
+<h3 id="为存储事件注册处理程序">为存储事件注册处理程序</h3>
+
+<pre><code class="language-javascript">window.addEventListener('storage', function(e) {
+    console.log(e.key + &quot;--&quot; + e.newValue + &quot;--&quot; + e.oldValue + &quot;--&quot; + e.storageArea + &quot;--&quot; + e.url);
+}, true)
+
+</code></pre>
+
+<h3 id="localstorage使用广播机制">localStorage使用广播机制。</h3>
+
+<p>使用示例：一个基于WEB的图片编辑应用，通常允许其他窗口展示工具条。当用户选择一个工具时，应用使用localStorage存储当前状态，便可通知其他窗口用户选择了新工具(其他窗口通过存储事件监听)。</p>
+
+<h3 id="注意事项-浏览器只支持存储字符串类型数据">注意事项：浏览器只支持存储字符串类型数据</h3>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

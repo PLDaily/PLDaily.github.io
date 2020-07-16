@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="单例模式 - PLDaily Blog">
+    <meta name="twitter:description" content="单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。 * 使用命名空间
+var singleTon = { name: &#39;pcd&#39;, getName: function() { console.log(this.name); } }   使用闭包封装私有变量
+var singleTon = (function() { var _name = &#39;pcd&#39;; return { getName: function() { console.log(_name); } } })();   使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&#39;div&#39;); div.innerHTML = html; div.style.display = &#39;none&#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="单例模式 - PLDaily Blog">
+    <meta property="og:description" content="单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。 * 使用命名空间
+var singleTon = { name: &#39;pcd&#39;, getName: function() { console.log(this.name); } }   使用闭包封装私有变量
+var singleTon = (function() { var _name = &#39;pcd&#39;; return { getName: function() { console.log(_name); } } })();   使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&#39;div&#39;); div.innerHTML = html; div.style.display = &#39;none&#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!">
+    <meta property="og:url" content="https://pldaily.github.io/posts/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>单例模式 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。 * 使用命名空间
+var singleTon = { name: &#39;pcd&#39;, getName: function() { console.log(this.name); } }   使用闭包封装私有变量
+var singleTon = (function() { var _name = &#39;pcd&#39;; return { getName: function() { console.log(_name); } } })();   使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&#39;div&#39;); div.innerHTML = html; div.style.display = &#39;none&#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">单例模式</h1>
+    <time datetime="2017-03-30 17:08:24 UTC">30 Mar 2017</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。</p>
+
+<!-- more -->
+
+<h2 id="javascript中的单例模式">javascript中的单例模式</h2>
+
+<p>在javascript开发中，我们经常会把全局变量当成单例模式来使用。
+* 使用命名空间</p>
+
+<pre><code class="language-javascript">var singleTon = {
+	name: 'pcd',
+	getName: function() {
+		console.log(this.name);
+	}
+}
+</code></pre>
+
+<ul>
+<li><p>使用闭包封装私有变量</p>
+
+<pre><code class="language-javascript">var singleTon = (function() {
+	var _name = 'pcd';
+	return {
+		getName: function() {
+			console.log(_name);
+		}
+	}
+})();
+</code></pre></li>
+</ul>
+
+<h2 id="使用代理实现单例模式">使用代理实现单例模式</h2>
+
+<p>代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。</p>
+
+<pre><code class="language-javascript">var CreateLoginLayer = function(html) {
+	var div;
+	div = document.createElement('div');
+	div.innerHTML = html;
+	div.style.display = 'none';
+	document.body.appendChild(div);
+}
+
+var ProxyCreateLoginLayer = (function() {
+	var instance;
+	return function(html) {
+		if(!instance) {
+			instance = CreateLoginLayer(html);
+		}
+		return instance;
+	}
+})();
+</code></pre>
+
+<h2 id="惰性单例">惰性单例</h2>
+
+<p>惰性单例是指在需要的时候才创建对象实例。</p>
+
+<pre><code class="language-javascript">var createLoginLayer = (function() {
+	var div;
+	return function() {
+		if(!div) {
+			div = document.createElement('div');
+			div.innerHTML = '我是登陆框';
+			div.style.display = 'none';
+			document.body.appendChild(div);
+		}
+		return div;
+	}
+})();
+
+document.getElementById('loginBtn').onclick = function() {
+	var loginLayer = createLoginLayer();
+	LoginLayer.style.display = 'block';
+}
+</code></pre>
+
+<p>程序初始加载是不会创建div实例，第一次点击loginBtn按钮后生成div实例，再次点击则不会再次生成div实例。</p>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/</link>
+    <description>Recent content in Tags on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 26 Jan 2018 17:08:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://pldaily.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTTPS</title>
+      <link>https://pldaily.github.io/tags/https/</link>
+      <pubDate>Fri, 26 Jan 2018 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://pldaily.github.io/tags/javascript/</link>
+      <pubDate>Wed, 10 Jan 2018 17:05:43 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DNS</title>
+      <link>https://pldaily.github.io/tags/dns/</link>
+      <pubDate>Fri, 15 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP</title>
+      <link>https://pldaily.github.io/tags/http/</link>
+      <pubDate>Sat, 09 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://pldaily.github.io/tags/docker/</link>
+      <pubDate>Wed, 06 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://pldaily.github.io/tags/linux/</link>
+      <pubDate>Sun, 30 Jul 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://pldaily.github.io/tags/git/</link>
+      <pubDate>Wed, 01 Mar 2017 17:13:11 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ajax</title>
+      <link>https://pldaily.github.io/tags/ajax/</link>
+      <pubDate>Thu, 15 Sep 2016 21:19:22 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/ajax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>https://pldaily.github.io/tags/php/</link>
+      <pubDate>Thu, 15 Sep 2016 21:19:22 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Css</title>
+      <link>https://pldaily.github.io/tags/css/</link>
+      <pubDate>Thu, 15 Sep 2016 15:03:09 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ES6</title>
+      <link>https://pldaily.github.io/tags/es6/</link>
+      <pubDate>Thu, 25 Aug 2016 00:20:12 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hexo</title>
+      <link>https://pldaily.github.io/tags/hexo/</link>
+      <pubDate>Tue, 12 Apr 2016 10:44:38 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NexT</title>
+      <link>https://pldaily.github.io/tags/next/</link>
+      <pubDate>Tue, 12 Apr 2016 10:44:38 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/tags/next/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

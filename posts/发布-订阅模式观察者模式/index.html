@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="发布-订阅模式(观察者模式) - PLDaily Blog">
+    <meta name="twitter:description" content="观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i&#43;&#43;) { var _fn = fns[i]; if(fn === _fn) { clientList[key].">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="发布-订阅模式(观察者模式) - PLDaily Blog">
+    <meta property="og:description" content="观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i&#43;&#43;) { var _fn = fns[i]; if(fn === _fn) { clientList[key].">
+    <meta property="og:url" content="https://pldaily.github.io/posts/%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>发布-订阅模式(观察者模式) - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i&#43;&#43;) { var _fn = fns[i]; if(fn === _fn) { clientList[key].">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">发布-订阅模式(观察者模式)</h1>
+    <time datetime="2017-03-15 17:08:24 UTC">15 Mar 2017</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。</p>
+
+<!-- more -->
+
+<h2 id="普通示例">普通示例</h2>
+
+<pre><code class="language-javascript">var Event = (function() {
+
+	var clientList = {},
+		listen,
+		remove,
+		trigger;
+
+	listen = function(key, fn) {
+		if(!clientList[key]) {
+			clientList[key] = [];
+		}
+		clientList[key].push(fn);
+	}
+
+	remove = function(key, fn) {
+		var fns = clientList[key];
+		if(!fns || fns.length == 0) {
+			return false;
+		}
+		if(!fn) {
+			fns &amp;&amp; fns.length = 0;
+		}else {
+			for(var i = 0, l = fns,length; i &lt; l; i++) {
+				var _fn = fns[i];
+				if(fn === _fn) {
+					clientList[key].splice(i, 1);
+				}
+			}
+		}
+	}
+
+	trigger = function() {
+		var key = Array.prototype.slice.call(arguments),
+			fns = clientList[key];
+		if(!fns || fns.length === 0) {
+			return false;
+		}
+		for(var i = 0, l = fns.length; i &lt; l; i++) {
+			fn.apply(this, arguments);
+		}
+	}
+
+	return {
+		listen: listen,
+		trigger: trigger,
+		remove: remove
+	}
+
+})()
+</code></pre>
+
+<p>观察者模式广泛应用于一步编程中，这是一种代替异步回调的方案。</p>
+
+<h2 id="异步示例">异步示例</h2>
+
+<pre><code class="language-javascript">$.ajax('http://xxx.com/login', function(data) {
+	Event.trigger('loginSucc', data);
+});
+
+var header = (function() {
+	Event.listener('loginSucc', function(data) {
+		header.setAvator(data);
+	});
+	return {
+		setAvator: function(data) {
+			console.log('更新头像数据');
+		}
+	}
+})();
+</code></pre>
+
+<p>观察者模式适用于模块间的通信</p>
+
+<h2 id="模块间的通信">模块间的通信</h2>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;模块间的通信&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;button id=&quot;count&quot;&gt;点我&lt;/button&gt;
+	&lt;div id=&quot;show&quot;&gt;&lt;/div&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		var a = (function() {
+			var count = 0;
+			var button = document.getElementById('count');
+			btn.click = function() {
+				Event.trigger('add', count++);
+			}
+		})();
+
+		var b = (function() {
+			var div = document.getElementById('show');
+			Event.listener('add', function(count) {
+				div.innerHTML = count;
+			})
+		})();
+
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

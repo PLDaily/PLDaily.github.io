@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/css/</link>
+    <description>Recent content in Css on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Sep 2016 15:03:09 +0000</lastBuildDate>
+    
+	<atom:link href="https://pldaily.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>页面自适应布局</title>
+      <link>https://pldaily.github.io/posts/%E9%A1%B5%E9%9D%A2%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Thu, 15 Sep 2016 15:03:09 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/%E9%A1%B5%E9%9D%A2%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/</guid>
+      <description>关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。 俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
+2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;left&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;right&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt;  原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8+）使#right的宽度为原来的100%。</description>
+    </item>
+    
+  </channel>
+</rss>

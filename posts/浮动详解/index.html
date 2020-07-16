@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="浮动详解 - PLDaily Blog">
+    <meta name="twitter:description" content="本文记录对清除浮动的详解
+浮动效果 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;div1&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  此时父元素#main的高度宽度由子元素#div1与#div2决定，由于子元素设置浮动脱离文档流，导致父元素高度为0，使其父元素#main背景颜色无效果。
+清除浮动方式一 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; overflow: hidden; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;div1&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  父元素设置overflow: hidden;属性 原理：因为overflow.">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="浮动详解 - PLDaily Blog">
+    <meta property="og:description" content="本文记录对清除浮动的详解
+浮动效果 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;div1&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  此时父元素#main的高度宽度由子元素#div1与#div2决定，由于子元素设置浮动脱离文档流，导致父元素高度为0，使其父元素#main背景颜色无效果。
+清除浮动方式一 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; overflow: hidden; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;div1&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  父元素设置overflow: hidden;属性 原理：因为overflow.">
+    <meta property="og:url" content="https://pldaily.github.io/posts/%E6%B5%AE%E5%8A%A8%E8%AF%A6%E8%A7%A3/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>浮动详解 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="本文记录对清除浮动的详解
+浮动效果 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;div1&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  此时父元素#main的高度宽度由子元素#div1与#div2决定，由于子元素设置浮动脱离文档流，导致父元素高度为0，使其父元素#main背景颜色无效果。
+清除浮动方式一 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; overflow: hidden; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;div1&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;quot;div2&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  父元素设置overflow: hidden;属性 原理：因为overflow.">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">浮动详解</h1>
+    <time datetime="2017-01-19 17:08:24 UTC">19 Jan 2017</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>本文记录对清除浮动的详解</p>
+
+<!-- more -->
+
+<h3 id="浮动效果">浮动效果</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;浮动&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #main {
+        background-color: green;
+    }
+    #div1 {
+        background: yellow;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    #div2 {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;main&quot;&gt;
+        &lt;div id=&quot;div1&quot;&gt;
+            
+        &lt;/div&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>此时父元素#main的高度宽度由子元素#div1与#div2决定，由于子元素设置浮动脱离文档流，导致父元素高度为0，使其父元素#main背景颜色无效果。</p>
+
+<h3 id="清除浮动方式一">清除浮动方式一</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;浮动&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #main {
+        background-color: green;
+        overflow: hidden;
+    }
+    #div1 {
+        background: yellow;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    #div2 {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;main&quot;&gt;
+        &lt;div id=&quot;div1&quot;&gt;
+            
+        &lt;/div&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>父元素设置overflow: hidden;属性
+原理：因为overflow.hidden会触发BFC(块级排版上下文)。都会为他们的内容创建新的块级格式化上下文</p>
+
+<h3 id="清除浮动方式二">清除浮动方式二</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;浮动&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #main {
+        background-color: green;
+    }
+    #div1 {
+        background: yellow;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    #div2 {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    .clear{
+        clear:both;
+        height: 0;
+        line-height: 0;
+        font-size: 0
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;main&quot;&gt;
+        &lt;div id=&quot;div1&quot;&gt;
+            
+        &lt;/div&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            
+        &lt;/div&gt;
+        &lt;div class=&quot;clear&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>添加一个子元素div，设置clear: both;属性
+缺点：每次清除浮动都需要添加一个子元素div</p>
+
+<h3 id="清楚浮动方式三">清楚浮动方式三</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;浮动&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #main {
+        background-color: green;
+    }
+    #div1 {
+        background: yellow;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    #div2 {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    .clear:after { 
+        content:&quot;.&quot;; 
+        display:block; 
+        height:0; 
+        visibility:hidden; 
+        clear:both; 
+    } 
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;main&quot; class=&quot;clear&quot;&gt;
+        &lt;div id=&quot;div1&quot;&gt;
+            
+        &lt;/div&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>使用after伪类，则不需要每次清除浮动都新建一个子元素</p>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>

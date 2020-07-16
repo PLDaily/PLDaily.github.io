@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="跨域 - PLDaily Blog">
+    <meta name="twitter:description" content="关于前端的跨域问题一直都想去了解应该如何去解决，但由于没有实际例子，看了网上的很多例子一直都处于懵懂的状态，正好公司最近出了一个跨域的问题就随便学习总结了一下 配置域名 本文跨域处理后台以PHP为例，首先下载wamp，我们先在本地配置俩个域名：pcd.me(一级域名)与dev.pcd.me(二级域名)。在www目录下新建pcd和dev俩个文件，当访问pcd.me时则访问pcd文件夹下的文件，访问dev.pcd.me则访问dev文件夹下的文件。
+更改host 更改C:\Windows\System32\drivers\etc\host文件：添加
+127.0.0.1 pcd.me 127.0.0.1 dev.pcd.me  更改httpd-vhosts.conf 更改F:\wamp2\wamp\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf(该目录为我的配置，具体以实际为准)
+&amp;lt;VirtualHost *:80&amp;gt; ServerName pcd.me DocumentRoot F:/wamp2/wamp/www/pcd &amp;lt;Directory &amp;quot;F:/wamp2/wamp/www/pcd/&amp;quot;&amp;gt; Options &#43;Indexes &#43;Includes &#43;FollowSymLinks &#43;MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; &amp;lt;VirtualHost *:80&amp;gt; ServerName dev.pcd.me DocumentRoot F:/wamp2/wamp/www/dev &amp;lt;Directory &amp;quot;F:/wamp2/wamp/www/dev/&amp;quot;&amp;gt; Options &#43;Indexes &#43;Includes &#43;FollowSymLinks &#43;MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt;  访问 在pcd文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; main &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  在dev文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; dev &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  此时访问pcd.">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="跨域 - PLDaily Blog">
+    <meta property="og:description" content="关于前端的跨域问题一直都想去了解应该如何去解决，但由于没有实际例子，看了网上的很多例子一直都处于懵懂的状态，正好公司最近出了一个跨域的问题就随便学习总结了一下 配置域名 本文跨域处理后台以PHP为例，首先下载wamp，我们先在本地配置俩个域名：pcd.me(一级域名)与dev.pcd.me(二级域名)。在www目录下新建pcd和dev俩个文件，当访问pcd.me时则访问pcd文件夹下的文件，访问dev.pcd.me则访问dev文件夹下的文件。
+更改host 更改C:\Windows\System32\drivers\etc\host文件：添加
+127.0.0.1 pcd.me 127.0.0.1 dev.pcd.me  更改httpd-vhosts.conf 更改F:\wamp2\wamp\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf(该目录为我的配置，具体以实际为准)
+&amp;lt;VirtualHost *:80&amp;gt; ServerName pcd.me DocumentRoot F:/wamp2/wamp/www/pcd &amp;lt;Directory &amp;quot;F:/wamp2/wamp/www/pcd/&amp;quot;&amp;gt; Options &#43;Indexes &#43;Includes &#43;FollowSymLinks &#43;MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; &amp;lt;VirtualHost *:80&amp;gt; ServerName dev.pcd.me DocumentRoot F:/wamp2/wamp/www/dev &amp;lt;Directory &amp;quot;F:/wamp2/wamp/www/dev/&amp;quot;&amp;gt; Options &#43;Indexes &#43;Includes &#43;FollowSymLinks &#43;MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt;  访问 在pcd文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; main &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  在dev文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; dev &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  此时访问pcd.">
+    <meta property="og:url" content="https://pldaily.github.io/posts/%E8%B7%A8%E5%9F%9F/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>跨域 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="关于前端的跨域问题一直都想去了解应该如何去解决，但由于没有实际例子，看了网上的很多例子一直都处于懵懂的状态，正好公司最近出了一个跨域的问题就随便学习总结了一下 配置域名 本文跨域处理后台以PHP为例，首先下载wamp，我们先在本地配置俩个域名：pcd.me(一级域名)与dev.pcd.me(二级域名)。在www目录下新建pcd和dev俩个文件，当访问pcd.me时则访问pcd文件夹下的文件，访问dev.pcd.me则访问dev文件夹下的文件。
+更改host 更改C:\Windows\System32\drivers\etc\host文件：添加
+127.0.0.1 pcd.me 127.0.0.1 dev.pcd.me  更改httpd-vhosts.conf 更改F:\wamp2\wamp\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf(该目录为我的配置，具体以实际为准)
+&amp;lt;VirtualHost *:80&amp;gt; ServerName pcd.me DocumentRoot F:/wamp2/wamp/www/pcd &amp;lt;Directory &amp;quot;F:/wamp2/wamp/www/pcd/&amp;quot;&amp;gt; Options &#43;Indexes &#43;Includes &#43;FollowSymLinks &#43;MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; &amp;lt;VirtualHost *:80&amp;gt; ServerName dev.pcd.me DocumentRoot F:/wamp2/wamp/www/dev &amp;lt;Directory &amp;quot;F:/wamp2/wamp/www/dev/&amp;quot;&amp;gt; Options &#43;Indexes &#43;Includes &#43;FollowSymLinks &#43;MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt;  访问 在pcd文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; main &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  在dev文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; dev &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  此时访问pcd.">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">跨域</h1>
+    <time datetime="2016-09-15 21:19:22 UTC">15 Sep 2016</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/ajax">Ajax</a>
+        </li>
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/php">PHP</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    
+
+<p>关于前端的跨域问题一直都想去了解应该如何去解决，但由于没有实际例子，看了网上的很多例子一直都处于懵懂的状态，正好公司最近出了一个跨域的问题就随便学习总结了一下
+<!-- more --></p>
+
+<h3 id="配置域名">配置域名</h3>
+
+<p>本文跨域处理后台以PHP为例，首先下载wamp，我们先在本地配置俩个域名：pcd.me(一级域名)与dev.pcd.me(二级域名)。在www目录下新建pcd和dev俩个文件，当访问pcd.me时则访问pcd文件夹下的文件，访问dev.pcd.me则访问dev文件夹下的文件。</p>
+
+<h3 id="更改host">更改host</h3>
+
+<p>更改C:\Windows\System32\drivers\etc\host文件：添加</p>
+
+<pre><code class="language-git">127.0.0.1 pcd.me
+127.0.0.1 dev.pcd.me
+</code></pre>
+
+<h3 id="更改httpd-vhosts-conf">更改httpd-vhosts.conf</h3>
+
+<p>更改F:\wamp2\wamp\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf(该目录为我的配置，具体以实际为准)</p>
+
+<pre><code class="language-php">&lt;VirtualHost *:80&gt;
+	ServerName pcd.me
+	DocumentRoot F:/wamp2/wamp/www/pcd
+	&lt;Directory  &quot;F:/wamp2/wamp/www/pcd/&quot;&gt;
+		Options +Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Require local
+	&lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:80&gt;
+	ServerName dev.pcd.me
+	DocumentRoot F:/wamp2/wamp/www/dev
+	&lt;Directory  &quot;F:/wamp2/wamp/www/dev/&quot;&gt;
+		Options +Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Require local
+	&lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<h3 id="访问">访问</h3>
+
+<p>在pcd文件下新建index.html</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+ 	&lt;meta charset=&quot;UTF-8&quot;&gt;
+ 	&lt;title&gt;Document&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ 	main
+ &lt;/body&gt;
+ &lt;/html&gt; 
+</code></pre>
+
+<p>在dev文件下新建index.html</p>
+
+<pre><code class="language-html"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+ 	&lt;meta charset=&quot;UTF-8&quot;&gt;
+ 	&lt;title&gt;Document&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ 	dev
+ &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre>
+
+<p>此时访问pcd.me页面显示main，访问dev.pcd.me页面显示dev。</p>
+
+<h3 id="跨域请求">跨域请求</h3>
+
+<p>在pcd文件下ajax.php</p>
+
+<pre><code class="language-php">&lt;?php
+	echo 1;
+?&gt;
+</code></pre>
+
+<p>在pcd.me发起异步请求即
+pcd文件下的index文件更改为</p>
+
+<pre><code class="language-html"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+ 	&lt;meta charset=&quot;UTF-8&quot;&gt;
+ 	&lt;title&gt;Document&lt;/title&gt;
+ 	&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/jquery/3.1.1/jquery.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ 	dev
+ &lt;script type=&quot;text/javascript&quot;&gt;
+ $.ajax({
+ 	type: &quot;GET&quot;,
+ 	url: &quot;http://pcd.me/ajax.php&quot;
+ 	success: function(data) {
+ 		console.log(data);//11
+ 	}
+ })
+ &lt;/script&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre>
+
+<p>在dev.pcd.me发起异步请求即
+dev文件下的index文件更改为</p>
+
+<pre><code class="language-html"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+ 	&lt;meta charset=&quot;UTF-8&quot;&gt;
+ 	&lt;title&gt;Document&lt;/title&gt;
+ 	&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/jquery/3.1.1/jquery.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ 	dev
+ &lt;script type=&quot;text/javascript&quot;&gt;
+ $.ajax({
+ 	type: &quot;GET&quot;,
+ 	url: &quot;http://pcd.me/ajax.php&quot;
+ 	success: function(data) {
+ 		console.log(data);//报错
+ 		//XMLHttpRequest cannot load http://pcd.me/ajax.php. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://dev.pcd.me' is therefore not allowed access.
+ 	}
+ })
+ &lt;/script&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre>
+
+<p>当dev.pcd.me页面向pcd.me发起异步请求时则为跨域处理。至此环境搭建成功。</p>
+
+<h2 id="跨域处理之基本知识">跨域处理之基本知识</h2>
+
+<p>浏览器厂商针对Web客户端制定实现重要的安全概念：同源策略(SOP)。它的核心是确保不同源提供的文件之间是相互独立的，只有当不同的脚本文件是有相同的域、端口、HTTP协议提供时，才没有特殊限制访问对方的DOM方法和属性。当一个脚本访问不同源的文档中的方法和属性使，便会抛出异常错误。
+当我们需要访问不同源的文件时，要么绕开同源策略（JSNP与子域代理），要么使用跨域资源共享(CORS)的“正式”技术。</p>
+
+<h2 id="跨域处理之jsonp">跨域处理之JSONP</h2>
+
+<h3 id="实现原理">实现原理</h3>
+
+<p>同源策略有个例外: HTML脚本是可以规避SOP检查的。JSONP利用这个例外实现跨域数据加载。</p>
+
+<h3 id="simple-example">simple example</h3>
+
+<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot; src=&quot;http://pcd.me/ajax.php&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>dev.pcd.me页面通过以上方式发起请求时，避开SOP，实现跨域请求，但对于返回的数据无法解析。
+于是需要我们改写返回的数据形式</p>
+
+<pre><code class="language-php">&lt;?php
+	$number = 11;
+	echo 'abc('.$number.')';
+?&gt;
+</code></pre>
+
+<pre><code class="language-html"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+ 	&lt;meta charset=&quot;UTF-8&quot;&gt;
+ 	&lt;title&gt;Document&lt;/title&gt;
+ 	&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/jquery/3.1.1/jquery.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ 	dev
+ 	&lt;script type=&quot;text/javascript&quot;&gt;
+ 	Window.abc = function(number) {
+ 		console.log(number);//11
+ 	}
+ 	&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://pcd.me/ajax.php&quot;&gt;&lt;/script&gt;
+	
+ &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre>
+
+<p>客户端通过定义一个函数，异步回调执行该函数，则函数中的参数为数据。</p>
+
+<h3 id="动态回调函数">动态回调函数</h3>
+
+<pre><code class="language-javascript">window.jsonpCallback = function(json) {
+	console.log(json)
+}
+var script = document.createElement('script');
+script.async = true;
+script.src = &quot;http://pcd.me/ajax.php?callback=jsonpCallback&quot;;
+document.body.appendChild(script);
+
+</code></pre>
+
+<pre><code class="language-php">&lt;?php
+	header('Content-type: application/javascript');
+	$callback = $_GET['callback'];
+	$person = json_encode(array(
+			'name' =&gt; 'pcd',
+			'age' =&gt; '21',
+			'sex' =&gt; 'man'
+
+		), JSON_PRETTY_PRINT);
+
+	echo &quot;$callback($person)&quot;;
+?&gt;
+</code></pre>
+
+<h3 id="jquery中ajax的调用">jquery中ajax的调用</h3>
+
+<p><a href="https://github.com/PLDaily/blog/issues/1">jquery中ajax实现JSONP跨域处理</a></p>
+
+<h3 id="局限性">局限性</h3>
+
+<p>1.JSONP仅适用于HTTP的GET请求，譬如图片、文字等无法实现上传
+2.JSONP返回调用回调函数，如何没有调用成功，则无任何提示，只能是给定一个时间，没有收到响应则为请求失败</p>
+
+<h2 id="子域名代理">子域名代理</h2>
+
+<p>浏览器根据SOP认为dev.pcd.me与pcd.me是不同的源，但浏览器允许网站将主机部分更改为原始值的后缀，即寄放在dev.pcd.me的页面可以将他的源设置为pcd.me，但不能修改源的端口号与HTTP协议。</p>
+
+<h3 id="ajax-php">ajax.php</h3>
+
+<pre><code class="language-php">&lt;?php
+	echo 11;
+?&gt;
+</code></pre>
+
+<h3 id="dev-pcd-me下的请求">dev.pcd.me下的请求</h3>
+
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;子页面&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;document.domain = 'pcd.me'&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div&gt;dev&lt;/div&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+    function getProducData() {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'http://pcd.me/proxy.html';
+        iframe.onload = function() {
+            iframe.contentWindow.jQuery.ajax({//这里使用jquery的ajax方式调用则需要在proxy.html中引入jquery
+                method: &quot;GET&quot;,
+                url: &quot;http://pcd.me/ajax.php&quot;,
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        }
+
+        document.getElementsByTagName('head')[0].appendChild(iframe);
+    }
+    getProducData();
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="pcd文件下添加一个代理文件proxy-html文件">pcd文件下添加一个代理文件proxy.html文件</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;script&gt;
+		document.domain = 'pcd.me';
+	&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//cdn.bootcss.com/jquery/3.1.1/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="局限性-1">局限性</h3>
+
+<p>1.只适用于子域名下，运用范围窄
+2.需要添加一个代理文件</p>
+
+<h2 id="使用子域名代理及jsop">使用子域名代理及JSOP</h2>
+
+<h3 id="ajax-php-1">ajax.php</h3>
+
+<pre><code class="language-php">&lt;?php
+	echo '&lt;!DOCTYPE&gt;
+			&lt;html&gt;
+				&lt;script&gt;
+					document.domain = &quot;pcd.me&quot;;
+					window.parent.jsonpCallback(&quot;{\&quot;status\&quot;: \&quot;success\&quot;}&quot;);
+				&lt;/script&gt;
+			&lt;/html&gt;
+	';
+?&gt;
+</code></pre>
+
+<h3 id="dev-pcd-me下的请求-1">dev.pcd.me下的请求</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;子页面&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;document.domain = 'pcd.me'&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div&gt;dev&lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    function jsonpCallback(value) {
+        console.log(value);
+    }
+    &lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+
+    var frame = document.createElement('iframe');
+    frame.name = &quot;post-review&quot;;
+    frame.style.display = &quot;none&quot;;
+
+    var form = document.createElement(&quot;form&quot;);
+    form.action = &quot;http://pcd.me/ajax.php&quot;;
+    form.method = &quot;GET&quot;;
+    form.target = &quot;post-review&quot;;
+    document.body.appendChild(form);
+    document.body.appendChild(frame);
+
+    form.submit();
+
+    document.body.removeChild(form);
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="局限性-2">局限性</h3>
+
+<p>1.JSONP仅适用于HTTP的GET请求，譬如图片、文字等无法实现上传
+2.JSONP返回调用回调函数，如何没有调用成功，则无任何提示，只能是给定一个时间，没有收到响应则为请求失败
+3.相较于JSONP，其能实现POST请求</p>
+
+<h2 id="跨资源共享-cors">跨资源共享(CORS)</h2>
+
+<p>当发起http请求时，支持CORS的浏览器会通过引入额外的Origin头信息来指定请求源。
+Origin: <a href="http://de.pcd.me">http://de.pcd.me</a></p>
+
+<p>服务端的工作是检查头信息是否接受该请求，如果一个请求被接受，他必须发挥一个包含Access-Control-Allow-Origin: <a href="http://dev.pcd.me">http://dev.pcd.me</a></p>
+
+<pre><code class="language-php">&lt;?php
+	header('Access-Control-Allow-Origin: http://dev.pcd.me');
+	echo 11;
+?&gt;
+</code></pre>
+
+<h3 id="dev-pcd-me下的请求-2">dev.pcd.me下的请求</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;子页面&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div&gt;dev&lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    $.ajax({
+        type: &quot;GET&quot;,
+        url: &quot;http://pcd.me/ajax.php&quot;,
+        success: function(data) {
+            console.log(data);
+        }
+    })    
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="使用postmessage实现iframe之间的通信">使用postMessage实现iframe之间的通信</h2>
+
+<p>dev目录下index.html</p>
+
+<pre><code class="language-html"> &lt;html&gt; 
+ &lt;head&gt; 
+ &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt; 
+ &lt;title&gt;Test Cross-domain communication using HTML5&lt;/title&gt; 
+ &lt;script type=&quot;text/JavaScript&quot;&gt; 
+     function sendIt(){ 
+         // 通过 postMessage 向子窗口发送数据
+         document.getElementById(&quot;otherPage&quot;).contentWindow 
+             .postMessage( 
+                 document.getElementById(&quot;message&quot;).value, 
+                &quot;http://pcd.me&quot;
+             ); 
+     } 
+ &lt;/script&gt; 
+ &lt;/head&gt; 
+ &lt;body&gt; 
+     &lt;!-- 通过 iframe 嵌入子页面 --&gt; 
+     &lt;iframe src=&quot;//pcd.me/other-domain.html&quot; 
+                 id=&quot;otherPage&quot;&gt;&lt;/iframe&gt; 
+     &lt;br/&gt;&lt;br/&gt; 
+     &lt;input type=&quot;text&quot; id=&quot;message&quot;&gt;&lt;input type=&quot;button&quot; 
+             value=&quot;Send to child.com&quot; onclick=&quot;sendIt()&quot; /&gt; 
+ &lt;/body&gt; 
+ &lt;/html&gt;
+</code></pre>
+
+<p>pcd目录下other-domain.html</p>
+
+<pre><code class="language-html">&lt;html&gt; 
+ &lt;head&gt; 
+ &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt; 
+ &lt;title&gt;Web page from dev.pcd.me&lt;/title&gt; 
+ &lt;script type=&quot;text/JavaScript&quot;&gt; 
+	 //event 参数中有 data 属性，就是父窗口发送过来的数据
+	 window.addEventListener(&quot;message&quot;, function( event ) { 
+		 // 把父窗口发送过来的数据显示在子窗口中
+	   document.getElementById(&quot;content&quot;).innerHTML+=event.data+&quot;&lt;br/&gt;&quot;; 
+	 }, false ); 
+
+ &lt;/script&gt; 
+ &lt;/head&gt; 
+ &lt;body&gt; 
+	 Web page from http://dev.pcd.me
+	 &lt;div id=&quot;content&quot;&gt;&lt;/div&gt; 
+ &lt;/body&gt; 
+ &lt;/html&gt;
+</code></pre>
+
+
+    
+</article>
+
+
+    </div>
+
+    
+</body>
+</html>
