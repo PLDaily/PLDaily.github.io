@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/docker/</link>
+    <description>Recent content in Docker on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 06 Sep 2017 17:08:24 +0000</lastBuildDate><atom:link href="https://pldaily.github.io/tags/docker/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker 学习笔记</title>
+      <link>https://pldaily.github.io/posts/docker/</link>
+      <pubDate>Wed, 06 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/docker/</guid>
+      <description>本文记录 Docker 的学习笔记。
+docker安装启动 ubuntu下的安装
+max下的安装
+国内镜像: 网易蜂巢
+基本信息  docker版本
+ docker version  Docker 状态
+ docker info 镜像  拉取镜像
+ docker pull hello-world  查看拉取的镜像
+ docker images  删除镜像
+ docker rim 镜像名 容器  基本镜像创建容器
+ docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令  查看容器
+ docker ps(正在运行) docker ps -a (所有)  进入容器</description>
+    </item>
+    
+  </channel>
+</rss>

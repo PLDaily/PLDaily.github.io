@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DNS on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/dns/</link>
+    <description>Recent content in DNS on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 15 Sep 2017 17:08:24 +0000</lastBuildDate><atom:link href="https://pldaily.github.io/tags/dns/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS 协议</title>
+      <link>https://pldaily.github.io/posts/dns/</link>
+      <pubDate>Fri, 15 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/dns/</guid>
+      <description>DNS是一种能进行主机名到IP地址转化的目录服务。所有的DNS请求和回答报文使用UDP数据经端口53发送。
+DNS服务器类型  根DNS服务器 顶级域（TLD）DNS服务器 权威DNS服务器  DNS查询过程   主机向本地DNS发送DNS查询报文
+  本地DNS服务器判断是否有主机的缓存（DNS服务器会缓存主机名/IP地址对，通常会缓存俩天），有则直接返回IP地址
+  本地无DNS缓存则请求根DNS服务器，根DNS服务器返回主机的顶级域服务器（TLD）的IP地址列表
+  请求TDL服务器返回主机的权威DNS服务器，如果TDL不知道主机的权威DNS服务器则还需通过向中间DNS服务器发送请求获取权威DNS服务器
+  上述所示一次DNS查询需要发送8份报文，4份查询报文和4份回答报文，如果需要经过中间服务器则需发送10份报文 </description>
+    </item>
+    
+  </channel>
+</rss>

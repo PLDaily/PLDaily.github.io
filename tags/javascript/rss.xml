@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/javascript/</link>
+    <description>Recent content in JavaScript on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 10 Jan 2018 17:05:43 +0000</lastBuildDate><atom:link href="https://pldaily.github.io/tags/javascript/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前端单元测试</title>
+      <link>https://pldaily.github.io/posts/front-test/</link>
+      <pubDate>Wed, 10 Jan 2018 17:05:43 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/front-test/</guid>
+      <description>为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。
+TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
+服务端代码测试 所谓服务端代码，指的就是一个node的模块，能在node的环境中运行。以一个项目为例，代码结构如下:
+. ├── index.js ├── node_modules ├── package.json └── test └── test.js 前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
+npm install mocha chai --save-dev  index.js  const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js  const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) }) describe用于给测试用例分组，it代表一个测试用例。</description>
+    </item>
+    
+    <item>
+      <title>JS 中的值传递，引用传递，传递引用(共享传递)</title>
+      <link>https://pldaily.github.io/posts/js-prop/</link>
+      <pubDate>Wed, 25 Oct 2017 17:18:19 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/js-prop/</guid>
+      <description>从一个stackoverflow上一个经典的问题开始
+function changeStuff(num, obj1, obj2) { num = num * 10; obj1.item = &amp;quot;changed&amp;quot;; obj2 = {item: &amp;quot;changed&amp;quot;}; } var num = 10; var obj1 = {item: &amp;quot;unchanged&amp;quot;}; var obj2 = {item: &amp;quot;unchanged&amp;quot;}; changeStuff(num, obj1, obj2); console.log(num); // 10 console.log(obj1.item); // changed console.log(obj2.item); // unchanged  传值
+ 函数内的num, obj1, obj2都将是一份新的内存，与调用函数之前定义的三个变量毫无关系。函数内无论怎么修改这三个参数，外部定义的三个变量的值始终不变
+传值的意思就是：传内存拷贝。
+ 传引用
+ 函数内的num, obj1, obj2都分别指向一块内存，该内存就是调用函数之前定义的三个变量时创建的内存。函数内对这三个参数所做的任何改动，都将反映到外部定义的三个变量上。
+传引用的意思就是：传内存指针
+从上面的代码可以看出，JavaScript中函数参数的传递方式既不是传值，也不是传引用，而是叫call-by-sharing
+ 共享传递
+ In JavaScript, all variables refers to values. So, when we pass a variable to a function, the argument is a value which is itself a reference.</description>
+    </item>
+    
+    <item>
+      <title>单例模式</title>
+      <link>https://pldaily.github.io/posts/singleton-mode/</link>
+      <pubDate>Thu, 30 Mar 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/singleton-mode/</guid>
+      <description>单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。
+ 使用命名空间  var singleTon = { name: &amp;#39;pcd&amp;#39;, getName: function() { console.log(this.name); } }  使用闭包封装私有变量  var singleTon = (function() { var _name = &amp;#39;pcd&amp;#39;; return { getName: function() { console.log(_name); } } })(); 使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&amp;#39;div&amp;#39;); div.innerHTML = html; div.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!instance) { instance = CreateLoginLayer(html); } return instance; } })(); 惰性单例 惰性单例是指在需要的时候才创建对象实例。</description>
+    </item>
+    
+    <item>
+      <title>事件循环</title>
+      <link>https://pldaily.github.io/posts/event-loop/</link>
+      <pubDate>Thu, 16 Mar 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/event-loop/</guid>
+      <description>本文记录对事件循环的理解
+setTimeout与setInterval  定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。 javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。 异步队列中的处理程序会有优先级，鼠标点击处理程序优先级会高于Timer处理程序与Interval处理程序。 举例： 一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。  不同点：
+setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10) setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
+任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：
+ 在 macrotask 队列中执行最早的那个 task ，然后移出 执行 microtask 队列中所有可用的任务，然后移出 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)  macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
+示例 console.log(&amp;#39;start&amp;#39;) const interval = setInterval(() =&amp;gt; { console.log(&amp;#39;setInterval&amp;#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&amp;#39;setTimeout 1&amp;#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&amp;#39;promise 3&amp;#39;) }) .then(() =&amp;gt; { console.log(&amp;#39;promise 4&amp;#39;) }) .then(() =&amp;gt; { setTimeout(() =&amp;gt; { console.</description>
+    </item>
+    
+    <item>
+      <title>发布-订阅模式(观察者模式)</title>
+      <link>https://pldaily.github.io/posts/observer-mode/</link>
+      <pubDate>Wed, 15 Mar 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/observer-mode/</guid>
+      <description>观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i++) { var _fn = fns[i]; if(fn === _fn) { clientList[key].</description>
+    </item>
+    
+    <item>
+      <title>字符编码详解</title>
+      <link>https://pldaily.github.io/posts/character-encoding/</link>
+      <pubDate>Thu, 19 Jan 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/character-encoding/</guid>
+      <description>本文记录对字符编码的理解
+ASCLL码 ASCLL: 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为ASCII码，一直沿用至今。 ASCII码一共规定了128个字符的编码，比如空格&amp;quot;SPACE&amp;quot;是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0
+Unicode Unicode: 将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储，不同标准占的字节数不同(大于1字节)
+UTF-8 UTF-8: UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。 UTF-8的编码规则很简单，只有二条：
+对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 对于n字节的符号（n&amp;gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。 英文在unicode中占2-4个字节（不同标准占的字节数不同，总之大于1字节)，但utf-8中占一个字节
+   Unicode UTF-8     0000 0000-0000 007F 0xxxxxxx   0000 0080-0000 07FF 110xxxxx 10xxxxxx   0000 0800-0000 FFFF 1110xxxx 10xxxxxx 10xxxxxx   0001 0000-0010 FFFF 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx    UTF-16 UTF-16：就是任何字符对应的数字都用两个字节来保存.但是很显然如果都是英文字母这做有点浪费，但汉字在utf-16中占2个字节，但在utf-8中可能占3个字节。
+JS中的字符编码 JS中字符以UTF-16的格式存储，每个字符为为2个字节，可存字符为2^8*2^8个字符，但超出这个范围即Unicode编码大于65536，则通过四个字节存储。 以古文&amp;quot;𣦵&amp;quot;为例，Unicode值为145845，大于65536，以4个字节存储。 现有的charAt、charCodeAt只能处理Unicode编码范围内的字符，ES6引入codePointAt方法
+var s = &amp;ldquo;𣦵&amp;rdquo;; console.log(s.codePointAt(0));//145845 charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数</description>
+    </item>
+    
+    <item>
+      <title>浮动详解</title>
+      <link>https://pldaily.github.io/posts/clear-float/</link>
+      <pubDate>Thu, 19 Jan 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/clear-float/</guid>
+      <description>本文记录对清除浮动的详解
+浮动效果 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;#34;text/css&amp;#34;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;div1&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;div2&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 此时父元素#main的高度宽度由子元素#div1与#div2决定，由于子元素设置浮动脱离文档流，导致父元素高度为0，使其父元素#main背景颜色无效果。
+清除浮动方式一 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;#34;text/css&amp;#34;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; overflow: hidden; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;div1&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;div2&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 父元素设置overflow: hidden;属性 原理：因为overflow.</description>
+    </item>
+    
+    <item>
+      <title>对象精讲</title>
+      <link>https://pldaily.github.io/posts/object-oop/</link>
+      <pubDate>Sat, 29 Oct 2016 15:36:03 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/object-oop/</guid>
+      <description>在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。
+构造函数 创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。
+function Person(name) { this.name = name; this.sayName = function() { console.log(this.name); } } var person1 = new Person(&amp;#39;aaa&amp;#39;); var person2 = new Person(&amp;#39;bbb&amp;#39;); console.log(person1.sayName == person2.sayName);//false  所以我们需要使用原型共享一些属性与方法
+ 原型 原型的共享 javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。
+function Person(name) {} Person.prototype.name = &amp;#34;aaa&amp;#34;; Person.prototype.sayName = function() { console.log(this.name); } var person1 = new Person(); var person2 = new Person(); console.log(person1.sayName == person2.sayName);//true 实例，原型，构造函数三者之间的关系 每个函数都有一个原型属性，这个属性指向函数的原型对象 __proto__存在于实例与构造函数的原型对象之间 原型对象中的constructor属性指向构造函数 构造函数中的this指向实例
+new的实现 通过以上的属性，我们可以直接实现new操作符
+function Person(name) { this.</description>
+    </item>
+    
+    <item>
+      <title>WEB 客户端存储</title>
+      <link>https://pldaily.github.io/posts/web-storage/</link>
+      <pubDate>Thu, 13 Oct 2016 16:56:04 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/web-storage/</guid>
+      <description>web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。
+cookie cookie的保存 cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码
+cookie设置的参数 key：名 value：值 path：路径 expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)
+存储cookie function setCookie(name, value, expires, path) { document.cookie =name + &amp;#39;=&amp;#39; + encodeURIComponent(value) + &amp;#39;;expires = &amp;#39; + expires + &amp;#39;;path = &amp;#39; + path; } setCookie(&amp;#34;name&amp;#34;, &amp;#34;pcd&amp;#34;, 1000*60*60, &amp;#39;/&amp;#39;); 获取cookie function getCookie(key) { var all = document.cookie; var list = all.split(&amp;#39;;&amp;#39;); if(all === &amp;#39;&amp;#39;) { return cookie; } for(var i = 0; i &amp;lt; list.length; i++) { var cookie = list[i].</description>
+    </item>
+    
+    <item>
+      <title>JS 中的 this 详解</title>
+      <link>https://pldaily.github.io/posts/js-this/</link>
+      <pubDate>Sun, 09 Oct 2016 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/js-this/</guid>
+      <description>本文记录对 JS 中 this 的详解
+this的绑定方式 默认绑定 没调用对象指向全局
+function foo() { console.log(this.a); } var a = 1; foo();//1 隐式绑定 var a = 1; function foo() { console.log(this.a); } var obj = { a: 2, foo: foo } obj.foo();//2 var bar = obj.foo; bar();//1 显式绑定 function foo() { console.log(this.a); } var a = 1; var obj = { a: 2 } foo.call(obj);//2 foo.apply(obj);//2 var bar = foo.bind(obj); bar();//2 new绑定 function foo(a) { this.</description>
+    </item>
+    
+  </channel>
+</rss>

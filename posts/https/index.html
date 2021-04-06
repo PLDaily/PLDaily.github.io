@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.82.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="HTTPS 详解 - PLDaily Blog">
+    <meta name="twitter:description" content="&amp;lsquo;大家好，我是渣渣辉&amp;rsquo;。日常访问网站，随处可见的小弹窗，网页八成是被运营商劫持了。所谓运营商劫持是多指 HTTP 劫持，HTTP 协议是明文的，每次请求和响应的数据都需要经过运营商（电信、联通等），运营商便会在响应的数据中加入一些自己的东西（广告）。今年 7 月起，Chrome 浏览器会将把所有 HTTP 标示为不安全网站。故引出今天的主角 HTTPS。
+HTTPS 是 HTTP 的安全形式，所有 HTTP 请求和响应的数据到达网络之前都要进行加密。
+基础概念  TLS/SSL  用于 HTTPS 的编码与解码
+ 对称加密技术  加密解密使用相同的密钥相同
+ 非对称加密技术  加密解密使用不同的密钥，一般使用 RSA 算法
+HTTPS 原理 HTTPS 是如何保证数据安全，以客户端向服务端请求数据为例：
+ 客户端向服务端请求数据，服务端将正文内容通过 HASH 算法处理，处理后的内容通过服务端密钥加密生成数字签名，向客户端发送正文内容及数字签名 客户端将请求到的正文内容经过相同的 HASH 算法处理，再将数字签名通过公钥解密，对照俩者的结果是否相同，如果相同则内容未被修改。  数字签名（digital signature）为非对称加密，只有一个私钥及多个公钥。但以上步骤中的公钥的来源很有可能是不安全的，为保证公钥的准确性，要去数字证书机构（简称 CA） 为公钥做认证。
+数字证书也为非对称加密，将公钥及一些服务端的信息经过 CA 的私钥加密生成数字证书（证书包括签发者、证书用途、公钥、加密算法、HASH 算法、到期时间等）。客户端拿到数字证书通过 CA 的公钥解密得到数字签名的公钥，确保了公钥来源的安全性。
+搭建 HTTPS 制作CA证书  生成CA私钥  openssl genrsa -out ca.key 1024  生成CA公钥  openssl req -new -x509 -days 7305 -key ca.">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="HTTPS 详解 - PLDaily Blog">
+    <meta property="og:description" content="&amp;lsquo;大家好，我是渣渣辉&amp;rsquo;。日常访问网站，随处可见的小弹窗，网页八成是被运营商劫持了。所谓运营商劫持是多指 HTTP 劫持，HTTP 协议是明文的，每次请求和响应的数据都需要经过运营商（电信、联通等），运营商便会在响应的数据中加入一些自己的东西（广告）。今年 7 月起，Chrome 浏览器会将把所有 HTTP 标示为不安全网站。故引出今天的主角 HTTPS。
+HTTPS 是 HTTP 的安全形式，所有 HTTP 请求和响应的数据到达网络之前都要进行加密。
+基础概念  TLS/SSL  用于 HTTPS 的编码与解码
+ 对称加密技术  加密解密使用相同的密钥相同
+ 非对称加密技术  加密解密使用不同的密钥，一般使用 RSA 算法
+HTTPS 原理 HTTPS 是如何保证数据安全，以客户端向服务端请求数据为例：
+ 客户端向服务端请求数据，服务端将正文内容通过 HASH 算法处理，处理后的内容通过服务端密钥加密生成数字签名，向客户端发送正文内容及数字签名 客户端将请求到的正文内容经过相同的 HASH 算法处理，再将数字签名通过公钥解密，对照俩者的结果是否相同，如果相同则内容未被修改。  数字签名（digital signature）为非对称加密，只有一个私钥及多个公钥。但以上步骤中的公钥的来源很有可能是不安全的，为保证公钥的准确性，要去数字证书机构（简称 CA） 为公钥做认证。
+数字证书也为非对称加密，将公钥及一些服务端的信息经过 CA 的私钥加密生成数字证书（证书包括签发者、证书用途、公钥、加密算法、HASH 算法、到期时间等）。客户端拿到数字证书通过 CA 的公钥解密得到数字签名的公钥，确保了公钥来源的安全性。
+搭建 HTTPS 制作CA证书  生成CA私钥  openssl genrsa -out ca.key 1024  生成CA公钥  openssl req -new -x509 -days 7305 -key ca.">
+    <meta property="og:url" content="https://pldaily.github.io/posts/https/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>HTTPS 详解 - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="&amp;lsquo;大家好，我是渣渣辉&amp;rsquo;。日常访问网站，随处可见的小弹窗，网页八成是被运营商劫持了。所谓运营商劫持是多指 HTTP 劫持，HTTP 协议是明文的，每次请求和响应的数据都需要经过运营商（电信、联通等），运营商便会在响应的数据中加入一些自己的东西（广告）。今年 7 月起，Chrome 浏览器会将把所有 HTTP 标示为不安全网站。故引出今天的主角 HTTPS。
+HTTPS 是 HTTP 的安全形式，所有 HTTP 请求和响应的数据到达网络之前都要进行加密。
+基础概念  TLS/SSL  用于 HTTPS 的编码与解码
+ 对称加密技术  加密解密使用相同的密钥相同
+ 非对称加密技术  加密解密使用不同的密钥，一般使用 RSA 算法
+HTTPS 原理 HTTPS 是如何保证数据安全，以客户端向服务端请求数据为例：
+ 客户端向服务端请求数据，服务端将正文内容通过 HASH 算法处理，处理后的内容通过服务端密钥加密生成数字签名，向客户端发送正文内容及数字签名 客户端将请求到的正文内容经过相同的 HASH 算法处理，再将数字签名通过公钥解密，对照俩者的结果是否相同，如果相同则内容未被修改。  数字签名（digital signature）为非对称加密，只有一个私钥及多个公钥。但以上步骤中的公钥的来源很有可能是不安全的，为保证公钥的准确性，要去数字证书机构（简称 CA） 为公钥做认证。
+数字证书也为非对称加密，将公钥及一些服务端的信息经过 CA 的私钥加密生成数字证书（证书包括签发者、证书用途、公钥、加密算法、HASH 算法、到期时间等）。客户端拿到数字证书通过 CA 的公钥解密得到数字签名的公钥，确保了公钥来源的安全性。
+搭建 HTTPS 制作CA证书  生成CA私钥  openssl genrsa -out ca.key 1024  生成CA公钥  openssl req -new -x509 -days 7305 -key ca.">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 border-t-4 border-blue-500 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">HTTPS 详解</h1>
+    <time datetime="2018-01-26 17:08:24 UTC">26 Jan 2018</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/https">HTTPS</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    <p>&lsquo;大家好，我是渣渣辉&rsquo;。日常访问网站，随处可见的小弹窗，网页八成是被运营商劫持了。所谓运营商劫持是多指 HTTP 劫持，HTTP 协议是明文的，每次请求和响应的数据都需要经过运营商（电信、联通等），运营商便会在响应的数据中加入一些自己的东西（广告）。今年 7 月起，Chrome 浏览器会将把所有 HTTP 标示为不安全网站。故引出今天的主角 HTTPS。</p>
+<!-- raw HTML omitted -->
+<p>HTTPS 是 HTTP 的安全形式，所有 HTTP 请求和响应的数据到达网络之前都要进行加密。</p>
+<h2 id="基础概念">基础概念</h2>
+<ul>
+<li>TLS/SSL</li>
+</ul>
+<p>用于 HTTPS 的编码与解码</p>
+<ul>
+<li>对称加密技术</li>
+</ul>
+<p>加密解密使用相同的密钥相同</p>
+<ul>
+<li>非对称加密技术</li>
+</ul>
+<p>加密解密使用不同的密钥，一般使用 RSA 算法</p>
+<h3 id="https-原理">HTTPS 原理</h3>
+<p>HTTPS 是如何保证数据安全，以客户端向服务端请求数据为例：</p>
+<ul>
+<li>客户端向服务端请求数据，服务端将正文内容通过 HASH 算法处理，处理后的内容通过服务端密钥加密生成数字签名，向客户端发送正文内容及数字签名</li>
+<li>客户端将请求到的正文内容经过相同的 HASH 算法处理，再将数字签名通过公钥解密，对照俩者的结果是否相同，如果相同则内容未被修改。</li>
+</ul>
+<p>数字签名（digital signature）为非对称加密，只有一个私钥及多个公钥。但以上步骤中的公钥的来源很有可能是不安全的，为保证公钥的准确性，要去数字证书机构（简称 CA） 为公钥做认证。</p>
+<p>数字证书也为非对称加密，将公钥及一些服务端的信息经过 CA 的私钥加密生成数字证书（证书包括签发者、证书用途、公钥、加密算法、HASH 算法、到期时间等）。客户端拿到数字证书通过 CA 的公钥解密得到数字签名的公钥，确保了公钥来源的安全性。</p>
+<h2 id="搭建-https">搭建 HTTPS</h2>
+<h3 id="制作ca证书">制作CA证书</h3>
+<ul>
+<li>生成CA私钥</li>
+</ul>
+<pre><code>openssl genrsa -out ca.key 1024
+</code></pre><ul>
+<li>生成CA公钥</li>
+</ul>
+<pre><code>openssl req -new -x509 -days 7305 -key ca.key -out ca.crt
+</code></pre><!-- raw HTML omitted -->
+<blockquote>
+<p>Common Name 要写成你要用的域名</p>
+</blockquote>
+<h3 id="制作证书">制作证书</h3>
+<ul>
+<li>生成服务端私钥</li>
+</ul>
+<pre><code>openssl genrsa -des3 -out server.pem 1024
+</code></pre><ul>
+<li>生成服务端公钥</li>
+</ul>
+<pre><code>openssl rsa -in server.pem -out server.key
+</code></pre><ul>
+<li>生成签名请求</li>
+</ul>
+<pre><code>openssl req -new -key server.pem -out server.csr
+</code></pre><ul>
+<li>用CA进行签名</li>
+</ul>
+<pre><code>openssl x509 -req -CA ca.crt -CAkey ca.key -CAcreateserial -in server.csr -out server.crt
+</code></pre><h3 id="测试">测试</h3>
+<pre><code>const https = require('https');
+const fs = require('fs');
+const options = {
+	key: fs.readFileSync('./server.key'),
+	cert: fs.readFileSync('./server.crt')
+};
+
+https.createServer(options, function(req, res) {
+	res.writeHead(200);
+	res.end('Holle World');
+}).listen(8000);
+</code></pre><h3 id="注意事项">注意事项</h3>
+<blockquote>
+<p>mac下需要先在safari下打开，信任该证书</p>
+</blockquote>
+<h2 id="参考">参考</h2>
+<p><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a>
+<a href="https://juejin.im/post/590ec765a22b9d0058fcfaa5">https://juejin.im/post/590ec765a22b9d0058fcfaa5</a>
+<a href="http://www.barretlee.com/blog/2015/10/05/how-to-build-a-https-server/">http://www.barretlee.com/blog/2015/10/05/how-to-build-a-https-server/</a>
+<a href="http://blog.creke.net/762.html">http://blog.creke.net/762.html</a></p>
+
+
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "pldaily" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+
+
+        <footer class="md:flex md:justify-between">
+          <span>
+            &copy; 2021 PLDaily. All rights reserved.
+          </span>
+          <a target="_blank" rel="noopener noreferrer" href="/rss.xml" class="rss">RSS</a>
+        </footer>
+
+    </div>
+
+    
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e898bcadd9e22a66fbaed4a257987246";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+</body>
+</html>

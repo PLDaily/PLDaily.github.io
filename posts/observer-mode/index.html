@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.82.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="发布-订阅模式(观察者模式) - PLDaily Blog">
+    <meta name="twitter:description" content="观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i&#43;&#43;) { var _fn = fns[i]; if(fn === _fn) { clientList[key].">
+    <meta name="twitter:site" content="https://pldaily.github.io/">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://pldaily.github.io/">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="发布-订阅模式(观察者模式) - PLDaily Blog">
+    <meta property="og:description" content="观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i&#43;&#43;) { var _fn = fns[i]; if(fn === _fn) { clientList[key].">
+    <meta property="og:url" content="https://pldaily.github.io/posts/observer-mode/">
+    <meta property="og:site_name" content="PLDaily Blog">
+    <meta property="og:image" content="https://pldaily.github.io/">
+    
+    <title>发布-订阅模式(观察者模式) - PLDaily Blog</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i&#43;&#43;) { var _fn = fns[i]; if(fn === _fn) { clientList[key].">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://pldaily.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 border-t-4 border-blue-500 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">发布-订阅模式(观察者模式)</h1>
+    <time datetime="2017-03-15 17:08:24 UTC">15 Mar 2017</time>
+    
+    
+    
+    <ol class="mt-4">
+        
+        <li class="inline-block">
+            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1" href="https://pldaily.github.io/tags/javascript">JavaScript</a>
+        </li>
+        
+    </ol>
+    
+</div>
+
+            </div>
+        </header>
+
+        
+        
+<article class="mb-12">
+    <p>观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。</p>
+<!-- raw HTML omitted -->
+<h2 id="普通示例">普通示例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Event</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">clientList</span> <span style="color:#f92672">=</span> {},
+		<span style="color:#a6e22e">listen</span>,
+		<span style="color:#a6e22e">remove</span>,
+		<span style="color:#a6e22e">trigger</span>;
+
+	<span style="color:#a6e22e">listen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">fn</span>) {
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">clientList</span>[<span style="color:#a6e22e">key</span>]) {
+			<span style="color:#a6e22e">clientList</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> [];
+		}
+		<span style="color:#a6e22e">clientList</span>[<span style="color:#a6e22e">key</span>].<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">fn</span>);
+	}
+
+	<span style="color:#a6e22e">remove</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">fn</span>) {
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fns</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">clientList</span>[<span style="color:#a6e22e">key</span>];
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">fns</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">fns</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+		}
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">fn</span>) {
+			<span style="color:#a6e22e">fns</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">fns</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+		}<span style="color:#66d9ef">else</span> {
+			<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">l</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fns</span>,<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">l</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+				<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fns</span>[<span style="color:#a6e22e">i</span>];
+				<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">fn</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">_fn</span>) {
+					<span style="color:#a6e22e">clientList</span>[<span style="color:#a6e22e">key</span>].<span style="color:#a6e22e">splice</span>(<span style="color:#a6e22e">i</span>, <span style="color:#ae81ff">1</span>);
+				}
+			}
+		}
+	}
+
+	<span style="color:#a6e22e">trigger</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">slice</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">arguments</span>),
+			<span style="color:#a6e22e">fns</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">clientList</span>[<span style="color:#a6e22e">key</span>];
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">fns</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">fns</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+		}
+		<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">l</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fns</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">l</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+			<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+		}
+	}
+
+	<span style="color:#66d9ef">return</span> {
+		<span style="color:#a6e22e">listen</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">listen</span>,
+		<span style="color:#a6e22e">trigger</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">trigger</span>,
+		<span style="color:#a6e22e">remove</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">remove</span>
+	}
+
+})()
+</code></pre></div><p>观察者模式广泛应用于一步编程中，这是一种代替异步回调的方案。</p>
+<h2 id="异步示例">异步示例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>(<span style="color:#e6db74">&#39;http://xxx.com/login&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
+	<span style="color:#a6e22e">Event</span>.<span style="color:#a6e22e">trigger</span>(<span style="color:#e6db74">&#39;loginSucc&#39;</span>, <span style="color:#a6e22e">data</span>);
+});
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">header</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+	<span style="color:#a6e22e">Event</span>.<span style="color:#a6e22e">listener</span>(<span style="color:#e6db74">&#39;loginSucc&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
+		<span style="color:#a6e22e">header</span>.<span style="color:#a6e22e">setAvator</span>(<span style="color:#a6e22e">data</span>);
+	});
+	<span style="color:#66d9ef">return</span> {
+		<span style="color:#a6e22e">setAvator</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
+			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;更新头像数据&#39;</span>);
+		}
+	}
+})();
+</code></pre></div><p>观察者模式适用于模块间的通信</p>
+<h2 id="模块间的通信">模块间的通信</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+	&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+	&lt;<span style="color:#f92672">title</span>&gt;模块间的通信&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+	&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;count&#34;</span>&gt;点我&lt;/<span style="color:#f92672">button</span>&gt;
+	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;show&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+	&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">button</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;count&#39;</span>);
+			<span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">click</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+				<span style="color:#a6e22e">Event</span>.<span style="color:#a6e22e">trigger</span>(<span style="color:#e6db74">&#39;add&#39;</span>, <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>);
+			}
+		})();
+
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">div</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;show&#39;</span>);
+			<span style="color:#a6e22e">Event</span>.<span style="color:#a6e22e">listener</span>(<span style="color:#e6db74">&#39;add&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">count</span>) {
+				<span style="color:#a6e22e">div</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">count</span>;
+			})
+		})();
+
+	&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div>
+
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "pldaily" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+
+
+        <footer class="md:flex md:justify-between">
+          <span>
+            &copy; 2021 PLDaily. All rights reserved.
+          </span>
+          <a target="_blank" rel="noopener noreferrer" href="/rss.xml" class="rss">RSS</a>
+        </footer>
+
+    </div>
+
+    
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e898bcadd9e22a66fbaed4a257987246";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+</body>
+</html>

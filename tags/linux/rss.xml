@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/linux/</link>
+    <description>Recent content in Linux on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 30 Jul 2017 17:08:24 +0000</lastBuildDate><atom:link href="https://pldaily.github.io/tags/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 文件系统</title>
+      <link>https://pldaily.github.io/posts/linux-file/</link>
+      <pubDate>Sun, 30 Jul 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/linux-file/</guid>
+      <description>Linux 下文件系统的一下操作记录
+显示当前目录下的文件和目录  ls 显示当前目录下的文件和目录 ls -F 显示当前目录下的文件和目录，如是目录则加&#39;/&#39; ls -F -R 显示当前目录下的文件和目录，它会列出当前目录下包含目录的文件 ls -l 显示当前目录下的文件和目录，包含更多关于当前目录和文件的信息（权限，用户，用户组等） ls -l index* 显示当前目录下的文件和目录，通过正则去匹配  处理文件  touch test 创建一个空文件 cp test1 test2 复制一个test1重命名为test2 cp ../file/test1 . 复制上级目录file目录下的test1到当前目录 cp -p test1 test2 复制的文件保留源文件的访问时间和修改时间 cp -R dir1 dir2 复制整个目录 cp -f ../file/a* . 正则匹配复制 cp -l test1 test4 创建一个指向文件test1的硬链接test4 cp -s test1 test5 创建一个指向文件test1的软链接test5 硬链接包含了源文件的信息及位置，软链接只存储源文件的信息，不需要存储源文件中的数据，文件变小。 当对源文件进行修改时，链接文件会进行相应的修改，而复制生成的文件则不会。 删除源文件时软连接失效，硬链接不受影响。删除软连接对源文件和硬链接无影响。删除硬连接对源文件和硬链接无影响。参考 目录文件只能使用软连接 mv test1 test2 修改test1文件名为test2 rm test1 删除test1文件  处理目录  mkdir dir 新建一个目录dir rmdir dir 删除目录dir rm -r dir 目录中有文件时加-r递归删除目录中的文件再删除目录自身，需要用户确认删除 rm -rf dir 目录中有文件时加-r递归删除目录中的文件再删除目录自身，不需要用户确认删除  查看文件信息  stat test1 查看文件的所有状态信息 file test1 查看文件类型 cat test1 查看整个文件 cat -n test1 查看整个文件，显示列数  用户  cat /etc/passwd 查看用户信息 useradd -m test 创建test用户并创建用户的home目录 /usr/sbin/userdel -r test 删除用户 passwd test 修改test用户密码 usermod -G shared test 用户组shared添加test  用户组  groups 当前用户所属用户组 groups pcd 用户pcd所属的用户组 cat /etc/group 查看用户组 groupadd shared 增加用户组 usermod -G shared test 用户组shared添加test groupmod -n sharing shared 用户组shared改为sharing  文件权限 以pcd下一个文件-rw-rw-r&amp;ndash;为例</description>
+    </item>
+    
+  </channel>
+</rss>

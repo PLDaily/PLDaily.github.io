@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PHP on PLDaily Blog</title>
+    <link>https://pldaily.github.io/tags/php/</link>
+    <description>Recent content in PHP on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Sep 2016 21:19:22 +0000</lastBuildDate><atom:link href="https://pldaily.github.io/tags/php/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跨域</title>
+      <link>https://pldaily.github.io/posts/cross-domain/</link>
+      <pubDate>Thu, 15 Sep 2016 21:19:22 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/cross-domain/</guid>
+      <description>关于前端的跨域问题一直都想去了解应该如何去解决，但由于没有实际例子，看了网上的很多例子一直都处于懵懂的状态，正好公司最近出了一个跨域的问题就随便学习总结了一下
+配置域名 本文跨域处理后台以PHP为例，首先下载wamp，我们先在本地配置俩个域名：pcd.me(一级域名)与dev.pcd.me(二级域名)。在www目录下新建pcd和dev俩个文件，当访问pcd.me时则访问pcd文件夹下的文件，访问dev.pcd.me则访问dev文件夹下的文件。
+更改host 更改C:\Windows\System32\drivers\etc\host文件：添加
+127.0.0.1 pcd.me 127.0.0.1 dev.pcd.me 更改httpd-vhosts.conf 更改F:\wamp2\wamp\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf(该目录为我的配置，具体以实际为准)
+&amp;lt;VirtualHost *:80&amp;gt; ServerName pcd.me DocumentRoot F:/wamp2/wamp/www/pcd &amp;lt;Directory &amp;#34;F:/wamp2/wamp/www/pcd/&amp;#34;&amp;gt; Options +Indexes +Includes +FollowSymLinks +MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; &amp;lt;VirtualHost *:80&amp;gt; ServerName dev.pcd.me DocumentRoot F:/wamp2/wamp/www/dev &amp;lt;Directory &amp;#34;F:/wamp2/wamp/www/dev/&amp;#34;&amp;gt; Options +Indexes +Includes +FollowSymLinks +MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; 访问 在pcd文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; main &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 在dev文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; dev &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 此时访问pcd.</description>
+    </item>
+    
+  </channel>
+</rss>

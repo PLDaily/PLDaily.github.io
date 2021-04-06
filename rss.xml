@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PLDaily Blog</title>
+    <link>https://pldaily.github.io/</link>
+    <description>Recent content on PLDaily Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 26 Jan 2018 17:08:24 +0000</lastBuildDate><atom:link href="https://pldaily.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTPS 详解</title>
+      <link>https://pldaily.github.io/posts/https/</link>
+      <pubDate>Fri, 26 Jan 2018 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/https/</guid>
+      <description>&amp;lsquo;大家好，我是渣渣辉&amp;rsquo;。日常访问网站，随处可见的小弹窗，网页八成是被运营商劫持了。所谓运营商劫持是多指 HTTP 劫持，HTTP 协议是明文的，每次请求和响应的数据都需要经过运营商（电信、联通等），运营商便会在响应的数据中加入一些自己的东西（广告）。今年 7 月起，Chrome 浏览器会将把所有 HTTP 标示为不安全网站。故引出今天的主角 HTTPS。
+HTTPS 是 HTTP 的安全形式，所有 HTTP 请求和响应的数据到达网络之前都要进行加密。
+基础概念  TLS/SSL  用于 HTTPS 的编码与解码
+ 对称加密技术  加密解密使用相同的密钥相同
+ 非对称加密技术  加密解密使用不同的密钥，一般使用 RSA 算法
+HTTPS 原理 HTTPS 是如何保证数据安全，以客户端向服务端请求数据为例：
+ 客户端向服务端请求数据，服务端将正文内容通过 HASH 算法处理，处理后的内容通过服务端密钥加密生成数字签名，向客户端发送正文内容及数字签名 客户端将请求到的正文内容经过相同的 HASH 算法处理，再将数字签名通过公钥解密，对照俩者的结果是否相同，如果相同则内容未被修改。  数字签名（digital signature）为非对称加密，只有一个私钥及多个公钥。但以上步骤中的公钥的来源很有可能是不安全的，为保证公钥的准确性，要去数字证书机构（简称 CA） 为公钥做认证。
+数字证书也为非对称加密，将公钥及一些服务端的信息经过 CA 的私钥加密生成数字证书（证书包括签发者、证书用途、公钥、加密算法、HASH 算法、到期时间等）。客户端拿到数字证书通过 CA 的公钥解密得到数字签名的公钥，确保了公钥来源的安全性。
+搭建 HTTPS 制作CA证书  生成CA私钥  openssl genrsa -out ca.key 1024  生成CA公钥  openssl req -new -x509 -days 7305 -key ca.</description>
+    </item>
+    
+    <item>
+      <title>前端单元测试</title>
+      <link>https://pldaily.github.io/posts/front-test/</link>
+      <pubDate>Wed, 10 Jan 2018 17:05:43 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/front-test/</guid>
+      <description>为保证代码的质量，单元测试必不可少。本文记录自己在学习单元测试过程中的一些总结。
+TDD与BDD的区别 TDD属于测试驱动开发，BDD属于行为驱动开发。个人理解其实就是TDD先写测试模块，再写主功能代码，然后能让测试模块通过测试，而BDD是先写主功能模块，z再写测试模块。详见示例
+服务端代码测试 所谓服务端代码，指的就是一个node的模块，能在node的环境中运行。以一个项目为例，代码结构如下:
+. ├── index.js ├── node_modules ├── package.json └── test └── test.js 前端测试框架主要是Mocha与Jasmine，这里我们选择Mocha，断言库有should、expect、chai以及node自带的assert。这里我们选择chai，chai中包含了expect、should及assert的书写风格。
+npm install mocha chai --save-dev  index.js  const getNum = (value) =&amp;gt; { return value * 2 } module.exports = getNum  test.js  const chai = require(&#39;chai&#39;) const expect = chai.expect const getNum = require(&#39;../index&#39;) describe(&#39;Test&#39;, function() { it(&#39;should return 20 when the value is 10&#39;, function() { expect(getNum(10)).to.equal(20) }) }) describe用于给测试用例分组，it代表一个测试用例。</description>
+    </item>
+    
+    <item>
+      <title>JS 中的值传递，引用传递，传递引用(共享传递)</title>
+      <link>https://pldaily.github.io/posts/js-prop/</link>
+      <pubDate>Wed, 25 Oct 2017 17:18:19 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/js-prop/</guid>
+      <description>从一个stackoverflow上一个经典的问题开始
+function changeStuff(num, obj1, obj2) { num = num * 10; obj1.item = &amp;quot;changed&amp;quot;; obj2 = {item: &amp;quot;changed&amp;quot;}; } var num = 10; var obj1 = {item: &amp;quot;unchanged&amp;quot;}; var obj2 = {item: &amp;quot;unchanged&amp;quot;}; changeStuff(num, obj1, obj2); console.log(num); // 10 console.log(obj1.item); // changed console.log(obj2.item); // unchanged  传值
+ 函数内的num, obj1, obj2都将是一份新的内存，与调用函数之前定义的三个变量毫无关系。函数内无论怎么修改这三个参数，外部定义的三个变量的值始终不变
+传值的意思就是：传内存拷贝。
+ 传引用
+ 函数内的num, obj1, obj2都分别指向一块内存，该内存就是调用函数之前定义的三个变量时创建的内存。函数内对这三个参数所做的任何改动，都将反映到外部定义的三个变量上。
+传引用的意思就是：传内存指针
+从上面的代码可以看出，JavaScript中函数参数的传递方式既不是传值，也不是传引用，而是叫call-by-sharing
+ 共享传递
+ In JavaScript, all variables refers to values. So, when we pass a variable to a function, the argument is a value which is itself a reference.</description>
+    </item>
+    
+    <item>
+      <title>DNS 协议</title>
+      <link>https://pldaily.github.io/posts/dns/</link>
+      <pubDate>Fri, 15 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/dns/</guid>
+      <description>DNS是一种能进行主机名到IP地址转化的目录服务。所有的DNS请求和回答报文使用UDP数据经端口53发送。
+DNS服务器类型  根DNS服务器 顶级域（TLD）DNS服务器 权威DNS服务器  DNS查询过程   主机向本地DNS发送DNS查询报文
+  本地DNS服务器判断是否有主机的缓存（DNS服务器会缓存主机名/IP地址对，通常会缓存俩天），有则直接返回IP地址
+  本地无DNS缓存则请求根DNS服务器，根DNS服务器返回主机的顶级域服务器（TLD）的IP地址列表
+  请求TDL服务器返回主机的权威DNS服务器，如果TDL不知道主机的权威DNS服务器则还需通过向中间DNS服务器发送请求获取权威DNS服务器
+  上述所示一次DNS查询需要发送8份报文，4份查询报文和4份回答报文，如果需要经过中间服务器则需发送10份报文 </description>
+    </item>
+    
+    <item>
+      <title>HTTP 协议</title>
+      <link>https://pldaily.github.io/posts/http/</link>
+      <pubDate>Sat, 09 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/http/</guid>
+      <description>Http协议又称超文本传输协议，定义了Web客户向Web服务器请求页面的方式，以及服务器向客户传输Web页面的方式。Http使用TCP作为它的支撑运输协议，一旦连接建立，该浏览器和服务器进程就可以通过套接字借口访问TCP。因为HTTP服务器不存储关于客户的任何信息，所以我们说HTTP是一个无状态协议。
+持续连接与非持续连接 每个TCP连接在服务器发送一个对象后关闭，即该连接不为其他的对象而持续下来。默认方式下，大部分浏览器打开5-10个并行的TCP连接，每个连接处理一个请求响应事务，也可以设置为1，所有连接串行建立。请求报文Connection: close不希望麻烦的使用持续连接，发送完请求即关闭该连接。
+计算请求html文件到客户端接收整个文件所花的时间 RTT: 客户到服务器再返回客户的时间 涉及TCP三次握手在传输层协议详解 总响应时间就是俩个RTT加上服务器传输HTML文件的时间
+cookie  客户端请求HTTP请求到服务器。 服务器为用户创建ID，通过HTTP响应报文Set-cookie返回 客户端会存储cookie 客户端再次发起请求是发送带有cookie请求报文的HTTP请求 服务器识别cookie执行特定操作 详见这里  条件GET方法 利用缓存能减少用户感受到的时间，但缓存器（代表一个请求浏览器）中的对象副本可能是久的如何处理，即实际上该对象已经被修改了。
+ 请求web服务器获取的对象时，缓存器将对象转发到浏览器的同时也存储了该对象最后的修改时间。该时间为Http响应报文中的Last-Modified。 一段时间后再去请求该对象时，该缓存器会向web服务器发送一个条件GET执行最新的检查。条件GET：  请求报文使用GET方法 请求报文包含一个“If-Modified-Since”，时间是缓存器最后的修改时间。   如果资源未更新则返回一个状态行为304的响应报文，告诉缓存器能使用该对象，能向浏览器转发它缓存的该对象的副本  </description>
+    </item>
+    
+    <item>
+      <title>Docker 学习笔记</title>
+      <link>https://pldaily.github.io/posts/docker/</link>
+      <pubDate>Wed, 06 Sep 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/docker/</guid>
+      <description>本文记录 Docker 的学习笔记。
+docker安装启动 ubuntu下的安装
+max下的安装
+国内镜像: 网易蜂巢
+基本信息  docker版本
+ docker version  Docker 状态
+ docker info 镜像  拉取镜像
+ docker pull hello-world  查看拉取的镜像
+ docker images  删除镜像
+ docker rim 镜像名 容器  基本镜像创建容器
+ docker run [--rm] -dt [-p 主机端口:容器端口] [--name 容器别名] [-v 主机/目录:容器/目录] 容器名 [/bin/sh] # &#39;[]&#39;表示可选选项. rm: 容器stop后自动销毁; d: 后台运行; p: 端口映射; v: 目录映射, 持久化存储; 容器名后接在容器内需要运行的程序/命令  查看容器
+ docker ps(正在运行) docker ps -a (所有)  进入容器</description>
+    </item>
+    
+    <item>
+      <title>Linux 文件系统</title>
+      <link>https://pldaily.github.io/posts/linux-file/</link>
+      <pubDate>Sun, 30 Jul 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/linux-file/</guid>
+      <description>Linux 下文件系统的一下操作记录
+显示当前目录下的文件和目录  ls 显示当前目录下的文件和目录 ls -F 显示当前目录下的文件和目录，如是目录则加&#39;/&#39; ls -F -R 显示当前目录下的文件和目录，它会列出当前目录下包含目录的文件 ls -l 显示当前目录下的文件和目录，包含更多关于当前目录和文件的信息（权限，用户，用户组等） ls -l index* 显示当前目录下的文件和目录，通过正则去匹配  处理文件  touch test 创建一个空文件 cp test1 test2 复制一个test1重命名为test2 cp ../file/test1 . 复制上级目录file目录下的test1到当前目录 cp -p test1 test2 复制的文件保留源文件的访问时间和修改时间 cp -R dir1 dir2 复制整个目录 cp -f ../file/a* . 正则匹配复制 cp -l test1 test4 创建一个指向文件test1的硬链接test4 cp -s test1 test5 创建一个指向文件test1的软链接test5 硬链接包含了源文件的信息及位置，软链接只存储源文件的信息，不需要存储源文件中的数据，文件变小。 当对源文件进行修改时，链接文件会进行相应的修改，而复制生成的文件则不会。 删除源文件时软连接失效，硬链接不受影响。删除软连接对源文件和硬链接无影响。删除硬连接对源文件和硬链接无影响。参考 目录文件只能使用软连接 mv test1 test2 修改test1文件名为test2 rm test1 删除test1文件  处理目录  mkdir dir 新建一个目录dir rmdir dir 删除目录dir rm -r dir 目录中有文件时加-r递归删除目录中的文件再删除目录自身，需要用户确认删除 rm -rf dir 目录中有文件时加-r递归删除目录中的文件再删除目录自身，不需要用户确认删除  查看文件信息  stat test1 查看文件的所有状态信息 file test1 查看文件类型 cat test1 查看整个文件 cat -n test1 查看整个文件，显示列数  用户  cat /etc/passwd 查看用户信息 useradd -m test 创建test用户并创建用户的home目录 /usr/sbin/userdel -r test 删除用户 passwd test 修改test用户密码 usermod -G shared test 用户组shared添加test  用户组  groups 当前用户所属用户组 groups pcd 用户pcd所属的用户组 cat /etc/group 查看用户组 groupadd shared 增加用户组 usermod -G shared test 用户组shared添加test groupmod -n sharing shared 用户组shared改为sharing  文件权限 以pcd下一个文件-rw-rw-r&amp;ndash;为例</description>
+    </item>
+    
+    <item>
+      <title>单例模式</title>
+      <link>https://pldaily.github.io/posts/singleton-mode/</link>
+      <pubDate>Thu, 30 Mar 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/singleton-mode/</guid>
+      <description>单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。并提供一个访问它的全局访问点。
+javascript中的单例模式 在javascript开发中，我们经常会把全局变量当成单例模式来使用。
+ 使用命名空间  var singleTon = { name: &amp;#39;pcd&amp;#39;, getName: function() { console.log(this.name); } }  使用闭包封装私有变量  var singleTon = (function() { var _name = &amp;#39;pcd&amp;#39;; return { getName: function() { console.log(_name); } } })(); 使用代理实现单例模式 代理模式使CreateLoginLayer为一个普通的类，跟ProxyCreateLoginLayer的组合起到了单例模式的效果。
+var CreateLoginLayer = function(html) { var div; div = document.createElement(&amp;#39;div&amp;#39;); div.innerHTML = html; div.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(div); } var ProxyCreateLoginLayer = (function() { var instance; return function(html) { if(!instance) { instance = CreateLoginLayer(html); } return instance; } })(); 惰性单例 惰性单例是指在需要的时候才创建对象实例。</description>
+    </item>
+    
+    <item>
+      <title>事件循环</title>
+      <link>https://pldaily.github.io/posts/event-loop/</link>
+      <pubDate>Thu, 16 Mar 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/event-loop/</guid>
+      <description>本文记录对事件循环的理解
+setTimeout与setInterval  定时器不是javascript自身的一个功能，是javascript运行在浏览器环境中浏览器为其实现的一个功能。 javascript是单线程的，同一时间只能执行一个代码块，这些代码块阻塞了异步事件的执行。当一个异步事件发生时(鼠标点击，定时器，ajax等)，它就会排队，等线程空闲时才能执行。 异步队列中的处理程序会有优先级，鼠标点击处理程序优先级会高于Timer处理程序与Interval处理程序。 举例： 一个javascript程序包括主程序代码，setTimeout，setInterval时，执行到setInterval时，会进入到队列中排队处理程序。队列中的setInterval处理程序在设定的时间内要执行但此时主程序代码块还没执行结束，则此次处理程序不能被执行。在下一次setInterval处理程序要执行时主程序还是没有执行结束，因为队列中已有setInterval处理程序，则不在向队列中推入setInterval处理程序，即此次作废。而setTimeout处理程序、鼠标点击处理程序则在异步队列中等主程序执行结束之后执行(setTnterval处理事件也是)。队列中事件处理程序的先后顺序由浏览器算法决定。  不同点：
+setTimeout(function() { setTimeout(repeatMe, 10); }, 10); setInterval(function() { }, 10) setTimeout要在前一个callback回调执行结束并延迟10ms以后，才能再次执行setTimeout()， 而setInterval()则是每隔10ms就尝试执行callback回调，而不关注上一个callback是何时执行的。
+任务队列macrotask与microtask 事件循环中的任务队列主要包括macrotask与microtask，执行的顺序为：
+ 在 macrotask 队列中执行最早的那个 task ，然后移出 执行 microtask 队列中所有可用的任务，然后移出 下一个循环，执行下一个 macrotask 中的任务 (再跳到第2步)  macrotask主要有setInterval与setTimeout，miscrotask主要有Promise.then()的回调。mascrotask产生的microtask可以在本次循环执行，而macrotask则需要下次循环执行。
+示例 console.log(&amp;#39;start&amp;#39;) const interval = setInterval(() =&amp;gt; { console.log(&amp;#39;setInterval&amp;#39;) }, 0) setTimeout(() =&amp;gt; { console.log(&amp;#39;setTimeout 1&amp;#39;) Promise.resolve() .then(() =&amp;gt; { console.log(&amp;#39;promise 3&amp;#39;) }) .then(() =&amp;gt; { console.log(&amp;#39;promise 4&amp;#39;) }) .then(() =&amp;gt; { setTimeout(() =&amp;gt; { console.</description>
+    </item>
+    
+    <item>
+      <title>发布-订阅模式(观察者模式)</title>
+      <link>https://pldaily.github.io/posts/observer-mode/</link>
+      <pubDate>Wed, 15 Mar 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/observer-mode/</guid>
+      <description>观察者模式定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖它的对象都会得到通知。
+普通示例 var Event = (function() { var clientList = {}, listen, remove, trigger; listen = function(key, fn) { if(!clientList[key]) { clientList[key] = []; } clientList[key].push(fn); } remove = function(key, fn) { var fns = clientList[key]; if(!fns || fns.length == 0) { return false; } if(!fn) { fns &amp;amp;&amp;amp; fns.length = 0; }else { for(var i = 0, l = fns,length; i &amp;lt; l; i++) { var _fn = fns[i]; if(fn === _fn) { clientList[key].</description>
+    </item>
+    
+    <item>
+      <title>Git 指令</title>
+      <link>https://pldaily.github.io/posts/git/</link>
+      <pubDate>Wed, 01 Mar 2017 17:13:11 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/git/</guid>
+      <description>作为新一代的青年，当当会用sourcetree怎么能行，上git指令。今后工作中会使用git指令修改代码，会不断进行修改与补充。
+基础配置  $ git config &amp;ndash;global user.name &amp;ldquo;pcd&amp;rdquo;//使用者名字 $ git config &amp;ndash;global user.email &amp;ldquo;506189445@qq.com&amp;rdquo;//使用者邮箱 $ mkdir testgit//创建文件 $ pwd//显示当前目录 $ git init// 变成可以管理的仓库 $ cat readme.txt //查看内容 $ rm b.txt//删除b.txt  提交更改  $ git add readme.txt //提交readme.txt文件 放在暂存区 $ git reset HEAD //如果后面什么都不跟的话 就是上一次add 里面的全部撤销了 $ git reset HEAD XXX //就是对某个文件进行撤销了 $ git commit -m &amp;ldquo;readme.txt提交&amp;rdquo; //提交的注释 $ git status //文件提交后是否有发生改变 $ git diff reademe.txt //文件如何发生了改变，查看改变了什么 $ git checkout &amp;ndash; readme.</description>
+    </item>
+    
+    <item>
+      <title>字符编码详解</title>
+      <link>https://pldaily.github.io/posts/character-encoding/</link>
+      <pubDate>Thu, 19 Jan 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/character-encoding/</guid>
+      <description>本文记录对字符编码的理解
+ASCLL码 ASCLL: 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为ASCII码，一直沿用至今。 ASCII码一共规定了128个字符的编码，比如空格&amp;quot;SPACE&amp;quot;是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0
+Unicode Unicode: 将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。Unicode只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储，不同标准占的字节数不同(大于1字节)
+UTF-8 UTF-8: UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。 UTF-8的编码规则很简单，只有二条：
+对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。 对于n字节的符号（n&amp;gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。 英文在unicode中占2-4个字节（不同标准占的字节数不同，总之大于1字节)，但utf-8中占一个字节
+   Unicode UTF-8     0000 0000-0000 007F 0xxxxxxx   0000 0080-0000 07FF 110xxxxx 10xxxxxx   0000 0800-0000 FFFF 1110xxxx 10xxxxxx 10xxxxxx   0001 0000-0010 FFFF 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx    UTF-16 UTF-16：就是任何字符对应的数字都用两个字节来保存.但是很显然如果都是英文字母这做有点浪费，但汉字在utf-16中占2个字节，但在utf-8中可能占3个字节。
+JS中的字符编码 JS中字符以UTF-16的格式存储，每个字符为为2个字节，可存字符为2^8*2^8个字符，但超出这个范围即Unicode编码大于65536，则通过四个字节存储。 以古文&amp;quot;𣦵&amp;quot;为例，Unicode值为145845，大于65536，以4个字节存储。 现有的charAt、charCodeAt只能处理Unicode编码范围内的字符，ES6引入codePointAt方法
+var s = &amp;ldquo;𣦵&amp;rdquo;; console.log(s.codePointAt(0));//145845 charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数</description>
+    </item>
+    
+    <item>
+      <title>浮动详解</title>
+      <link>https://pldaily.github.io/posts/clear-float/</link>
+      <pubDate>Thu, 19 Jan 2017 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/clear-float/</guid>
+      <description>本文记录对清除浮动的详解
+浮动效果 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;#34;text/css&amp;#34;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;div1&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;div2&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 此时父元素#main的高度宽度由子元素#div1与#div2决定，由于子元素设置浮动脱离文档流，导致父元素高度为0，使其父元素#main背景颜色无效果。
+清除浮动方式一 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;浮动&amp;lt;/title&amp;gt; &amp;lt;style type=&amp;#34;text/css&amp;#34;&amp;gt; *{ padding: 0; margin: 0; } #main { background-color: green; overflow: hidden; } #div1 { background: yellow; width: 200px; height: 200px; float: left; } #div2 { background-color: blue; width: 200px; height: 200px; float: left; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;div1&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;div2&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 父元素设置overflow: hidden;属性 原理：因为overflow.</description>
+    </item>
+    
+    <item>
+      <title>对象精讲</title>
+      <link>https://pldaily.github.io/posts/object-oop/</link>
+      <pubDate>Sat, 29 Oct 2016 15:36:03 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/object-oop/</guid>
+      <description>在看jquery源码时遇到一些关于对象的问题，决定再回去学习巩固一下对象的基础。
+构造函数 创建构造函数，从而自定义对象类型的属性和方法。构造函数始终都应以一个大写字母开头，该做法借鉴自其它OO语言，为了区别与其他函数。我们使用new操作符，创建一个实例。每创建一个实例，构造函数内的方法就都要在每个实例上重新创建一遍，但俩个方法不是同一个Function实例。
+function Person(name) { this.name = name; this.sayName = function() { console.log(this.name); } } var person1 = new Person(&amp;#39;aaa&amp;#39;); var person2 = new Person(&amp;#39;bbb&amp;#39;); console.log(person1.sayName == person2.sayName);//false  所以我们需要使用原型共享一些属性与方法
+ 原型 原型的共享 javascript中每一个函数都有一个原型属性，prototype就是通过调用构造函数创建的那个对象实例的原型。使用原型对象可以让所有的对象实例共享它所有的属性和方法。
+function Person(name) {} Person.prototype.name = &amp;#34;aaa&amp;#34;; Person.prototype.sayName = function() { console.log(this.name); } var person1 = new Person(); var person2 = new Person(); console.log(person1.sayName == person2.sayName);//true 实例，原型，构造函数三者之间的关系 每个函数都有一个原型属性，这个属性指向函数的原型对象 __proto__存在于实例与构造函数的原型对象之间 原型对象中的constructor属性指向构造函数 构造函数中的this指向实例
+new的实现 通过以上的属性，我们可以直接实现new操作符
+function Person(name) { this.</description>
+    </item>
+    
+    <item>
+      <title>WEB 客户端存储</title>
+      <link>https://pldaily.github.io/posts/web-storage/</link>
+      <pubDate>Thu, 13 Oct 2016 16:56:04 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/web-storage/</guid>
+      <description>web客户端存储主要包括cookie、localStorage与sessionStorage。本文详细介绍三者之前的区别。
+cookie cookie的保存 cookie的名/值中的值不允许包含分号、逗号和空白号，采用encodeURIComponent对值进行编码，decodeURIComponent进行解码
+cookie设置的参数 key：名 value：值 path：路径 expires：过期时间(该属性有HTTP1.0定义，支持IE8。max-age为HTTP1.1定义，不支持IE8)
+存储cookie function setCookie(name, value, expires, path) { document.cookie =name + &amp;#39;=&amp;#39; + encodeURIComponent(value) + &amp;#39;;expires = &amp;#39; + expires + &amp;#39;;path = &amp;#39; + path; } setCookie(&amp;#34;name&amp;#34;, &amp;#34;pcd&amp;#34;, 1000*60*60, &amp;#39;/&amp;#39;); 获取cookie function getCookie(key) { var all = document.cookie; var list = all.split(&amp;#39;;&amp;#39;); if(all === &amp;#39;&amp;#39;) { return cookie; } for(var i = 0; i &amp;lt; list.length; i++) { var cookie = list[i].</description>
+    </item>
+    
+    <item>
+      <title>JS 中的 this 详解</title>
+      <link>https://pldaily.github.io/posts/js-this/</link>
+      <pubDate>Sun, 09 Oct 2016 17:08:24 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/js-this/</guid>
+      <description>本文记录对 JS 中 this 的详解
+this的绑定方式 默认绑定 没调用对象指向全局
+function foo() { console.log(this.a); } var a = 1; foo();//1 隐式绑定 var a = 1; function foo() { console.log(this.a); } var obj = { a: 2, foo: foo } obj.foo();//2 var bar = obj.foo; bar();//1 显式绑定 function foo() { console.log(this.a); } var a = 1; var obj = { a: 2 } foo.call(obj);//2 foo.apply(obj);//2 var bar = foo.bind(obj); bar();//2 new绑定 function foo(a) { this.</description>
+    </item>
+    
+    <item>
+      <title>跨域</title>
+      <link>https://pldaily.github.io/posts/cross-domain/</link>
+      <pubDate>Thu, 15 Sep 2016 21:19:22 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/cross-domain/</guid>
+      <description>关于前端的跨域问题一直都想去了解应该如何去解决，但由于没有实际例子，看了网上的很多例子一直都处于懵懂的状态，正好公司最近出了一个跨域的问题就随便学习总结了一下
+配置域名 本文跨域处理后台以PHP为例，首先下载wamp，我们先在本地配置俩个域名：pcd.me(一级域名)与dev.pcd.me(二级域名)。在www目录下新建pcd和dev俩个文件，当访问pcd.me时则访问pcd文件夹下的文件，访问dev.pcd.me则访问dev文件夹下的文件。
+更改host 更改C:\Windows\System32\drivers\etc\host文件：添加
+127.0.0.1 pcd.me 127.0.0.1 dev.pcd.me 更改httpd-vhosts.conf 更改F:\wamp2\wamp\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf(该目录为我的配置，具体以实际为准)
+&amp;lt;VirtualHost *:80&amp;gt; ServerName pcd.me DocumentRoot F:/wamp2/wamp/www/pcd &amp;lt;Directory &amp;#34;F:/wamp2/wamp/www/pcd/&amp;#34;&amp;gt; Options +Indexes +Includes +FollowSymLinks +MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; &amp;lt;VirtualHost *:80&amp;gt; ServerName dev.pcd.me DocumentRoot F:/wamp2/wamp/www/dev &amp;lt;Directory &amp;#34;F:/wamp2/wamp/www/dev/&amp;#34;&amp;gt; Options +Indexes +Includes +FollowSymLinks +MultiViews AllowOverride All Require local &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt; 访问 在pcd文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; main &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 在dev文件下新建index.html
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; dev &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 此时访问pcd.</description>
+    </item>
+    
+    <item>
+      <title>页面自适应布局</title>
+      <link>https://pldaily.github.io/posts/self-adaptive-layout/</link>
+      <pubDate>Thu, 15 Sep 2016 15:03:09 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/self-adaptive-layout/</guid>
+      <description>关于页面布局之前找了很多案例，当时是看懂了，但当让你写的时候发现自己视乎并不清楚他的原理，于是决定花些时间去整理一下关于页面布局的资料。主要分为俩列自适应布局，三列自适应布局，等高布局。
+俩列布局: 左边固定，右边自适应 1.左边设置为浮动，右边不设浮动与宽度 * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { padding-left: 220px;/* margin-left: 220px;border-left: 220px solid; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素不设宽度的情况下： 若元素为普通流中元素，元素宽度等于父元素宽度; 若元素不在文档流中,元素宽度等于内容宽度;
+2.左边设置为浮动，右边不设浮动但设置宽度为100% * { padding: 0; margin: 0; } #main { height: 800px; background-color: yellow; } #left { float: left; width: 220px; height: 500px; background-color: red; } #right { width: 100%; padding-left: 220px; box-sizing: border-box; /* border-left: 220px solid; box-sizing: border-box; */ background-color: green; height: 500px; } &amp;lt;div id=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;left&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;right&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 原理: 在元素宽度为100%的情况下： 若元素为普通流元素或者浮动元素，元素宽度为父元素宽度的100%；若元素为绝对定位元素，元素宽度为元素offset-parent宽度的100%；若元素为固定定位元素，元素宽度始终为body的100% 设置box-sizing（兼容性IE8+）使#right的宽度为原来的100%。</description>
+    </item>
+    
+    <item>
+      <title>ES6 环境搭建</title>
+      <link>https://pldaily.github.io/posts/es6/</link>
+      <pubDate>Thu, 25 Aug 2016 00:20:12 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/es6/</guid>
+      <description>对于前端开发人员来说，ES6一直早有耳闻，但由于运用不到实际而一直没有安排时间去学习，只是对其有一些粗略的了解。近期在实际开发项目中使用了gulp+webpack对vuejs进行编译，对于vuejs的操作是可以支持ES6的，因为可以使用webpack中的babel-loader进行解析。这节主要讲解对ES6的环境进行搭建，在学习的时候可以进行调试。
+重要实现思路 通过webpack搭建了一个ES6的环境，在webpack.config.js中定义入口文件问main.js，通过babel对main.js中的ES6的语法进行解析，将其转化为ES5的语法，生成文件为bundle.js。通过index.html引入bundle.js文件进行调试。
+webpack.config.js的配置 module.exports = { entry: &amp;#39;./main&amp;#39;,//入口文件 output: { filename: &amp;#39;bundle.js&amp;#39;//输出文件 }, module: { loaders: [{ test: /\.js$/,//正则匹配文件，对其进行解析 exclude: /node_modules/,//不对node_modules里的js文件进行解析 loader: &amp;#39;babel&amp;#39;,//使用babel加载器 query: { presets: [&amp;#39;es2015&amp;#39;]//解析成ES5的形式 } }] } } index.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;ES6&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;script src=&amp;#34;bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; package.json { &amp;#34;name&amp;#34;: &amp;#34;ES6_environment&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;scripts&amp;#34;: {//可以使用npm run的快捷方式 &amp;#34;start&amp;#34;: &amp;#34;live-server --port=3004&amp;#34;, &amp;#34;watch&amp;#34;: &amp;#34;webpack -w&amp;#34; }, &amp;#34;keywords&amp;#34;: [], &amp;#34;author&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;license&amp;#34;: &amp;#34;ISC&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;babel-core&amp;#34;: &amp;#34;^6.</description>
+    </item>
+    
+    <item>
+      <title>通过 hexo &#43; NexT 搭建博客</title>
+      <link>https://pldaily.github.io/posts/hexo/</link>
+      <pubDate>Tue, 12 Apr 2016 10:44:38 +0000</pubDate>
+      
+      <guid>https://pldaily.github.io/posts/hexo/</guid>
+      <description>一般的步骤网上有很多教程都进行了详细的讲解，在此不做复述，主要讲解一下自己在构建博客时遇到的问题及解决方案。
+搭建Hexo个人博客无法部署到github 主要原因是由于__config.yml中deploy的配置 解决方案：
+deploy: type: git repository: https://github.com/pcd12321/pcd12321.github.io.git branch: master 1.安装
+npm install hexo-deployer-git --save 2.将deploy 的 type由github改为git
+上传代码成功后your_user_name.github.io显示404 主要有一下四种原因： 1.github仓库名必须与你的用户名相同 2.在git中输入指令时没有输入你的用户名与邮箱 3.需要等待十几分钟后网站才能正常运行 4.github给你发的邮箱没有打开验证 我是由于邮箱没有验证造成网页显示404
+主题配置 主题配置可以通过查看官网配置：NexT官网
+如何删除一篇文章 在source目录下先删除该文章，再讲主目录下的db.json删除,使用命令hexo clean清除所有，在用hexo g构建，亲测有效。 注：public文件中的图片等一些在之前文章用到的需要先备份。
+如何在文章中添加图片 1._config.yml 中有 post_asset_folder:true 2.执行
+npm install https://github.com/CodeFalling/hexo-asset-image --save 3.在文章的目录下新建一个文件夹images放入需要的文件 4.在文章中使用
+![logo](images/bg1.jpg) </description>
+    </item>
+    
+  </channel>
+</rss>
